@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Auth from "./pages/Auth";
 import Register from "./pages/Register";
 const App = () => {
+    const [signedIn,setSignedIn]=useState("false")
     return (
         <>
             <Router>
-                <Navbar />
+                <Navbar isSignedIn={signedIn}/>
                 <Routes>
                     <Route path="/signin" element={<Auth />} />
                     <Route path="/register" element={<Register/>} />

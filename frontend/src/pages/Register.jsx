@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({
-        name:"",
-        discipline:"",
-        subject:"",
+        name: "",
+        discipline: "",
+        subject: "",
         email: "",
         password: "",
     });
@@ -15,20 +15,21 @@ const Register = () => {
         e.preventDefault();
         setUser((user) => ({ ...user, [e.target.name]: e.target.value }));
         console.log(user);
-    };   
- 
-    const signup = () => {
-        
     };
+
+    const signup = () => {};
     const login = () => {
-        navigate("/login");
+        navigate("/signin");
     };
 
     return (
         <section className="backdrop-blur-[2px]">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-               
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+                    <div className="flex justify-end" onClick={()=>navigate('/')}>
+                        <p className="px-4 hover:cursor-pointer">x</p>
+                    </div>
+
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                             Create an account
