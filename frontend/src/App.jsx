@@ -4,14 +4,14 @@ import Navbar from "./components/Navbar";
 import Auth from "./pages/Auth";
 import Register from "./pages/Register";
 const App = () => {
-    const [signedIn,setSignedIn]=useState("false")
+    const [signedIn, setSignedIn] = useState("true");
     return (
         <>
             <Router>
-                <Navbar isSignedIn={signedIn}/>
+                <Navbar isSignedIn={signedIn} />
                 <Routes>
                     <Route path="/signin" element={<Auth />} />
-                    <Route path="/register" element={<Register/>} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
             </Router>
         </>

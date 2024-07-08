@@ -12,6 +12,7 @@ const Navbar = (props) => {
     const handleSignin = () => {
         navigate("/signin");
     };
+    console.log(props.isSignedIn);
     return (
         <header className="py-[15px] px-[20px] shadow-md fixed w-full  ">
             <section className="flex flex-row justify-between">
@@ -48,31 +49,16 @@ const Navbar = (props) => {
                         />
                     </div>
                 </form>
-                {props.isSignedIn ? (
-                    <div class="flex items-center gap-4">
-                        <img
-                            class="w-10 h-10 rounded-full"
-                            src="https://img.icons8.com/?size=100&id=c8SsrDOfQgn3&format=png&color=000000"
-                            alt=""
-                        />
-                        <div class="font-medium">
-                            <div>Nazmul</div>
-                            <div class="text-sm text-gray-500">
-                                Joined Now
-                            </div>
-                        </div>
-                    </div>
-                ) : (
-                    <div className="">
-                        <button
-                            class="select-none rounded-lg bg-gradient-to-tr from-gray-800 to-gray-700 py-2 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            type="button"
-                            onClick={handleSignin}
-                        >
-                            Sign in
-                        </button>
-                    </div>
-                )}
+                <div className="">
+                    <button
+                        class="select-none rounded-lg bg-gradient-to-tr from-gray-800 to-gray-700 py-2 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        type="button"
+                        onClick={handleSignin}
+                    >
+                        Sign in
+                    </button>
+                </div>
+                
             </section>
         </header>
     );
