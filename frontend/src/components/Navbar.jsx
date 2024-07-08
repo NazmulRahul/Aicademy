@@ -7,13 +7,15 @@ const Navbar = () => {
     const navigate=useNavigate()
     const [search, setSearch] = useState("");
     const handleSearch = () => {
-        navigate('/signin')
-        console.log("click");
+        
     };
     const handleChange = (e) => {
         e.preventDefault();
         setSearch((pre) => e.target.value);
     };
+    const handleSignin=()=>{
+        navigate('/signin')
+    }
     return (
         <header className="py-[15px] px-[20px] shadow-md fixed w-full  ">
             <section className="flex flex-row justify-between">
@@ -54,6 +56,7 @@ const Navbar = () => {
                     <button
                         class="select-none rounded-lg bg-gradient-to-tr from-gray-800 to-gray-700 py-2 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                         type="button"
+                        onClick={handleSignin}
                     >
                        Sign in
                     </button>

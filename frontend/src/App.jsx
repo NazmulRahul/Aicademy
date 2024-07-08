@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Auth from "./components/Auth";
-import { NavbarDefault } from "./components/Test";
+import Auth from "./pages/Auth";
+import Register from "./pages/Register";
 const App = () => {
     return (
         <>
@@ -10,6 +10,7 @@ const App = () => {
                 <Navbar />
                 <Routes>
                     <Route path="/signin" element={<Auth />} />
+                    <Route path="/register" element={<Register/>} />
                 </Routes>
             </Router>
         </>
