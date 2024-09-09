@@ -1,0 +1,1 @@
+AIcademy is a web application that aims to assist students with their academic studies through AI. AIcademy is formed using AI and Academy. It is an AI powered app that will redefine the learning experience with AI. It will provide resources, quizzes and notes using AI technology to help students learn and excel in their academics.
