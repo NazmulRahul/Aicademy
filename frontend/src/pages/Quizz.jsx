@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
-import quiz from "../assets/quiz.png";
-import note from "../assets/note.png";
+
 import { useNavigate } from "react-router-dom";
 
 import { userContextProvider } from "../context/UserContext";
 const Quizz = () => {
-    const navigate = useNavigate();
+    const navigate=useNavigate()
     const { curTopic } = useContext(userContextProvider);
     const [questions, setQuestions] = useState([]);
     const [curQues, setCurQues] = useState(2);
@@ -25,8 +24,8 @@ const Quizz = () => {
                 body: JSON.stringify({ topic: curTopic.topic }),
             });
             const data = await response.json();
-            setQuestions(() => data.question);
-
+            setQuestions(() => data.question);           
+              
             setLoading(false);
             console.log(questions);
             console.log(data.question);
@@ -50,10 +49,11 @@ const Quizz = () => {
             setQuizFinished(true);
         }
     };
-    const click = () => {
-        navigate("/");
-    };
+    const click=()=>{
+        navigate('/')
+    }
     useEffect(() => {
+       
         getData();
     }, []);
 
@@ -74,10 +74,7 @@ const Quizz = () => {
                             <p>Loading Questions...</p>
                         ) : !quizStarted || quizFinished ? (
                             <div class="flex flex-col justify-center items-center">
-                                <button
-                                    class="p-2 border bg-pink-500 font-sans font-bold text-white"
-                                    onClick={startQuiz}
-                                >
+                                <button class="p-2 border bg-pink-500 font-sans font-bold text-white" onClick={startQuiz}>
                                     {quizFinished
                                         ? "Restart Quiz"
                                         : "Start Quiz"}
@@ -87,19 +84,14 @@ const Quizz = () => {
                                         <p>Quiz Finished</p>
                                         <p>Your Score: {score}</p>
                                         <p>Correct answer: {score}</p>
-                                        <p>
-                                            Wrong answer:{" "}
-                                            {questions.length - score}
-                                        </p>
+                                        <p>Wrong answer: {questions.length-score}</p>
                                         <button></button>
                                     </div>
                                 )}
                             </div>
                         ) : (
                             <div className="p-10">
-                                <h2 class="text-gray-800 font-bold text-lg">
-                                    {curQues + 1}. {questions[curQues].question}
-                                </h2>
+                                <h2 class="text-gray-800 font-bold text-lg">{curQues+1}. {questions[curQues].question}</h2>
                                 <div>
                                     {questions[curQues].options.map(
                                         (option) => {
