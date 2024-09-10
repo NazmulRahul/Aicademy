@@ -12,7 +12,7 @@ import Profile from "./pages/Profile";
 import AddTopics from "./pages/AddTopics";
 import Quizz from "./pages/Quizz";
 import CustomQuiz from "./pages/CustonQuiz";
-import Pdf from "./pages/Pdf";
+
 const App = () => {
     const [signedIn, setSignedIn] = useState("true");
     const list = data.map((item) => {
@@ -40,7 +40,7 @@ const App = () => {
                         <Route path="/topic" element={<AddTopics />} />
                         <Route path="/quiz" element={<Quizz />} />
                         <Route path="/customquiz" element={<CustomQuiz />} />
-                        <Route path="/pdf" element={<Pdf />} />
+                        
 
                     </Routes>
                 </Router>
