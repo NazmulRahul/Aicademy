@@ -4,7 +4,7 @@ import quiz from "../assets/quiz.png";
 import note from "../assets/note.png";
 import { useNavigate } from "react-router-dom";
 
-import { userContextProvider } from "../context/UserContext";
+// import { userContextProvider } from "../context/UserContext";
 const Quizz = () => {
     const navigate = useNavigate();
     const { curTopic } = useContext(userContextProvider);
