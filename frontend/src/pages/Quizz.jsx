@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import quiz from "../assets/quiz.png";
 // import note from "../assets/note.png";
-import { useNavigate } from "react-router-dom";
 
-import { userContextProvider } from "../context/UserContext";
 const Quizz = () => {
     const navigate=useNavigate()
     const { curTopic } = useContext(userContextProvider);
