@@ -1,36 +1,64 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userContextProvider } from "../context/UserContext";
 const Auth = () => {
-    const [user,setUser]=useState({
-        email:"",
-        password:""
-    })
-    const handleChange=(e)=>{
+    const {signedIn,
+        user,
+        subjects,
+        topics,
+        curUser,
+        getData,
+        curData}=useContext(userContextProvider)
+    const [tempUser, setTempUser] = useState({
+        email: "",
+        password: "",
+    });
+    const handleChange = (e) => {
         e.preventDefault();
-        setUser((user)=>({...user,[e.target.name]:e.target.value}))
-        console.log(user)
-    }
+        setTempUser((tempUser) => ({ ...tempUser, [e.target.name]: e.target.value }));
+        
+    };
     const navigate = useNavigate();
     const click = () => {
         navigate("/");
     };
-    const signin=()=>{
-        navigate('/')
-    }
-    const register=()=>{
-        navigate('/register')
-    }
+    const signin = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/test/signin", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(tempUser),
+            });
+            if(response.status===200){
+                const data = await response.json();
+                curUser(data)
+                getData(tempUser.email);                
+                navigate('/')
+            }
+            
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const register = () => {
+        navigate("/register");
+    };
 
-    const forgotPassword=()=>{
-
-    }
+    const forgotPassword = () => {};
     return (
         <section className=" backdrop-blur-[2px]">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                     <div className="flex justify-end">
-                        <p className="px-4 hover:cursor-pointer" onClick={click}>x</p>
+                    <p
+                            className="px-4  text-gray-600 text-[20px] cursor-pointer hover:text-gray-900 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-100"
+                            onClick={click}
+                        >
+                            x
+                        </p>
                     </div>
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
@@ -50,9 +78,9 @@ const Auth = () => {
                                     id="email"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
                                     placeholder="example@gmail.com"
-                                    value={user.email}
+                                    value={tempUser.email}
                                     onChange={handleChange}
-                                    required="true"
+                                    required={true}
                                 />
                             </div>
                             <div>
@@ -67,10 +95,10 @@ const Auth = () => {
                                     name="password"
                                     id="password"
                                     placeholder="••••••••"
-                                    value={user.password}
+                                    value={tempUser.password}
                                     onChange={handleChange}
                                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
-                                    required="true"
+                                    required={true}
                                 />
                             </div>
                             <div className="flex items-center justify-between">
