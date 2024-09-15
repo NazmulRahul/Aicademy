@@ -14,19 +14,29 @@ const CustomQuiz = () => {
 
         const formData = new FormData();
         formData.append('pdfFile', event.target.files[0]);
-        // console.log(pdfFile)
-    
+        console.log(pdfFile)
+        // http://localhost:3000/test/api/text/upload
         try {
           console.log(formData)
-          const response = await axios.post('http://localhost:3000/test/api/text/upload', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          });
-          console.log(response)
-          setText(response.data.text)
+        //   const response = await axios.post('http://192.168.0.109:8080/public/extractor', formData, {
+        //     headers: {
+        //       'Content-Type': 'multipart/form-data'
+        //     }
+        //   });
+        //   console.log(response)
+        //   setText(response.data.text)
           // setPdfData(response.data.pdfData);
           // setNumPages(response.data.numPages);
+        const res=await fetch('http://192.168.0.109:8080/public/extractor', {
+            method: 'POST',
+            body: formData,
+            headers: {
+            //   'Content-Type': 'multipart/form-data'
+            }
+          })
+          const data=await res.json()
+          console.log(data)
+          setText(data.content)
         } catch (error) {
           console.error('Error uploading PDF:', error);
         }
