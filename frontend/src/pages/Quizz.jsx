@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import quiz from "../assets/quiz.png";
 // import note from "../assets/note.png";
-
+import { useNavigate } from "react-router-dom";
 import { userContextProvider } from "../context/UserContext";
 const Quizz = () => {
     const navigate=useNavigate()
@@ -13,22 +13,24 @@ const Quizz = () => {
     const [quizStarted, setQuizStarted] = useState(false);
     const [quizFinished, setQuizFinished] = useState(false);
     const [loading, setLoading] = useState(true);
-
+    // http://localhost:3000/test/quiz
     const getData = async () => {
         try {
-            const response = await fetch("http://localhost:3000/test/quiz", {
+            const response = await fetch("http://192.168.0.109:8080/public/bot2/quiz", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ topic: curTopic.topic }),
+                body: JSON.stringify({ text: "If you need more granular control over the request body, you can use ServletInputStream to read the raw input stream. However, this approach is generally less convenient and error-prone.",level:"university" }),
             });
             const data = await response.json();
-            setQuestions(() => data.question);           
+            const clean= JSON.parse(data.content)
+            console.log(clean);
+            setQuestions(() => clean.questions);           
               
             setLoading(false);
             console.log(questions);
-            console.log(data.question);
+            console.log(clean.questions);
         } catch (error) {
             console.log(error);
         }

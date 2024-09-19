@@ -6,8 +6,10 @@ import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
 import { Chatbot } from "./Chatbot";
 import { useNavigate } from "react-router-dom";
+import Notes from "./Notes";
 const Main = () => {
-    const navigate=useNavigate()
+    const navigate = useNavigate();
+    const [showNotes, setShowNotes] = useState(true);
     const {
         signedIn,
         user,
@@ -22,40 +24,48 @@ const Main = () => {
     const handle = () => {
         setChat((chat) => !chat);
     };
-    const handleQuiz=()=>{
-        console.log("CurTopic "+curTopic)
-        navigate('/quiz')
-    }
+    const handleQuiz = () => {
+        console.log("CurTopic " + curTopic);
+        navigate("/quiz");
+    };
+    const click = () => {
+        setShowNotes((prev) => !prev);
+    };
     return (
-        <div className="fixed top-[70px] left-[350px] ml-8 ">
-            <div className="h-[90vh] pb-10 overflow-scroll w-4/5">
-                {signedIn ? (
-                    <div
-                        dangerouslySetInnerHTML={{
-                            __html: `${curTopic.content}`,
-                        }}
+        <div>
+           
+            <div className="fixed top-[70px] left-[350px] ml-8 ">
+                <div className="h-[90vh] pb-10 overflow-scroll w-4/5">
+                    {signedIn ? (
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: `${curTopic.content}`,
+                            }}
+                        />
+                    ) : (
+                        <h1 class="text-4xl w-full">Please Sign in</h1>
+                    )}
+                </div>
+                <div className="fixed right-16 top-[200px]">
+                    <img
+                        className="w-16 h-16 m-14 cursor-pointer  hover:w-20 hover:h-20"
+                        src={quiz}
+                        onClick={handleQuiz}
                     />
-                ) : (
-                    <h1 class="text-4xl w-full">Please Sign in</h1>
-                )}
+                    <img
+                        className="w-16 h-16 m-14 cursor-pointer  hover:w-20 hover:h-20"
+                        src={note}
+                        onClick={click}
+                    />
+                    <img
+                        onClick={handle}
+                        className="w-16 h-16 m-14 cursor-pointer  hover:w-20 hover:h-20"
+                        src={chatbot}
+                    />
+                    {chat && <Chatbot handle={handle} />}
+                </div>
             </div>
-            <div className="fixed right-16 top-[200px]">
-                <img
-                    className="w-16 h-16 m-14 cursor-pointer  hover:w-20 hover:h-20"
-                    src={quiz}
-                    onClick={handleQuiz}
-                />
-                <img
-                    className="w-16 h-16 m-14 cursor-pointer  hover:w-20 hover:h-20"
-                    src={note}
-                />
-                <img
-                    onClick={handle}
-                    className="w-16 h-16 m-14 cursor-pointer  hover:w-20 hover:h-20"
-                    src={chatbot}
-                />
-                {chat && <Chatbot handle={handle} />}
-            </div>
+            {showNotes && <Notes click={click}/>}
         </div>
     );
 };

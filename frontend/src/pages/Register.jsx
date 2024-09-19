@@ -21,12 +21,33 @@ const Register = () => {
     const login = () => {
         navigate("/signin");
     };
-
+    const register = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/test/signin", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(tempUser),
+            });
+            if (response.status === 200) {
+                const data = await response.json();
+                curUser(data);
+                getData(tempUser.email);
+                navigate("/");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <section className="backdrop-blur-[2px]">
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
-                    <div className="flex justify-end" onClick={()=>navigate('/')}>
+                    <div
+                        className="flex justify-end"
+                        onClick={() => navigate("/")}
+                    >
                         <p className="px-4 hover:cursor-pointer">x</p>
                     </div>
 
@@ -105,7 +126,7 @@ const Register = () => {
                             </div>
                             <button
                                 onClick={signup}
-                                className="w-full text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                                className="w-full text-white font-semibold bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center "
                             >
                                 Create an account
                             </button>
