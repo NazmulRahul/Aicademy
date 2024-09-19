@@ -1,17 +1,16 @@
-package com.aicademy.backend.controllers;
+package com.aicademy.backend.security;
 
 
-import com.aicademy.backend.dto.AuthResponseDTO;
-import com.aicademy.backend.dto.LoginDto;
-import com.aicademy.backend.dto.RegisterDto;
+import com.aicademy.backend.security.authDTO.AuthResponseDTO;
+import com.aicademy.backend.security.authDTO.LoginDto;
+import com.aicademy.backend.security.authDTO.RegisterDto;
 import com.aicademy.backend.models.Role;
-import com.aicademy.backend.models.UserEntity;
-import com.aicademy.backend.repository.RoleRepository;
-import com.aicademy.backend.repository.UserRepository;
-import com.aicademy.backend.security.JWTGenerator;
+import com.aicademy.backend.models.UserTopicMap;
+import com.aicademy.backend.security.repository.RoleRepository;
+import com.aicademy.backend.security.repository.UserRepository;
 
 
-
+import com.aicademy.backend.topics.UserTopicMapRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -51,26 +51,40 @@ public class AuthController {
     public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto){
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                loginDto.getPhoneNum(),
+                loginDto.getEmail(),
                 loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
-        return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
+
+        UserTopicMap user = userRepository.findByEmail(loginDto.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        return new ResponseEntity<>(new AuthResponseDTO(token,user.getUserTopicMap()), HttpStatus.OK);
     }
 
+    @Autowired
+    UserTopicMapRepository userTopicMapRepository;
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         System.out.println(registerDto.getPassword());
-        if (userRepository.existsByPhoneNum(registerDto.getPhoneNum())) {
-            return new ResponseEntity<>("Phone num is already in use!", HttpStatus.BAD_REQUEST);
+        if (userRepository.existsByEmail(registerDto.getEmail())) {
+            return new ResponseEntity<>("Email is already in use!", HttpStatus.BAD_REQUEST);
         }
 
-        UserEntity user = new UserEntity();
-        user.setPhoneNum(registerDto.getPhoneNum());
+        UserTopicMap user = new UserTopicMap();
+        user.setEmail(registerDto.getEmail());
         user.setPassword(passwordEncoder.encode((registerDto.getPassword())));
 
         Role roles = roleRepository.findByName("USER").get();
         user.setRoles(Collections.singletonList(roles));
+
+        // Create an empty UserTopicMap and save it
+        com.aicademy.backend.topics.UserTopicMap userTopicMap = new com.aicademy.backend.topics.UserTopicMap();
+        userTopicMap.setSubToTopicsMap(new HashMap<>()); // Initialize an empty map
+        com.aicademy.backend.topics.UserTopicMap savedUserTopicMap = userTopicMapRepository.save(userTopicMap);
+
+        // Link the newly created UserTopicMap to the UserEntity
+        user.setUserTopicMap(savedUserTopicMap);
 
         userRepository.save(user);
 

@@ -1,12 +1,11 @@
 package com.aicademy.backend.security;
 
 import com.aicademy.backend.models.Role;
-import com.aicademy.backend.models.UserEntity;
+import com.aicademy.backend.models.UserTopicMap;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,8 +15,8 @@ public class UserInfoDetails implements UserDetails {
     private String password;
     private Collection<GrantedAuthority> authorities;
 
-    public UserInfoDetails(UserEntity userInfo) {
-        phoneNum = userInfo.getPhoneNum();
+    public UserInfoDetails(UserTopicMap userInfo) {
+        phoneNum = userInfo.getEmail();
         password = userInfo.getPassword();
         authorities = mapRolesToAuthorities(userInfo.getRoles());
     }

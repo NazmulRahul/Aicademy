@@ -1,4 +1,4 @@
-package com.aicademy.backend.models;
+package com.aicademy.backend.topics;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,25 +7,16 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Document(collection = "users")
+@Document(collection = "user_topic_maps")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserEntity {
-
+public class UserTopicMap {
     @Id
     private ObjectId id;
-
-    private String phoneNum;
-
-    private String password;
-
-    private List<Role> roles = new ArrayList<>();
-    @Override
-    public String toString(){
-        return id+" "+phoneNum;
-    }
+    private Map<String, List<topicEntity>> subToTopicsMap=new HashMap<>();
 }

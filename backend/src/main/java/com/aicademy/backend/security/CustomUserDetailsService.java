@@ -1,8 +1,8 @@
 package com.aicademy.backend.security;
 
 import com.aicademy.backend.models.Role;
-import com.aicademy.backend.models.UserEntity;
-import com.aicademy.backend.repository.UserRepository;
+import com.aicademy.backend.models.UserTopicMap;
+import com.aicademy.backend.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,8 +26,8 @@ public class CustomUserDetailsService  implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String phoneNum) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findByPhoneNum(phoneNum).orElseThrow(() -> new UsernameNotFoundException("phone Number not found"));
-        return new User(user.getPhoneNum(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+        UserTopicMap user = userRepository.findByEmail(phoneNum).orElseThrow(() -> new UsernameNotFoundException("phone Number not found"));
+        return new User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
     }
 
     private Collection<GrantedAuthority> mapRolesToAuthorities(List<Role> roles) {

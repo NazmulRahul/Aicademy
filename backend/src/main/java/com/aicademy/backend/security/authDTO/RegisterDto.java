@@ -1,9 +1,9 @@
-package com.aicademy.backend.dto;
+package com.aicademy.backend.security.authDTO;
 
 import lombok.Data;
 
 @Data
 public class RegisterDto {
-    private String phoneNum;
+    private String email;
     private String password;
 }

@@ -1,4 +1,4 @@
-package com.aicademy.backend.repository;
+package com.aicademy.backend.security.repository;
 
 
 import com.aicademy.backend.models.Role;
