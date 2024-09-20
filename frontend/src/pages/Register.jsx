@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const Register = () => {
     const navigate = useNavigate();
-    const [user, setUser] = useState({
+    const [tempUser, setTempUser] = useState({
         name: "",
-        discipline: "",
-        subject: "",
         email: "",
         password: "",
+        rePassword:""
     });
     const handleChange = (e) => {
         e.preventDefault();
@@ -17,29 +16,35 @@ const Register = () => {
         console.log(user);
     };
 
-    const signup = () => {};
+    const signup = async() => {
+        if(tempUser.password!==tempUser.rePassword){
+            alert('Password does not match')
+        }
+        else{
+            try {
+                const response = await fetch("http://localhost:3000/test/signin", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(tempUser),
+                });
+                if (response.status === 200) {
+                    const data = await response.json();
+                    curUser(data);
+                    getData(tempUser.email);
+                    navigate("/");
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+       
+    };
     const login = () => {
         navigate("/signin");
     };
-    const register = async () => {
-        try {
-            const response = await fetch("http://localhost:3000/test/signin", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(tempUser),
-            });
-            if (response.status === 200) {
-                const data = await response.json();
-                curUser(data);
-                getData(tempUser.email);
-                navigate("/");
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
+
     return (
         <section className="backdrop-blur-[2px]">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto ">
@@ -92,7 +97,7 @@ const Register = () => {
                             </div>
                             <div>
                                 <label
-                                    for="password"
+                                    for="rePassword"
                                     className="block mb-2 text-sm font-medium text-gray-900"
                                 >
                                     Password

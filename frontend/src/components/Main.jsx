@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Notes from "./Notes";
 const Main = () => {
     const navigate = useNavigate();
-    const [showNotes, setShowNotes] = useState(true);
+    const [showNotes, setShowNotes] = useState(false);
     const {
         signedIn,
         user,

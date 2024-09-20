@@ -1,44 +1,39 @@
 import React, { useContext } from "react";
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userContextProvider } from "../context/UserContext";
 const Auth = () => {
-    const {signedIn,
-        user,
-        subjects,
-        topics,
-        curUser,
-        getData,
-        curData}=useContext(userContextProvider)
+    const { signedIn, user, subjects, topics, curUser, getData, curData } =
+        useContext(userContextProvider);
     const [tempUser, setTempUser] = useState({
         email: "",
         password: "",
     });
     const handleChange = (e) => {
         e.preventDefault();
-        setTempUser((tempUser) => ({ ...tempUser, [e.target.name]: e.target.value }));
-        
+        setTempUser((tempUser) => ({
+            ...tempUser,
+            [e.target.name]: e.target.value,
+        }));
+        console.log(tempUser);
     };
     const navigate = useNavigate();
     const click = () => {
         navigate("/");
     };
     const signin = async () => {
+
         try {
-            const response = await fetch("http://localhost:3000/test/signin", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(tempUser),
-            });
-            if(response.status===200){
-                const data = await response.json();
-                curUser(data)
-                getData(tempUser.email);                
-                navigate('/')
+            // http://localhost:3000/test/signin
+            const response = await axios.post(
+                "http://192.168.0.106:8080/api/auth/login",
+                tempUser
+            );
+            if(response.status==200){
+                curUser(tempUser);
+                
             }
-            
         } catch (error) {
             console.log(error);
         }
@@ -53,7 +48,7 @@ const Auth = () => {
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                     <div className="flex justify-end">
-                    <p
+                        <p
                             className="px-4  text-gray-600 text-[20px] cursor-pointer hover:text-gray-900 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-100"
                             onClick={click}
                         >
@@ -64,7 +59,7 @@ const Auth = () => {
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                             Sign in to your account
                         </h1>
-                        <form className="space-y-4 md:space-y-6">
+                        <div className="space-y-4 md:space-y-6">
                             <div>
                                 <label
                                     for="email"
@@ -73,7 +68,6 @@ const Auth = () => {
                                     Your email
                                 </label>
                                 <input
-                                    type="email"
                                     name="email"
                                     id="email"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
@@ -143,7 +137,7 @@ const Auth = () => {
                                     Sign up
                                 </p>
                             </p>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

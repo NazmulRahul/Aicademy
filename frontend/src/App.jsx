@@ -14,7 +14,7 @@ import Quizz from "./pages/Quizz";
 import CustomQuiz from "./pages/CustonQuiz";
 
 const App = () => {
-    const [signedIn, setSignedIn] = useState("true");
+    const [signedIn, setSignedIn] = useState(false);
     const list = data.map((item) => {
         return (
             <div>
