@@ -23,16 +23,18 @@ const Auth = () => {
         navigate("/");
     };
     const signin = async () => {
-
+        const apiUrl= process.env.REACT_APP_API_URL+'/api/auth/login'
         try {
             // http://localhost:3000/test/signin
             const response = await axios.post(
-                "http://192.168.0.106:8080/api/auth/login",
+                apiUrl,
                 tempUser
             );
+            console.log(response.data)
             if(response.status==200){
                 curUser(tempUser);
                 
+
             }
         } catch (error) {
             console.log(error);
