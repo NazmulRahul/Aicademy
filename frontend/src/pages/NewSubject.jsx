@@ -17,8 +17,9 @@ const NewSubject = () => {
         addSubject,
     } = useContext(userContextProvider);
     const [newSubject, setNewSubject] = useState({
+        email:user.email,
         subject: "",
-        level: "School",
+        
     });
     const handleChange = (e) => {
         e.preventDefault();

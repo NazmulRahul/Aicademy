@@ -47,7 +47,7 @@ const Register = () => {
     };
 
     return (
-        <section className="backdrop-blur-[2px]">
+        <section className="backdrop-blur-[6px] bg-black/15 h-screen font-sans">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                     <div

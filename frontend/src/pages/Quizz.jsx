@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import quiz from "../assets/quiz.png";
 // import note from "../assets/note.png";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
+import axios from 'axios'
 const Quizz = () => {
+    const {
+        quizData
+    } = useContext(userContextProvider);
     const navigate=useNavigate()
     const { curTopic } = useContext(userContextProvider);
     const [questions, setQuestions] = useState([]);
@@ -15,18 +19,16 @@ const Quizz = () => {
     const [loading, setLoading] = useState(true);
     // http://localhost:3000/test/quiz
     const getData = async () => {
+        console.log(quizData)
         try {
-            const response = await fetch("http://192.168.0.109:8080/public/bot2/quiz", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ text: "If you need more granular control over the request body, you can use ServletInputStream to read the raw input stream. However, this approach is generally less convenient and error-prone.",level:"university" }),
-            });
-            const data = await response.json();
-            const clean= JSON.parse(data.content)
+            const response = await axios.post(
+                "http://192.168.0.106:8080/public/bot/quiz",
+                quizData
+            );
+            
+            const clean= JSON.parse(response.data.content)
             console.log(clean);
-            setQuestions(() => clean.questions);           
+            setQuestions(() => clean.question);           
               
             setLoading(false);
             console.log(questions);
@@ -54,8 +56,8 @@ const Quizz = () => {
     const click=()=>{
         navigate('/')
     }
-    useEffect(() => {
-       
+    useEffect(() => {  
+        console.log(quizData)     
         getData();
     }, []);
 

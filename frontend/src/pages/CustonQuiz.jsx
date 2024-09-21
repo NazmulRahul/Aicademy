@@ -2,7 +2,22 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import bulb from "../assets/lightbulb-2-48.png"
+import { useContext } from "react";
+import { userContextProvider } from "../context/UserContext";
 const CustomQuiz = () => {
+    const {
+        signedIn,
+        user,
+        subjects,
+        topics,
+        curUser,
+        getData,
+        curData,
+        handleLogout,
+        curTopic,
+        addSubject,
+        quizData,setQuizData
+    } = useContext(userContextProvider);
     const [inputText,setText]=useState('')
     const [pdfFile, setPdfFile] = useState(null);
     const navigate = useNavigate();
@@ -27,25 +42,26 @@ const CustomQuiz = () => {
         //   setText(response.data.text)
           // setPdfData(response.data.pdfData);
           // setNumPages(response.data.numPages);
-        const res=await fetch('http://192.168.0.109:8080/public/extractor', {
-            method: 'POST',
-            body: formData,
-            headers: {
-            //   'Content-Type': 'multipart/form-data'
-            }
-          })
-          const data=await res.json()
-          console.log(data)
-          setText(data.content)
+          const response = await axios.post(
+            "http://192.168.0.106:8080/public/extractor",
+            formData
+        );
+          console.log(response.data)
+        //   console.log(data)
+          setQuizData((data)=>({...data,text:response.data.content}))
         } catch (error) {
           console.error('Error uploading PDF:', error);
         }
     };
+
     const handleInput=(e)=>{
         e.preventDefault()
-        setText(e.target.value)
+        setQuizData((data)=>({...data,[e.target.name]:e.target.value}))
+        console.log(quizData)
     }
-
+    const makeQuiz=()=>{
+        navigate('/quiz')
+    }
     return (
         <section className=" backdrop-blur-[6px] bg-black/15 h-screen font-sans">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
@@ -70,7 +86,7 @@ const CustomQuiz = () => {
                             name="text"
                             placeholder="Copy and paste the text you'd like to generate a quiz for."
                             class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 h-[150px]"
-                            value={inputText}
+                            value={quizData.text}
                             onChange={handleInput}
                         />
                         
@@ -92,26 +108,26 @@ const CustomQuiz = () => {
                             <label className="mb-2 font-semibold text-gray-900">
                                 Total Questions
                             </label>
-                            <select class="flex w-28 p-1 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer">
-                                <option value="0">5</option>
-                                <option value="1">10</option>
-                                <option value="2">15</option>
-                                <option value="3">20</option>
+                            <select name="totalQuestions" onChange={handleInput} class="flex w-28 p-1 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
                             </select>
                         </div>
                         <div>
                             <label className="mb-2 font-semibold text-gray-900">
                                 Difficulty
                             </label>
-                            <select class="flex w-32 p-1 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer">
-                                <option value="0">School</option>
-                                <option value="1">College</option>
-                                <option value="2">University</option>
+                            <select name="level" onChange={handleInput} class="flex w-32 p-1 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer">
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Difficult">Difficult</option>
                             </select>
                         </div>
                     </div>
                     <div class="flex justify-center">
-                        <button class="border flex flex-row border-gray-200 p-2 bg-pink-500 rounded-md mb-4 font-bold font-sans text-white hover:bg-pink-600">
+                        <button onClick={makeQuiz} class="border flex flex-row border-gray-200 p-2 bg-pink-500 rounded-md mb-4 font-bold font-sans text-white hover:bg-pink-600">
                            <img src={bulb} class="h-6 w-6 " alt="quiz" /><p class="px-2 ">Generate Quiz</p>
                         </button>
                     </div>

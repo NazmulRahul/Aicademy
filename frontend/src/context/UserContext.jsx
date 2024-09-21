@@ -2,6 +2,11 @@ import React, { createContext, useState } from "react";
 export const userContextProvider = createContext(null);
 import axios from "axios";
 export const UserContext = (props) => {
+    const [quizData,setQuizData]=useState({
+        text:"",
+        totalQuestions:"5",
+        level:"Easy"
+    })
     const [signedIn, setSignedIn] = useState(false);
     const [user, setUser] = useState({});
     const [subjects, setSubject] = useState([]);
@@ -66,14 +71,22 @@ export const UserContext = (props) => {
         setCurTopic(()=>topic);
     };
     const addSubject = async (data) => {
-        const response = await fetch("http://localhost:3000/test/addSubject", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
-        getData(user.email);
+        try{
+            const response = await axios.post(
+                "http://192.168.0.106:8080/public/topic/newSubject",
+                data
+            );
+            if(response.status==200){
+                curData({subject:response.data.subject})
+                getData(user.email);                
+                console.log(response.data)
+            }else{
+                alert('Something Went Wrong')
+            }
+        }catch(error){
+            console.log(error)
+            alert("network error")
+        }
     };
     const addTopics = async (data) => {
         try{
@@ -106,6 +119,8 @@ export const UserContext = (props) => {
         curTopic,
         addSubject,
         addTopics,
+        setQuizData,
+        quizData
     };
     return (
         <userContextProvider.Provider value={contextValue}>

@@ -1,21 +1,22 @@
 import React from "react";
 import { useState } from "react";
-import ReactMarkdown from 'react-markdown';
-import remarkBreaks from 'remark-breaks';
+import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
 import quiz from "../assets/quiz.png";
 import note from "../assets/note.png";
+import axios from "axios";
 const Notes = (props) => {
     const [upload, setUpload] = useState(true);
     const [text, setText] = useState("");
     const [image, setImage] = useState(null);
-    const[imgData,setImgData]=useState(null)
+    const [imgData, setImgData] = useState(null);
     const formData = new FormData();
     const handleImageUpload = (uploadedImage) => {
         setImage(uploadedImage);
     };
     const handleImageChange = (event) => {
         const file = event.target.files[0];
-        setImgData(event.target.files[0])
+        setImgData(event.target.files[0]);
         const reader = new FileReader();
 
         reader.onloadend = () => {
@@ -27,20 +28,33 @@ const Notes = (props) => {
     };
     const handleUpload = async () => {
         const formData = new FormData();
-        formData.append('image', imgData);
-      
-        console.log(formData)
-        const res = await fetch("http://192.168.0.106:8080/public/upload", {
-            method: "POST",
-            body: formData,
-        });
-        const data=await res.json();
-        console.log(data)
-        setText(data.text)
-        setUpload(true)
+        formData.append("image", imgData);
+
+        console.log(formData);
+        // const res = await fetch("http://192.168.0.106:8080/public/image/upload", {
+        //     method: "POST",
+        //     body: formData,
+        // });
+        // const data=await res.json();
+        // console.log(data)
+        try {
+            const response = await axios.post(
+                "http://192.168.0.106:8080/public/image/upload",
+                formData
+            );
+            if (response.status === 200) {
+                setText(response.data.text);
+                setUpload(true);
+            }else{
+                alert("Network error. Try again");
+            }
+        } catch (error) {
+            alert("Network error. Try again");
+            console.log(error)
+        }
     };
     return (
-        <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-screen font-sans z-1020">
+        <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[100vh] font-sans z-1020">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className="w-full bg-white rounded-lg border shadow mt-[100px] ">
                     <div className="flex justify-end">
@@ -105,16 +119,19 @@ const Notes = (props) => {
                         ) : (
                             <div class="flex flex-col justify-center p-2 m-2">
                                 <img class="size-96" src={image} alt="image" />
-                                <button class="border p-1 mt-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 w-1/6 flex justify-center" onClick={handleUpload}>
+                                <button
+                                    class="rounded-lg border p-1 mt-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 w-1/6 flex justify-center"
+                                    onClick={handleUpload}
+                                >
                                     Upload
                                 </button>
                             </div>
                         )}
                     </div>
-                    <div class=" p-2 m-2 border border-gray-300 text-gray-700 font-semibold bg-gray-100 h-[800px] overflow-scroll">
-                    <ReactMarkdown remarkPlugins={[remarkBreaks]} >
-                        {text}
-                    </ReactMarkdown>
+                    <div class=" p-2 m-2 border border-gray-300 text-gray-700 font-semibold bg-gray-100 h-[400px] overflow-scroll">
+                        <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                            {text}
+                        </ReactMarkdown>
                     </div>
                 </div>
             </div>
