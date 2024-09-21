@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 export const userContextProvider = createContext(null);
-
+import axios from "axios";
 export const UserContext = (props) => {
     const [signedIn, setSignedIn] = useState(false);
     const [user, setUser] = useState({});
@@ -17,38 +17,53 @@ export const UserContext = (props) => {
         setSignedIn(false);
     };
     const getData = async (email) => {
+        const data = { email: email };
         try {
-            const response = await fetch(
-                "http://localhost:3000/test/subjects",
-                {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
+            const response = await axios.post(
+                "http://192.168.0.106:8080/public/topic",
+                data
             );
-            const data = await response.json();
-            setSubject(data);
+            console.log(response.data);
+            if (response.status === 200) {
+                const subjectsData = [];
+                const topicsData=[]
+                // response.data.subToTopicsMap.forEach((item)=>{
+                //     test.push([item]);
+                // })
+                // console.log(test)
+                console.log(response.data.subToTopicsMap);
+                for (let key in response.data.subToTopicsMap) {
+                    console.log(key)
+                    subjectsData.push({subject:key});
+                    response.data.subToTopicsMap[key].forEach((topic)=>{
+                        const data={subject:key,content:topic.content,topic:topic.topicName,image:topic.imagePath,file:topic.filePath}
+                        console.log(data)
+                        topicsData.push(data)
+                    })
+                }
+                setSubject(()=>subjectsData)
+                setTopics(()=>topicsData)                
+            }
         } catch (error) {
             console.log(error);
         }
-        try {
-            const response = await fetch("http://localhost:3000/test/topics", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            const data = await response.json();
-            setTopics(data);
-        } catch (error) {
-            console.log(error);
-        }
+        // try {
+        //     const response = await fetch("http://localhost:3000/test/topics", {
+        //         method: "GET",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //     });
+        //     const data = await response.json();
+        //     setTopics(data);
+        // } catch (error) {
+        //     console.log(error);
+        // }
 
         //setTopics
     };
     const curData = (topic) => {
-        setCurTopic(topic);
+        setCurTopic(()=>topic);
     };
     const addSubject = async (data) => {
         const response = await fetch("http://localhost:3000/test/addSubject", {
@@ -61,17 +76,23 @@ export const UserContext = (props) => {
         getData(user.email);
     };
     const addTopics = async (data) => {
-        const response = await fetch("http://localhost:3000/test/addTopic", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
-        const topic=await response.json()
-        getData(user.email)
+        try{
+            const response = await axios.post(
+                "http://192.168.0.106:8080/public/topic/new",
+                data
+            );
+            if(response.status==200){
+                curData({subject:response.data.subject})
+                getData(user.email);                
+                console.log(response.data)
+            }else{
+                alert('Something Went Wrong')
+            }
+        }catch(error){
+            console.log(error)
+            alert("network error")
+        }
         
-        curData(topic)
     };
     const contextValue = {
         signedIn,
@@ -84,7 +105,7 @@ export const UserContext = (props) => {
         handleLogout,
         curTopic,
         addSubject,
-        addTopics
+        addTopics,
     };
     return (
         <userContextProvider.Provider value={contextValue}>

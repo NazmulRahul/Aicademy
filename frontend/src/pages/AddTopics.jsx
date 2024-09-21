@@ -21,9 +21,10 @@ const AddTopics = (props) => {
         email: user.email,
         subject: curTopic.subject,
         topic: "",
-        instruction: "",
-        image: 0,
-        notes: "",
+        level:"School"
+        // instruction: "",
+        // image: 0,
+        // notes: "",
     });
     const handleChange = (e) => {
         e.preventDefault();
@@ -75,19 +76,16 @@ const AddTopics = (props) => {
                                 placeholder="Add examples, references, atleast 500 words etc"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
                             />
-                            <label class="mr-4  text-gray-800">
-                                Generate Images:
+                            <div>
+                            <label className="mb-2 font-semibold text-gray-900">
+                                Level
                             </label>
-                            <select
-                                name="image"
-                                onChange={handleChange}
-                                class=" bg-slate-700 text-white p-1 rounded-md text-sm font-sans font-semibold cursor-pointer hover:bg-slate-800"
-                            >
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                            <select name="level" onChange={handleChange} class="flex w-32 p-1 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer">
+                                <option value="School">School</option>
+                                <option value="College">College</option>
+                                <option value="University">University</option>
                             </select>
+                        </div>
                             <button
                                 onClick={click}
                                 className="flex p-2 border rounded-lg font-bold text-gray-700 shadow-md bg-gray-50 hover:bg-gray-200"

@@ -16,25 +16,28 @@ const Auth = () => {
             ...tempUser,
             [e.target.name]: e.target.value,
         }));
-        console.log(tempUser);
     };
     const navigate = useNavigate();
     const click = () => {
         navigate("/");
     };
     const signin = async () => {
-        const apiUrl= process.env.REACT_APP_API_URL+'/api/auth/login'
+        
+        const apiUrl="192.168.0.106:8080"+'/api/auth/login'
+        console.log(apiUrl)
         try {
             // http://localhost:3000/test/signin
             const response = await axios.post(
-                apiUrl,
+                "http://192.168.0.106:8080/api/auth/login",
                 tempUser
             );
             console.log(response.data)
             if(response.status==200){
                 curUser(tempUser);
-                
-
+                localStorage.setItem('token', response.data.accessToken);
+                const storedValue = localStorage.getItem('token');
+                getData(tempUser.email) 
+                navigate('/')    
             }
         } catch (error) {
             console.log(error);

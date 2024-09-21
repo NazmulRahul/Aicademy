@@ -12,11 +12,12 @@ const Register = () => {
     });
     const handleChange = (e) => {
         e.preventDefault();
-        setUser((user) => ({ ...user, [e.target.name]: e.target.value }));
-        console.log(user);
+        setTempUser((user) => ({ ...user, [e.target.name]: e.target.value }));
+        console.log(tempUser);
     };
 
     const signup = async() => {
+        console.log(tempUser)
         if(tempUser.password!==tempUser.rePassword){
             alert('Password does not match')
         }
@@ -60,7 +61,7 @@ const Register = () => {
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                             Create an account
                         </h1>
-                        <form className="space-y-4 md:space-y-6" action="#">
+                        <div className="space-y-4 md:space-y-6" action="#">
                             <div>
                                 <label
                                     for="name"
@@ -121,7 +122,7 @@ const Register = () => {
                                 </label>
                                 <input
                                     type="confirm-password"
-                                    name="confirm-password"
+                                    name="rePassword"
                                     id="confirm-password"
                                     placeholder="••••••••"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
@@ -144,7 +145,7 @@ const Register = () => {
                                     Login here
                                 </p>
                             </p>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

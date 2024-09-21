@@ -7,17 +7,22 @@ import { useNavigate } from "react-router-dom";
 import AddTopics from "../pages/AddTopics";
 const Sidebar = () => {
     const navigate=useNavigate()
-    const { signedIn, user, subjects, topics, curUser, getData, curData } =
+    const { signedIn, user, subjects, topics, curUser,curTopic, getData, curData } =
         useContext(userContextProvider);
 
     const [drop, setDrop] = useState([]);
     useEffect(() => {
+        console.log(subjects)
+        console.log(topics)
         var arr = {};
         subjects.forEach((item) => {
             arr = { ...arr, [item.subject]: false };
         });
         setDrop(arr);
         console.log(drop);
+        if(Object.keys(curTopic).length === 0){
+            handleClick(curTopic.subject)
+        }
     }, [subjects, topics]);
     const handleClick = (subject) => {
         if (drop[subject]) setDrop({ ...drop, [subject]: false });
