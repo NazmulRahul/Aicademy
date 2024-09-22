@@ -7,29 +7,19 @@ import Sidebar from "./components/Sidebar";
 import data from "./test";
 import Main from "./components/Main";
 import NewSubject from "./pages/NewSubject";
-import { UserContext } from "./context/UserContext";
+import { userContextProvider } from "./context/UserContext";
 import Profile from "./pages/Profile";
 import AddTopics from "./pages/AddTopics";
 import Quizz from "./pages/Quizz";
 import CustomQuiz from "./pages/CustonQuiz";
-
+import { UserContext } from "./context/UserContext";
+import PdfView from "./pages/PdfView";
 const App = () => {
-    const [signedIn, setSignedIn] = useState(false);
-    const list = data.map((item) => {
-        return (
-            <div>
-                {item.subject}
-                {item.topics.map((l) => {
-                    return <p>{l}</p>;
-                })}
-            </div>
-        );
-    });
     return (
         <div>
             <UserContext>
                 <Router>
-                    <Navbar isSignedIn={signedIn} />
+                    <Navbar/>
                     <Sidebar />
                     <Main/>
                     <Routes>
@@ -41,10 +31,10 @@ const App = () => {
                         <Route path="/quiz" element={<Quizz />} />
                         <Route path="/customquiz" element={<CustomQuiz />} />
                         
-
                     </Routes>
                 </Router>
             </UserContext>
+            
         </div>
     );
 };
