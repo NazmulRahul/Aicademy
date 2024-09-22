@@ -7,6 +7,7 @@ export const UserContext = (props) => {
         totalQuestions:"5",
         level:"Easy"
     })
+    const [pdfText,setPdfText]=useState([])
     const [signedIn, setSignedIn] = useState(false);
     const [user, setUser] = useState({});
     const [subjects, setSubject] = useState([]);
@@ -120,7 +121,9 @@ export const UserContext = (props) => {
         addSubject,
         addTopics,
         setQuizData,
-        quizData
+        quizData,
+        pdfText,
+        setPdfText
     };
     return (
         <userContextProvider.Provider value={contextValue}>

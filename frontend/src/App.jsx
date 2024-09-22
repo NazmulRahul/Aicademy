@@ -7,22 +7,23 @@ import Sidebar from "./components/Sidebar";
 import data from "./test";
 import Main from "./components/Main";
 import NewSubject from "./pages/NewSubject";
-import { userContextProvider } from "./context/UserContext";
 import Profile from "./pages/Profile";
 import AddTopics from "./pages/AddTopics";
 import Quizz from "./pages/Quizz";
 import CustomQuiz from "./pages/CustonQuiz";
 import { UserContext } from "./context/UserContext";
-import PdfView from "./pages/PdfView";
+import PdfSave from "./pages/PdfSave";
+import Home from "./pages/Home";
 const App = () => {
     return (
         <div>
             <UserContext>
                 <Router>
-                    <Navbar/>
+                    <Navbar />
                     <Sidebar />
-                    <Main/>
+                    <Main />
                     <Routes>
+                        {/* <Route path="/" element={<Home />} /> */}
                         <Route path="/subject" element={<NewSubject />} />
                         <Route path="/signin" element={<Auth />} />
                         <Route path="/register" element={<Register />} />
@@ -30,11 +31,10 @@ const App = () => {
                         <Route path="/topic" element={<AddTopics />} />
                         <Route path="/quiz" element={<Quizz />} />
                         <Route path="/customquiz" element={<CustomQuiz />} />
-                        
+                        <Route path="/pdfsave" element={<PdfSave />} />
                     </Routes>
                 </Router>
             </UserContext>
-            
         </div>
     );
 };

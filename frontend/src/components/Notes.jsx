@@ -2,18 +2,21 @@ import React from "react";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
-import quiz from "../assets/quiz.png";
-import note from "../assets/note.png";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { userContextProvider } from "../context/UserContext";
 import axios from "axios";
 const Notes = (props) => {
+    const { setPdfText,curTopic } = useContext(userContextProvider);
     const [upload, setUpload] = useState(true);
-    const [text, setText] = useState("");
+    const [text, setText] = useState([]);
     const [image, setImage] = useState(null);
     const [imgData, setImgData] = useState(null);
     const formData = new FormData();
     const handleImageUpload = (uploadedImage) => {
         setImage(uploadedImage);
     };
+    const navigate = useNavigate();
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         setImgData(event.target.files[0]);
@@ -23,7 +26,6 @@ const Notes = (props) => {
             setImage(reader.result);
             setUpload(false);
         };
-
         reader.readAsDataURL(file);
     };
     const handleUpload = async () => {
@@ -43,20 +45,35 @@ const Notes = (props) => {
                 formData
             );
             if (response.status === 200) {
-                setText(response.data.text);
+                console.log( response.data.text)
+                setText((prev) => [...prev, response.data.text]);
                 setUpload(true);
-            }else{
+
+            } else {
                 alert("Network error. Try again");
             }
         } catch (error) {
             alert("Network error. Try again");
-            console.log(error)
+            console.log(error);
+        }
+    };
+    const handleCancel = () => {
+        setUpload(true);
+    };
+    const pdfSave = () => {
+        if (text.length === 0) {
+            alert("No text found");
+        } else {
+            props.click()
+            console.log(curTopic)
+            setPdfText(() => text);
+            navigate("/pdfSave");
         }
     };
     return (
         <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[100vh] font-sans z-1020">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
-                <div className="w-full bg-white rounded-lg border shadow mt-[100px] ">
+                <div className="w-full bg-white rounded-lg border h-[90vh] shadow-md mt-[20px] overflow-scroll">
                     <div className="flex justify-end">
                         <p
                             className="px-4  text-gray-600 text-[20px] cursor-pointer hover:text-gray-900 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-100"
@@ -65,7 +82,7 @@ const Notes = (props) => {
                             x
                         </p>
                     </div>
-                    <div class="flex flex-col justify-center p-4 mb-2">
+                    <div class="flex flex-col justify-center p-4">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-800 md:text-2xl flex justify-center">
                             <span class="text-blue-700 px-2 font-bold">AI</span>
                             {} Text Extractor Tool
@@ -117,22 +134,42 @@ const Notes = (props) => {
                                 </label>
                             </div>
                         ) : (
-                            <div class="flex flex-col justify-center p-2 m-2">
-                                <img class="size-96" src={image} alt="image" />
-                                <button
-                                    class="rounded-lg border p-1 mt-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 w-1/6 flex justify-center"
-                                    onClick={handleUpload}
-                                >
-                                    Upload
-                                </button>
+                            <div class="flex flex-col justify-center items-center p-2 m-2">
+                                <img
+                                    class="size-80 border border-gray-200 rounded-md shadow-sm"
+                                    src={image}
+                                    alt="image"
+                                />
+                                <div className="flex flex-row">
+                                    <button
+                                        class="rounded-lg border p-1 m-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 w-1/6 flex justify-center"
+                                        onClick={handleUpload}
+                                    >
+                                        Upload
+                                    </button>
+                                    <button
+                                        class="rounded-lg border p-1 m-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 w-1/6 flex justify-center"
+                                        onClick={handleCancel}
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
                             </div>
                         )}
                     </div>
-                    <div class=" p-2 m-2 border border-gray-300 text-gray-700 font-semibold bg-gray-100 h-[400px] overflow-scroll">
-                        <ReactMarkdown remarkPlugins={[remarkBreaks]}>
-                            {text}
-                        </ReactMarkdown>
+                    <div class=" p-2 mx-14 border border-gray-300 text-gray-700 font-semibold items-center w-[600px] h-auto min-h-[200px] mb-4 rounded-md overflow-scroll">
+                        {text.map((t) => {
+                            (<ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                                {text}
+                            </ReactMarkdown>)
+                        })}
                     </div>
+                    <button
+                        onClick={pdfSave}
+                        class="border p-2  flex justify-center bg-blue-500 font-semibold text-[20px] rounded-md text-white w-64 mx-auto mb-5 hover:bg-blue-600"
+                    >
+                        Save as Pdf
+                    </button>
                 </div>
             </div>
         </section>
