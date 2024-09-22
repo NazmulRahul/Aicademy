@@ -1,5 +1,5 @@
 
-![App Screenshot](Resource/demo.jpg)
+![App Screenshot](Resource/Home.png)
 
 
 # Aicademy
