@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
 import axios from "axios";
 const Notes = (props) => {
-    const { setPdfText,curTopic,url } = useContext(userContextProvider);
+    const { setPdfText,curTopic,url,curData } = useContext(userContextProvider);
     const [upload, setUpload] = useState(true);
     const [text, setText] = useState([]);
     const [image, setImage] = useState(null);

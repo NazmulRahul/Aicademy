@@ -14,7 +14,7 @@ export const UserContext = (props) => {
     const [subjects, setSubject] = useState([]);
     const [topics, setTopics] = useState([]);
     const [curTopic, setCurTopic] = useState({});
-
+    const[showPdf,setShowPdf]=useState([])
     const curUser = (data) => {
         setUser(data);
         setSignedIn(true);
@@ -43,6 +43,7 @@ export const UserContext = (props) => {
                 }
                 setSubject(()=>subjectsData)
                 setTopics(()=>topicsData)
+                setShowPdf(topicsData)
                 console.log("topics")  
                 console.log(topics)              
             }
@@ -120,7 +121,9 @@ export const UserContext = (props) => {
         quizData,
         pdfText,
         setPdfText,
-        url
+        url,
+        showPdf,
+        setShowPdf
     };
     return (
         <userContextProvider.Provider value={contextValue}>
