@@ -31,7 +31,7 @@ const PdfSave = () => {
         setQuizData,
         quizData,
         pdfText,
-        setPdfText,
+        setPdfText,url
     } = useContext(userContextProvider);
     const styles = StyleSheet.create({
         page: {
@@ -68,6 +68,7 @@ const PdfSave = () => {
         });
         const formData = new FormData();
         console.log(file);
+        formData.append('fileName',`${fileName}`)
         formData.append("file", file);
         formData.append("email", `${user.email}`);
         formData.append("subject", `${curTopic.subject}`);
@@ -75,7 +76,7 @@ const PdfSave = () => {
         console.log(formData);
         try {
             const response = await axios.post(
-                "http://192.168.0.106:8080/public/save/upload",
+                `http://${url}/public/save/upload`,
                 formData,
                 {
                     headers: {
@@ -84,6 +85,7 @@ const PdfSave = () => {
                 }
             );
             console.log(response.data);
+            getData(user.email)
             setPdfLink(
                 "https://firebasestorage.googleapis.com/v0/b/aicademy-48d6c.appspot.com/o/0dfa5e9a-d647-44c9-abc4-46fa020d1cfd.pdf?alt=media"
             );
@@ -103,7 +105,7 @@ const PdfSave = () => {
     return (
         <div>
             {signedIn ? (
-                <section className="backdrop-blur-[6px] bg-black/15 h-screen font-sans">
+                <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
                     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                             <div className="flex justify-end">

@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 export const userContextProvider = createContext(null);
 import axios from "axios";
 export const UserContext = (props) => {
+    const[url,setUrl]=useState("192.168.0.104:8080")
     const [quizData,setQuizData]=useState({
         text:"",
         totalQuestions:"5",
@@ -26,29 +27,24 @@ export const UserContext = (props) => {
         const data = { email: email };
         try {
             const response = await axios.post(
-                "http://192.168.0.106:8080/public/topic",
+                `http://${url}/public/topic`,
                 data
             );
-            console.log(response.data);
             if (response.status === 200) {
                 const subjectsData = [];
                 const topicsData=[]
-                // response.data.subToTopicsMap.forEach((item)=>{
-                //     test.push([item]);
-                // })
-                // console.log(test)
                 console.log(response.data.subToTopicsMap);
                 for (let key in response.data.subToTopicsMap) {
-                    console.log(key)
                     subjectsData.push({subject:key});
                     response.data.subToTopicsMap[key].forEach((topic)=>{
                         const data={subject:key,content:topic.content,topic:topic.topicName,image:topic.imagePath,file:topic.filePath}
-                        console.log(data)
                         topicsData.push(data)
                     })
                 }
                 setSubject(()=>subjectsData)
-                setTopics(()=>topicsData)                
+                setTopics(()=>topicsData)
+                console.log("topics")  
+                console.log(topics)              
             }
         } catch (error) {
             console.log(error);
@@ -74,7 +70,7 @@ export const UserContext = (props) => {
     const addSubject = async (data) => {
         try{
             const response = await axios.post(
-                "http://192.168.0.106:8080/public/topic/newSubject",
+                `http://${url}/public/topic/newSubject`,
                 data
             );
             if(response.status==200){
@@ -92,7 +88,7 @@ export const UserContext = (props) => {
     const addTopics = async (data) => {
         try{
             const response = await axios.post(
-                "http://192.168.0.106:8080/public/topic/new",
+                `http://${url}/public/topic/new`,
                 data
             );
             if(response.status==200){
@@ -123,7 +119,8 @@ export const UserContext = (props) => {
         setQuizData,
         quizData,
         pdfText,
-        setPdfText
+        setPdfText,
+        url
     };
     return (
         <userContextProvider.Provider value={contextValue}>

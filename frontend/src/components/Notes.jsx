@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
 import axios from "axios";
 const Notes = (props) => {
-    const { setPdfText,curTopic } = useContext(userContextProvider);
+    const { setPdfText,curTopic,url } = useContext(userContextProvider);
     const [upload, setUpload] = useState(true);
     const [text, setText] = useState([]);
     const [image, setImage] = useState(null);
@@ -33,15 +33,9 @@ const Notes = (props) => {
         formData.append("image", imgData);
 
         console.log(formData);
-        // const res = await fetch("http://192.168.0.106:8080/public/image/upload", {
-        //     method: "POST",
-        //     body: formData,
-        // });
-        // const data=await res.json();
-        // console.log(data)
         try {
             const response = await axios.post(
-                "http://192.168.0.106:8080/public/image/upload",
+                `http://${url}/public/image/upload`,
                 formData
             );
             if (response.status === 200) {

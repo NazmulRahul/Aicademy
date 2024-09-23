@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
 const Navbar = (props) => {
-    const { signedIn, user, subjects, topics, curUser, getData, curData,handleLogout} =
+    const { signedIn, user, subjects, topics, curUser, getData, curData,handleLogout,url} =
         useContext(userContextProvider);
 
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ const Navbar = (props) => {
         navigate('/customquiz')
     }
     return (
-        <header className="py-[15px] px-[20px] border fixed w-full  ">
+        <header className="py-[15px] px-[20px] backdrop-blur-[7px] border fixed w-full  ">
             <section className="flex flex-row justify-between">
                 <Link
                     to="/"

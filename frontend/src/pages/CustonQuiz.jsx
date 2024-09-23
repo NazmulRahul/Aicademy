@@ -16,7 +16,8 @@ const CustomQuiz = () => {
         handleLogout,
         curTopic,
         addSubject,
-        quizData,setQuizData
+        quizData,setQuizData,
+        url
     } = useContext(userContextProvider);
     const [inputText,setText]=useState('')
     const [pdfFile, setPdfFile] = useState(null);
@@ -43,7 +44,7 @@ const CustomQuiz = () => {
           // setPdfData(response.data.pdfData);
           // setNumPages(response.data.numPages);
           const response = await axios.post(
-            "http://192.168.0.106:8080/public/extractor",
+            `http://${url}/public/extractor`,
             formData
         );
           console.log(response.data)
@@ -63,9 +64,9 @@ const CustomQuiz = () => {
         navigate('/quiz')
     }
     return (
-        <section className=" backdrop-blur-[6px] bg-black/15 h-screen font-sans">
+        <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
-                <div className="w-full bg-white rounded-lg border shadow mt-[100px] ">
+                <div className="w-full bg-white rounded-lg border shadow mt-[30px] ">
                     <div className="flex justify-end">
                         <p
                             className="px-4  text-gray-600 text-[20px] cursor-pointer hover:text-gray-900 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-100"

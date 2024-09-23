@@ -7,7 +7,7 @@ import { userContextProvider } from "../context/UserContext";
 import axios from 'axios'
 const Quizz = () => {
     const {
-        quizData
+        quizData,url
     } = useContext(userContextProvider);
     const navigate=useNavigate()
     const { curTopic } = useContext(userContextProvider);
@@ -22,7 +22,7 @@ const Quizz = () => {
         console.log(quizData)
         try {
             const response = await axios.post(
-                "http://192.168.0.106:8080/public/bot/quiz",
+                `http://${url}/public/bot/quiz`,
                 quizData
             );
             
@@ -62,7 +62,7 @@ const Quizz = () => {
     }, []);
 
     return (
-        <section className=" backdrop-blur-[8px] bg-black/10 h-screen font-sans">
+        <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
             <div className="flex w-[700px] flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className=" w-full h-[400px] bg-white rounded-lg border shadow mt-[100px] ">
                     <div className="flex justify-end">

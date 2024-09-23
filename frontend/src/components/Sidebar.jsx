@@ -12,8 +12,6 @@ const Sidebar = () => {
 
     const [drop, setDrop] = useState([]);
     useEffect(() => {
-        console.log(subjects)
-        console.log(topics)
         var arr = {};
         subjects.forEach((item) => {
             arr = { ...arr, [item.subject]: false };
@@ -91,7 +89,10 @@ const Sidebar = () => {
     });
 
     return (
-        <div
+        <>
+            {
+                signedIn?(
+                    <div
             className="px-2 bg-gray-50 fixed top-[71px] left-0 border h-[90vh] w-[350px] border-rose-50
                 overflow-scroll"
         >
@@ -103,6 +104,12 @@ const Sidebar = () => {
                {signedIn?(<ul className="list-none">{list}</ul>):<div class="">Sign in to view subjects</div> }
             </div>
         </div>
+                ):
+                (
+                    <div></div>
+                )
+            }
+        </>
     );
 };
 

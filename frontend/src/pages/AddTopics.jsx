@@ -37,7 +37,7 @@ const AddTopics = (props) => {
         navigate("/");
     };
     return (
-        <div class="backdrop-blur-[6px] bg-black/15 h-screen font-sans">
+        <div class="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                     <div className="p-2 flex justify-end">
