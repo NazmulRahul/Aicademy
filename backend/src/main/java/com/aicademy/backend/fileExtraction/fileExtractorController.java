@@ -25,10 +25,6 @@ public class fileExtractorController {
                 .body(ContentResponseDto.builder().content(this.contentExtractorControl.extractContent(pdfFile)).build());
 
     }
-    @GetMapping("/test")
-    public ResponseEntity<String> test(){
-        return ResponseEntity.ok().body("hello");
-    }
 
 
 }

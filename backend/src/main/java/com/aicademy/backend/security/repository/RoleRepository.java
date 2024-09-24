@@ -1,7 +1,7 @@
 package com.aicademy.backend.security.repository;
 
 
-import com.aicademy.backend.models.Role;
+import com.aicademy.backend.security.models.Role;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
