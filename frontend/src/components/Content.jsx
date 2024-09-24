@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
+import book from '../assets/Book.png'
 const Content = () => {
     const {
         signedIn,
@@ -14,7 +15,7 @@ const Content = () => {
         url
     } = useContext(userContextProvider);
     return (
-        <div className="h-[90vh] pb-10 border border-gray-200 rounded-md shadow-md overflow-scroll w-4/5">
+        <div className="h-[80vh] pb-5 mb-10 ml-1  border-gray-200  rounded-md shadow-md overflow-scroll w-3/5">
             {curTopic.content ? (
                 <div
                     dangerouslySetInnerHTML={{
@@ -22,7 +23,7 @@ const Content = () => {
                     }}
                 />
             ) : (
-                <h1 class="text-4xl w-full">No Content Available</h1>
+                <img src={book} class="pl-32"/>
             )}
         </div>
     );

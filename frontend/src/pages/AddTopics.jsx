@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -32,10 +32,18 @@ const AddTopics = (props) => {
         console.log(newTopic);
     };
     const navigate = useNavigate();
-    const click = () => {
+    const createTopic = () => {
         addTopics(newTopic);
-        navigate("/");
+        navigate("/main");
     };
+    const click = () => {        
+        navigate("/main");
+    };
+    useEffect(()=>{
+        if (localStorage.getItem("token") == null) {
+            navigate('/signin')
+        }
+    },[])
     return (
         <div class="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -87,7 +95,7 @@ const AddTopics = (props) => {
                             </select>
                         </div>
                             <button
-                                onClick={click}
+                                onClick={createTopic}
                                 className="flex p-2 border rounded-lg font-bold text-gray-700 shadow-md bg-gray-50 hover:bg-gray-200"
                             >
                                 Done

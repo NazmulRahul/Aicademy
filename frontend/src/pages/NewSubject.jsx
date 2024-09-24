@@ -29,7 +29,7 @@ const NewSubject = () => {
     const navigate = useNavigate();
     const click = () => {
         addSubject(newSubject)
-        navigate("/");
+        navigate("/main");
     };
     return (
         <div class="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">

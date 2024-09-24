@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import bulb from "../assets/lightbulb-2-48.png"
+import bulb from "../assets/lightbulb-2-48.png";
 import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
 const CustomQuiz = () => {
@@ -16,53 +16,58 @@ const CustomQuiz = () => {
         handleLogout,
         curTopic,
         addSubject,
-        quizData,setQuizData,
-        url
+        quizData,
+        setQuizData,
+        url,
     } = useContext(userContextProvider);
-    const [inputText,setText]=useState('')
+    const [inputText, setText] = useState("");
     const [pdfFile, setPdfFile] = useState(null);
     const navigate = useNavigate();
     const click = () => {
-        navigate("/");
+        if (signedIn) {
+            navigate("/main");
+        } else {
+            navigate("/");
+        }
     };
-    const handlePdf = async(event) => {
-        setPdfFile(val=>event.target.files[0]);
+    const handlePdf = async (event) => {
+        setPdfFile((val) => event.target.files[0]);
 
         const formData = new FormData();
-        formData.append('pdfFile', event.target.files[0]);
-        console.log(pdfFile)
+        formData.append("pdfFile", event.target.files[0]);
+        console.log(pdfFile);
         // http://localhost:3000/test/api/text/upload
         try {
-          console.log(formData)
-        //   const response = await axios.post('http://192.168.0.109:8080/public/extractor', formData, {
-        //     headers: {
-        //       'Content-Type': 'multipart/form-data'
-        //     }
-        //   });
-        //   console.log(response)
-        //   setText(response.data.text)
-          // setPdfData(response.data.pdfData);
-          // setNumPages(response.data.numPages);
-          const response = await axios.post(
-            `http://${url}/public/extractor`,
-            formData
-        );
-          console.log(response.data)
-        //   console.log(data)
-          setQuizData((data)=>({...data,text:response.data.content}))
+            console.log(formData);
+            //   const response = await axios.post('http://192.168.0.109:8080/public/extractor', formData, {
+            //     headers: {
+            //       'Content-Type': 'multipart/form-data'
+            //     }
+            //   });
+            //   console.log(response)
+            //   setText(response.data.text)
+            // setPdfData(response.data.pdfData);
+            // setNumPages(response.data.numPages);
+            const response = await axios.post(
+                `http://${url}/public/extractor`,
+                formData
+            );
+            console.log(response.data);
+            //   console.log(data)
+            setQuizData((data) => ({ ...data, text: response.data.content }));
         } catch (error) {
-          console.error('Error uploading PDF:', error);
+            console.error("Error uploading PDF:", error);
         }
     };
 
-    const handleInput=(e)=>{
-        e.preventDefault()
-        setQuizData((data)=>({...data,[e.target.name]:e.target.value}))
-        console.log(quizData)
-    }
-    const makeQuiz=()=>{
-        navigate('/quiz')
-    }
+    const handleInput = (e) => {
+        e.preventDefault();
+        setQuizData((data) => ({ ...data, [e.target.name]: e.target.value }));
+        console.log(quizData);
+    };
+    const makeQuiz = () => {
+        navigate("/quiz");
+    };
     return (
         <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
@@ -90,16 +95,16 @@ const CustomQuiz = () => {
                             value={quizData.text}
                             onChange={handleInput}
                         />
-                        
+
                         <div class="">
-                        <p class="py-2 px-2 text-gray-700 font-semibold ">
-                            or, upload and extract text from a pdf file
-                        </p>
+                            <p class="py-2 px-2 text-gray-700 font-semibold ">
+                                or, upload and extract text from a pdf file
+                            </p>
                             <input
                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none"
                                 id="file_input"
                                 type="file"
-                                accept='.pdf'
+                                accept=".pdf"
                                 onChange={handlePdf}
                             />
                         </div>
@@ -109,7 +114,11 @@ const CustomQuiz = () => {
                             <label className="mb-2 font-semibold text-gray-900">
                                 Total Questions
                             </label>
-                            <select name="totalQuestions" onChange={handleInput} class="flex w-28 p-1 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer">
+                            <select
+                                name="totalQuestions"
+                                onChange={handleInput}
+                                class="flex w-28 p-1 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer"
+                            >
                                 <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
@@ -120,7 +129,11 @@ const CustomQuiz = () => {
                             <label className="mb-2 font-semibold text-gray-900">
                                 Difficulty
                             </label>
-                            <select name="level" onChange={handleInput} class="flex w-32 p-1 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer">
+                            <select
+                                name="level"
+                                onChange={handleInput}
+                                class="flex w-32 p-1 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer"
+                            >
                                 <option value="Easy">Easy</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Difficult">Difficult</option>
@@ -128,8 +141,12 @@ const CustomQuiz = () => {
                         </div>
                     </div>
                     <div class="flex justify-center">
-                        <button onClick={makeQuiz} class="border flex flex-row border-gray-200 p-2 bg-pink-500 rounded-md mb-4 font-bold font-sans text-white hover:bg-pink-600">
-                           <img src={bulb} class="h-6 w-6 " alt="quiz" /><p class="px-2 ">Generate Quiz</p>
+                        <button
+                            onClick={makeQuiz}
+                            class="border flex flex-row border-gray-200 p-2 bg-pink-500 rounded-md mb-4 font-bold font-sans text-white hover:bg-pink-600"
+                        >
+                            <img src={bulb} class="h-6 w-6 " alt="quiz" />
+                            <p class="px-2 ">Generate Quiz</p>
                         </button>
                     </div>
                 </div>

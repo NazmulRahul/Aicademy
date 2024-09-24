@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Auth from "./pages/Auth";
@@ -14,16 +14,20 @@ import CustomQuiz from "./pages/CustonQuiz";
 import { UserContext } from "./context/UserContext";
 import PdfSave from "./pages/PdfSave";
 import Home from "./pages/Home";
+import CreatImage from "./pages/CreatImage";
+import Summary from "./pages/Summary";
 const App = () => {
+   
     return (
         <div>
             <UserContext>
                 <Router>
                     <Navbar />
-                    <Sidebar />
-                    <Main />
                     <Routes>
                         {/* <Route path="/" element={<Home />} /> */}
+                        <Route path="/" element={<Home />} />
+                        <Route path="/main" element={<Main />} />
+                        <Route path="/createImage" element={<CreatImage />} />
                         <Route path="/subject" element={<NewSubject />} />
                         <Route path="/signin" element={<Auth />} />
                         <Route path="/register" element={<Register />} />
@@ -32,6 +36,7 @@ const App = () => {
                         <Route path="/quiz" element={<Quizz />} />
                         <Route path="/customquiz" element={<CustomQuiz />} />
                         <Route path="/pdfsave" element={<PdfSave />} />
+                        <Route path="/summary" element={<Summary />} />
                     </Routes>
                 </Router>
             </UserContext>

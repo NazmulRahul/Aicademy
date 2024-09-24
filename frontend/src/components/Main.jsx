@@ -11,7 +11,11 @@ import Notes from "./Notes";
 import Content from "./Content";
 import Image from "./Image";
 import PDF from "./PDF";
-
+import Sidebar from "./Sidebar";
+import notes from "../assets/Notes.png"
+import text from "../assets/Text.png"
+import image from "../assets/Image.png"
+import quizIcon from "../assets/test.png"
 const Main = () => {
     const navigate = useNavigate();
     const [showNotes, setShowNotes] = useState(false);
@@ -45,18 +49,22 @@ const Main = () => {
     };
     return (
         <>
-            {signedIn ? (
-                <div>
-                    <div className="fixed top-[70px] left-[350px] ml-8 ">
-                        <div className="flex justify-items-start">
-                            <button class="bg-slate-200 rounded-md p-2 font-semibold text-gray-800 m-2 w-20 hover:bg-slate-400 active:bg-slate-400 focus:outline-none focus:bg-slate-300 focus:translate-x-2 " onClick={() => handleTabClick("Content")}>
-                                Text
+            {signedIn && (
+                <div class="h-screen w-full bg-black"> 
+                    <Sidebar />                    
+                    <div className=" fixed top-[70px] left-[326px] bg-[#17191d] w-full ">
+                        <div className="px-4 text-lg mt-1  flex justify-start ">
+                            <button class="flex flex-row mx-5" onClick={() => handleTabClick("Content")}>
+                                <img src={text} className="size-4 mt-[6px] mr-2" /> 
+                                <p class="text-gray-300  font-semibold">Text</p>
                             </button>
-                            <button class="bg-slate-200 rounded-md p-2 font-semibold text-gray-800 m-2 w-20 hover:bg-slate-400 active:bg-slate-400 focus:outline-none focus:bg-slate-300 focus:translate-x-2 " onClick={() => handleTabClick("Image")}>
-                                Images
+                            <button class="flex flex-row mx-5" onClick={() => handleTabClick("Image")}>
+                            <img src={image} className="size-4 mt-[6px] mr-2" /> 
+                            <p class="text-gray-300  font-semibold">Images</p>
                             </button>
-                            <button class="bg-slate-200 rounded-md p-2 font-semibold text-gray-800 m-2 w-20 hover:bg-slate-400 active:bg-slate-400 focus:outline-none focus:bg-slate-300 focus:translate-x-2 " onClick={() => handleTabClick("PDF")}>
-                                Notes
+                            <button class="flex flex-row mx-5" onClick={() => handleTabClick("PDF")}>
+                            <img src={notes} className="size-4 mt-[6px] mr-2" /> 
+                            <p class="text-gray-300  font-semibold">Notes</p>
                             </button>
                         </div>
                         <div class="mt-[10px]">
@@ -64,13 +72,15 @@ const Main = () => {
 
                             {activeTab === "Image" && <Image />}
 
-                            {activeTab === "PDF" && <PDF />}
+                            {activeTab === "PDF" && <PDF />}                            
                         </div>
-                       
+                        <div>
+                            
+                        </div>
                         <div className="fixed right-16 top-[200px]">
                             <img
                                 className="w-16 h-16 m-14 cursor-pointer  hover:w-20 hover:h-20"
-                                src={quiz}
+                                src={quizIcon}
                                 onClick={handleQuiz}
                             />
                             <img
@@ -88,9 +98,6 @@ const Main = () => {
                     </div>
                     {showNotes && <Notes click={click} />}
                 </div>
-            ) : (
-                <img src={home} />
-                // <div>hello</div>
             )}
         </>
     );

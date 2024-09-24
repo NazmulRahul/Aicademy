@@ -1,20 +1,23 @@
 import React, { createContext, useState } from "react";
+
 export const userContextProvider = createContext(null);
 import axios from "axios";
 export const UserContext = (props) => {
-    const[url,setUrl]=useState("192.168.0.104:8080")
-    const [quizData,setQuizData]=useState({
-        text:"",
-        totalQuestions:"5",
-        level:"Easy"
-    })
-    const [pdfText,setPdfText]=useState([])
+  
+    const [url, setUrl] = useState("192.168.0.104:8080");
+    const [quizData, setQuizData] = useState({
+        text: "",
+        totalQuestions: "5",
+        level: "Easy",
+    });
+    const [videoLink, setVideoLink] = useState("");
+    const [pdfText, setPdfText] = useState([]);
     const [signedIn, setSignedIn] = useState(false);
     const [user, setUser] = useState({});
     const [subjects, setSubject] = useState([]);
     const [topics, setTopics] = useState([]);
     const [curTopic, setCurTopic] = useState({});
-    const[showPdf,setShowPdf]=useState([])
+    const [showPdf, setShowPdf] = useState([]);
     const curUser = (data) => {
         setUser(data);
         setSignedIn(true);
@@ -22,88 +25,87 @@ export const UserContext = (props) => {
     const handleLogout = () => {
         setUser({});
         setSignedIn(false);
+      
+        localStorage.clear();
+        
     };
-    const getData = async (email) => {
-        const data = { email: email };
+    const getData = async (token) => {
         try {
+            const myHeaders = {
+                Authorization: token, // Replace with your actual token
+            };
             const response = await axios.post(
                 `http://${url}/public/topic`,
-                data
+                {},
+                {
+                    headers: myHeaders,
+                }
             );
             if (response.status === 200) {
                 const subjectsData = [];
-                const topicsData=[]
+                const topicsData = [];
                 console.log(response.data.subToTopicsMap);
                 for (let key in response.data.subToTopicsMap) {
-                    subjectsData.push({subject:key});
-                    response.data.subToTopicsMap[key].forEach((topic)=>{
-                        const data={subject:key,content:topic.content,topic:topic.topicName,image:topic.imagePath,file:topic.filePath}
-                        topicsData.push(data)
-                    })
+                    subjectsData.push({ subject: key });
+                    response.data.subToTopicsMap[key].forEach((topic) => {
+                        const data = {
+                            subject: key,
+                            content: topic.content,
+                            topic: topic.topicName,
+                            image: topic.imagePath,
+                            file: topic.filePath,
+                        };
+                        topicsData.push(data);
+                    });
                 }
-                setSubject(()=>subjectsData)
-                setTopics(()=>topicsData)
-                setShowPdf(topicsData)
-                console.log("topics")  
-                console.log(topics)              
+                setSubject(() => subjectsData);
+                setTopics(() => topicsData);
+                setShowPdf(topicsData);
+                console.log("topics");
+                console.log(topics);
             }
         } catch (error) {
             console.log(error);
         }
-        // try {
-        //     const response = await fetch("http://localhost:3000/test/topics", {
-        //         method: "GET",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //     });
-        //     const data = await response.json();
-        //     setTopics(data);
-        // } catch (error) {
-        //     console.log(error);
-        // }
-
-        //setTopics
     };
     const curData = (topic) => {
-        setCurTopic(()=>topic);
+        setCurTopic(() => topic);
     };
     const addSubject = async (data) => {
-        try{
+        try {
             const response = await axios.post(
-                `http://${url}/public/topic/newSubject`,
+                `http://${url}/public/subject/new`,
                 data
             );
-            if(response.status==200){
-                curData({subject:response.data.subject})
-                getData(user.email);                
-                console.log(response.data)
-            }else{
-                alert('Something Went Wrong')
+            if (response.status == 200) {
+                curData({ subject: response.data.subject });
+                getData(localStorage.getItem('token'));
+                console.log(response.data);
+            } else {
+                alert("Something Went Wrong");
             }
-        }catch(error){
-            console.log(error)
-            alert("network error")
+        } catch (error) {
+            console.log(error);
+            alert("network error");
         }
     };
     const addTopics = async (data) => {
-        try{
+        try {
             const response = await axios.post(
                 `http://${url}/public/topic/new`,
                 data
             );
-            if(response.status==200){
-                curData({subject:response.data.subject})
-                getData(user.email);                
-                console.log(response.data)
-            }else{
-                alert('Something Went Wrong')
+            if (response.status == 200) {
+                curData({ subject: response.data.subject });
+                getData(localStorage.getItem('token'));
+                console.log(response.data);
+            } else {
+                alert("Something Went Wrong");
             }
-        }catch(error){
-            console.log(error)
-            alert("network error")
+        } catch (error) {
+            console.log(error);
+            alert("network error");
         }
-        
     };
     const contextValue = {
         signedIn,
@@ -123,7 +125,9 @@ export const UserContext = (props) => {
         setPdfText,
         url,
         showPdf,
-        setShowPdf
+        setShowPdf,
+        videoLink,
+        setVideoLink,
     };
     return (
         <userContextProvider.Provider value={contextValue}>

@@ -5,10 +5,19 @@ import data from "../test";
 import { userContextProvider } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import AddTopics from "../pages/AddTopics";
+import plus from "../assets/plus-solid.svg";
 const Sidebar = () => {
-    const navigate=useNavigate()
-    const { signedIn, user, subjects, topics, curUser,curTopic, getData, curData } =
-        useContext(userContextProvider);
+    const navigate = useNavigate();
+    const {
+        signedIn,
+        user,
+        subjects,
+        topics,
+        curUser,
+        curTopic,
+        getData,
+        curData,
+    } = useContext(userContextProvider);
 
     const [drop, setDrop] = useState([]);
     useEffect(() => {
@@ -18,17 +27,17 @@ const Sidebar = () => {
         });
         setDrop(arr);
         console.log(drop);
-        if(Object.keys(curTopic).length === 0){
-            handleClick(curTopic.subject)
+        if (Object.keys(curTopic).length === 0) {
+            handleClick(curTopic.subject);
         }
     }, [subjects, topics]);
     const handleClick = (subject) => {
         if (drop[subject]) setDrop({ ...drop, [subject]: false });
         else setDrop({ ...drop, [subject]: true });
-        curData({subject:subject})// set curTopic's subject to selected subject
+        curData({ subject: subject }); // set curTopic's subject to selected subject
     };
     const newTopic = () => {
-        navigate('/topic')
+        navigate("/topic");
     };
     const list = subjects.map((item) => {
         return (
@@ -36,7 +45,7 @@ const Sidebar = () => {
                 <li>
                     <button
                         onClick={() => handleClick(item.subject)}
-                        className="w-full flex justify-between items-center py-1 px-2 text-lg font-sans text-slate-800 bg-slate-200 hover:bg-slate-400 hover:translate-x-2 hover:text-white mb-4 rounded-md active:bg-slate-500 focus:outline-none  focus:bg-slate-400 focus:text-white "
+                        className="w-full flex justify-between items-center py-2 px-4 text-lg font-sans text-gray-300 bg-[#161616] border border-gray-700 border-solid "
                         type="button"
                     >
                         {item.subject + " "}
@@ -61,8 +70,8 @@ const Sidebar = () => {
                             if (l.subject === item.subject) {
                                 return (
                                     <button
-                                        className="flex m-1 px-2 py-1 w-full cursor-pointer font-sans text-slate-800 hover:bg-slate-300  mb-2 rounded-md active:bg-slate-400 focus:outline-none focus:bg-slate-300 focus:translate-x-2 "
-                                        onClick={() => curData(l)}//set curTopic to selected topic
+                                        className="flex m-1 px-2 py-1 w-full cursor-pointer font-sans text-gray-300 hover:bg-gray-600  mb-2 rounded-md active:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:translate-x-2 "
+                                        onClick={() => curData(l)} //set curTopic to selected topic
                                     >
                                         {l.topic}
                                     </button>
@@ -77,9 +86,12 @@ const Sidebar = () => {
                     <button
                         onClick={newTopic}
                         type="button"
-                        class="transition-all text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-2 py-1 mt-1 mb-2 ml-10 "
+                        class="flex flex-row justify-center w-[200px] transition-all text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-2xl text-sm px-2 py-1 mt-1 mb-2 ml-10 "
                     >
-                        Add new topic
+                        <span>
+                            <img src={plus} className="size-4 px-1 " />
+                        </span>
+                        Add Topic
                     </button>
                 ) : (
                     ""
@@ -90,25 +102,33 @@ const Sidebar = () => {
 
     return (
         <>
-            {
-                signedIn?(
-                    <div
-            className="px-2 bg-gray-50 fixed top-[71px] left-0 border h-[90vh] w-[350px] border-rose-50
+            {signedIn ? (
+                <div
+                    className="fixed top-[70px] h-[90vh] bg-[#0e0d0d] left-0  w-[325px] 
                 overflow-scroll"
-        >
-            {" "}
-            <h1 className="px-[110px] mt-2 text-2xl font-bold font-sans text-slate-700 tracking-tight">
-                Subjects
-            </h1>
-            <div className="px-6 py-4">
-               {signedIn?(<ul className="list-none">{list}</ul>):<div class="">Sign in to view subjects</div> }
-            </div>
-        </div>
-                ):
-                (
-                    <div></div>
-                )
-            }
+                >
+                    <button
+                        onClick={() => navigate("/subject")}
+                        class="text-gray-300 text-2xl font-sans  w-full bg-[#252525] p-2  flex flex-row justify-center"
+                    >
+                        SUBJECT
+                        <span>
+                            <img src={plus} className="size-7" />
+                        </span>
+                    </button>
+                    <div className="mt-4">
+                        <div className="">
+                            {signedIn ? (
+                                <ul className="list-none w-full">{list}</ul>
+                            ) : (
+                                <div class="">Sign in to view subjects</div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <div></div>
+            )}
         </>
     );
 };

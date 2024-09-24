@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
+import Logo from "../assets/Mamun.png";
+import LogoSvg from "../assets/AICademy.svg";
 const Navbar = (props) => {
-    const { signedIn, user, subjects, topics, curUser, getData, curData,handleLogout,url} =
-        useContext(userContextProvider);
-
+    const {
+        signedIn,
+        user,
+        subjects,
+        topics,
+        curUser,
+        getData,
+        curData,
+        handleLogout,
+        url,
+    } = useContext(userContextProvider);
+    
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
     const handleSearch = () => {};
@@ -20,27 +31,35 @@ const Navbar = (props) => {
     const handleRegister = () => {
         navigate("/register");
     };
-    const navProfile=()=>{
-        navigate('/profile')
+    const navProfile = () => {
+        navigate("/profile");
+    };
+    const addSubject = () => {
+        navigate("/subject");
+    };
+    const quiz = () => {
+        navigate("/customquiz");
+    };
+    const logout=()=>{
+        handleLogout()
+        navigate('/')
     }
-    const addSubject=()=>{
-        navigate('/subject')
-    }
-    const quiz=()=>{
-        navigate('/customquiz')
-    }
+    // useEffect(() => {
+    //     const token = localStorage.getItem("token");
+    //     if (token != null) {
+    //         getData(token);
+    //         curUser({email:localStorage.getItem("email")});
+    //         navigate('/main')
+            
+    //     }
+    // }, []);
     return (
-        <header className="py-[15px] px-[20px] backdrop-blur-[7px] border fixed w-full  ">
+        <header className="py-[15px] px-[20px] backdrop-blur-[7px] fixed w-full bg-black text-gray-200 bg-transparent ">
             <section className="flex flex-row justify-between">
-                <Link
-                    to="/"
-                    className="text-gray-900 font-bold font-sans text-md"
-                >
-                    AIcademy Logo
-                </Link>
-                <div onClick={addSubject} className="border border-gray-300 px-2 py-1 rounded-md bg-slate-300 text-gray-800 text-md font-bold h-9 hover:bg-gray-600 hover:text-white active:bg-gray-500 cursor-pointer">
-                    Add Subjects
-                </div>
+                <Link to="/main">
+                    <img src={Logo} class="h-10"/>
+                
+                </Link>               
                 <form className="">
                     <div className="relative">
                         <div className="absolute top-[9px] flex items-center ps-3">
@@ -69,7 +88,7 @@ const Navbar = (props) => {
                             required
                             placeholder="search subjects..."
                             maxlength="100"
-                            className="text-slate-600 rounded-md w-[400px] h-9  bg-gray-100 border border-solid py-1 px-10 focus:ring-[#4649ff] focus:border-[#4649ff] outline-none   "
+                            className="rounded-md border border-gray-700 bg-black h-10 w-[390px] p-2 border-solid py-1 px-10 focus:ring-[#414047] focus:border-[#505057] outline-none   "
                         />
                     </div>
                 </form>
@@ -117,16 +136,17 @@ const Navbar = (props) => {
                     </button>
                     {signedIn ? (
                         <div class="flex">
-                        <div class="p-2" onClick={navProfile}>profile</div>
-                        <button
+                            <div class="p-2 cursor-pointer" onClick={navProfile}>
+                                profile
+                            </div>
+                            <button
                                 class="select-none   rounded-lg bg-gradient-to-tr from-gray-800 to-gray-700 py-1 px-2 text-center align-middle font-sans text-[12px] font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]"
                                 type="button"
-                                onClick={handleLogout}
+                                onClick={logout}
                             >
                                 Log out
                             </button>
-                            </div>
-
+                        </div>
                     ) : (
                         <div>
                             <button

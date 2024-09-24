@@ -21,24 +21,22 @@ const Auth = () => {
     const click = () => {
         navigate("/");
     };
-    const signin = async () => {
+    const signin = async () => {        
         
-      
         console.log(url)
-        try {
-
-            // http://localhost:3000/test/signin
+        try {            
             const response = await axios.post(
                 `http://${url}/api/auth/login`,
                 tempUser
             );
             console.log(response.data)
             if(response.status==200){
-                curUser(tempUser);
+                curUser({email:tempUser.email});
                 localStorage.setItem('token', response.data.accessToken);
-                const storedValue = localStorage.getItem('token');
-                getData(tempUser.email) 
-                navigate('/')    
+                localStorage.setItem('email', tempUser.email);
+                const storedValue = localStorage.getItem('token');                
+                getData(response.data.accessToken) 
+                navigate('/main')    
             }
         } catch (error) {
             console.log(error);
