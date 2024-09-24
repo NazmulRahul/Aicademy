@@ -4,7 +4,7 @@
 
 # Aicademy
 
-Aicademy is an platform that helps learners to Organise, Optimise and Test their learning. It generates Contents dynamically according to their need. You can test your knowledge using the Dynamic Test Generator based on your learnings. Add your handwritten notes that changes to digital with Magic Note Manager.
+Aicademy is your personal AI-powered learning assistant designed to make education more engaging, customized, and accessible. Whether you're a student, educator, or lifelong learner, Aicademy offers innovative tools to enhance your learning experience.
 
 
 ## Key Features:
