@@ -53,7 +53,7 @@ const CreatImage = () => {
         }
     },[])
     return (
-        <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[100vh] font-sans z-1020">
+        <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[100vh] font-sans z-20">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className="w-full bg-white rounded-lg border h-[90vh] shadow-md mt-[20px] overflow-scroll">
                     <div className="flex justify-end">
@@ -69,8 +69,8 @@ const CreatImage = () => {
                             Create
                         </h1>
                         <p className="text-slate-500 mt-2">
-                            Create imaginative and visually stunning images with{" "}
-                            <span className="text-slate-800">DALL-E</span>
+                            Create images with{" "}
+                            <span className="text-slate-800">AI</span>
                         </p>
                     </div>
                     <div className="mt-5 max-w-3xl">
@@ -94,9 +94,7 @@ const CreatImage = () => {
                             />
                         )}
                         {generating && (
-                            <div className="fixed top-[366px]  left-[610px] size-40 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
-                                <Loader />
-                            </div>
+                            <Loader/>
                         )}
                         {generated ? (
                             <button   class="bg-blue-500 border border-gray-300 p-2 rounded-md font-semibold text-white m-3" onClick={navigate('/')}>Upload</button>

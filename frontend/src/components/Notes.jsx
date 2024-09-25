@@ -72,7 +72,7 @@ const Notes = (props) => {
 
     }
     return (
-        <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[100vh] font-sans z-1020">
+        <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[100vh] font-sans z-20">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className="w-full bg-[#faf6f6] rounded-lg border h-[90vh] shadow-md mt-[20px] overflow-scroll">
                     <div className="flex justify-end">
