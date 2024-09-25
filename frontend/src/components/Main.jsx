@@ -12,10 +12,11 @@ import Content from "./Content";
 import Image from "./Image";
 import PDF from "./PDF";
 import Sidebar from "./Sidebar";
-import notes from "../assets/Notes.png"
-import text from "../assets/Text.png"
-import image from "../assets/Image.png"
-import quizIcon from "../assets/test.png"
+import notes from "../assets/Notes.png";
+import text from "../assets/Text.png";
+import image from "../assets/Image.png";
+import quizIcon from "../assets/test.png";
+import Profile from "./Profile";
 const Main = () => {
     const navigate = useNavigate();
     const [showNotes, setShowNotes] = useState(false);
@@ -28,28 +29,26 @@ const Main = () => {
         getData,
         curData,
         curTopic,
-        url
+        url,
+        profile,
     } = useContext(userContextProvider);
     const [chat, setChat] = useState(false);
     const handle = () => {
         setChat((chat) => !chat);
     };
     const handleQuiz = () => {
-        if(curTopic.topic){
+        if (curTopic.topic) {
             navigate("/customquiz");
+        } else {
+            alert("Please first select a topic...");
         }
-        else{
-            alert('Please first select a topic...')
-        }
-        
     };
     const click = () => {
-        if(curTopic.topic){
+        if (curTopic.topic) {
             setShowNotes((prev) => !prev);
+        } else {
+            alert("Please first select a topic...");
         }
-        else{
-            alert('Please first select a topic...')
-        }        
     };
     const [activeTab, setActiveTab] = useState("Content");
 
@@ -60,21 +59,43 @@ const Main = () => {
     return (
         <>
             {signedIn && (
-                <div class="h-screen w-full bg-black"> 
-                    <Sidebar />                    
+                <div class="h-screen w-full bg-black">
+                    <Sidebar />
                     <div className=" fixed top-[70px] left-[326px] bg-[#17191d] w-full ">
                         <div className="px-4 text-lg mt-1  flex justify-start ">
-                            <button class="flex flex-row mx-5" onClick={() => handleTabClick("Content")}>
-                                <img src={text} className="size-4 mt-[6px] mr-2" /> 
+                            <button
+                                class="flex flex-row mx-5"
+                                onClick={() => handleTabClick("Content")}
+                            >
+                                <img
+                                    src={text}
+                                    className="size-4 mt-[6px] mr-2"
+                                />
                                 <p class="text-gray-300  font-semibold">Text</p>
                             </button>
-                            <button class="flex flex-row mx-5" onClick={() => handleTabClick("Image")}>
-                            <img src={image} className="size-4 mt-[6px] mr-2" /> 
-                            <p class="text-gray-300  font-semibold">Images</p>
+                            <button
+                                class="flex flex-row mx-5"
+                                onClick={() => handleTabClick("Image")}
+                            >
+                                <img
+                                    src={image}
+                                    className="size-4 mt-[6px] mr-2"
+                                />
+                                <p class="text-gray-300  font-semibold">
+                                    Images
+                                </p>
                             </button>
-                            <button class="flex flex-row mx-5" onClick={() => handleTabClick("PDF")}>
-                            <img src={notes} className="size-4 mt-[6px] mr-2" /> 
-                            <p class="text-gray-300  font-semibold">Notes</p>
+                            <button
+                                class="flex flex-row mx-5"
+                                onClick={() => handleTabClick("PDF")}
+                            >
+                                <img
+                                    src={notes}
+                                    className="size-4 mt-[6px] mr-2"
+                                />
+                                <p class="text-gray-300  font-semibold">
+                                    Notes
+                                </p>
                             </button>
                         </div>
                         <div class="mt-[10px]">
@@ -82,11 +103,9 @@ const Main = () => {
 
                             {activeTab === "Image" && <Image />}
 
-                            {activeTab === "PDF" && <PDF />}                            
+                            {activeTab === "PDF" && <PDF />}
                         </div>
-                        <div>
-                            
-                        </div>
+                        <div></div>
                         <div className="fixed right-16 top-[200px]">
                             <img
                                 className="w-16 h-16 m-14 cursor-pointer  hover:w-20 hover:h-20"
@@ -107,6 +126,7 @@ const Main = () => {
                         </div>
                     </div>
                     {showNotes && <Notes click={click} />}
+                    {profile && <Profile />}
                 </div>
             )}
         </>

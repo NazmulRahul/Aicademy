@@ -7,7 +7,7 @@ import Sidebar from "./components/Sidebar";
 import data from "./test";
 import Main from "./components/Main";
 import NewSubject from "./pages/NewSubject";
-import Profile from "./pages/Profile";
+import Profile from "./components/Profile";
 import AddTopics from "./pages/AddTopics";
 import Quizz from "./pages/Quizz";
 import CustomQuiz from "./pages/CustonQuiz";
@@ -31,7 +31,6 @@ const App = () => {
                         <Route path="/subject" element={<NewSubject />} />
                         <Route path="/signin" element={<Auth />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/profile" element={<Profile />} />
                         <Route path="/topic" element={<AddTopics />} />
                         <Route path="/quiz" element={<Quizz />} />
                         <Route path="/customquiz" element={<CustomQuiz />} />

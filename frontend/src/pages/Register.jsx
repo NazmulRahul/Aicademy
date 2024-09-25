@@ -2,8 +2,11 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { userContextProvider } from "../context/UserContext";
 const Register = () => {
+    const { setPdfText, curTopic, url, curData } =
+    useContext(userContextProvider);
     const navigate = useNavigate();
     const [tempUser, setTempUser] = useState({
         name: "",
@@ -22,13 +25,18 @@ const Register = () => {
     const signup = async() => {
         console.log(tempUser)
         if(tempUser.password!==tempUser.rePassword){
-            alert('Password do not match')
+            alert('Passwords do not match')
         }
         else{
             try {
+                const data={
+                    name:tempUser.name,
+                    email:tempUser.email,
+                    password:tempUser.password
+                }
                 const response = await axios.post(
                     `http://${url}/api/auth/register`,
-                    tempUser
+                    data
                 );
                 if (response.status === 200) {
                     setReg(false)
@@ -46,13 +54,17 @@ const Register = () => {
         setOtp(e.target.value)
     }
     const verifyOtp=async()=>{
-        
+        const data={
+            otp:otp
+        }
         try {
             const response = await axios.post(
-                `http://${url}/api/auth/verify`,
-                tempUser
+                `http://${url}/api/auth/verify`,data
+                
             );
+            console.log(response)
             if (response.status === 200) {
+                alert('Verified Successfully!')
                 navigate('/signin')
             }
         } catch (error) {
@@ -178,7 +190,7 @@ const Register = () => {
                                     required={true}
                                     onChange={handleOtp}
                                 />
-                                <button  className="mt-2 w-1/2 text-white font-semibold bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center ">
+                                <button onClick={verifyOtp} className="mt-2 w-1/2 text-white font-semibold bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center ">
                                     Confirm
                                 </button>
                             </div>

@@ -64,7 +64,7 @@ const CustomQuiz = () => {
         }
     })
     return (
-        <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-black/15 h-screen w-full  font-sans z-10">
+        <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-black/15 h-screen w-full  font-sans z-20">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className="w-full bg-white rounded-lg border shadow mt-[30px] ">
                     <div className="flex justify-end">

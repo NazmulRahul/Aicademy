@@ -17,6 +17,8 @@ const Navbar = (props) => {
         curData,
         handleLogout,
         url,
+        useProfile,
+        setProfile
     } = useContext(userContextProvider);
 
     const navigate = useNavigate();
@@ -26,6 +28,10 @@ const Navbar = (props) => {
         e.preventDefault();
         setSearch((pre) => e.target.value);
     };
+    const handleProfile=()=>{
+        setProfile(true)
+        console.log('profile')
+    }
     const handleSignin = () => {
         navigate("/signin");
     };
@@ -105,10 +111,10 @@ const Navbar = (props) => {
                     </div>
                 </form>
                 <div className="flex flex-row  text-xl">
-                    <button onClick={quiz} class="text-sm border-2 px-2 rounded-lg hover:border-2 border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_2px_#08f,0_0_3px_#08f,0_0_3px_#08f]">
+                    <button onClick={quiz} class="text-sm border-2 px-2 text-gray-300 bg-black backdrop-blur-sm rounded-lg hover:border-2 border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_2px_#08f,0_0_3px_#08f,0_0_3px_#08f]">
                         CustomQuiz
                     </button>
-                    <button onClick={summary} class="text-sm hover:border-2 mx-3 border-2 px-2 rounded-lg border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_2px_#08f,0_0_3px_#08f,0_0_3px_#08f]">
+                    <button onClick={summary} class="text-sm text-gray-300 bg-black hover:border-2 mx-3 border-2 px-2 rounded-lg border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_2px_#08f,0_0_3px_#08f,0_0_3px_#08f]">
                         VidSummary
                     </button>
                     
@@ -152,6 +158,13 @@ const Navbar = (props) => {
                     </button>
                     {signedIn ? (
                         <div class="flex">
+                             <button
+                                class="select-none mr-2  rounded-full bg-gradient-to-tr from-gray-800 to-gray-700 py-1 px-2 text-center align-middle font-sans text-[12px] font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]"
+                                type="button"
+                                onClick={handleProfile}
+                            >
+                               Profile
+                            </button>
                             <button
                                 class="select-none   rounded-lg bg-gradient-to-tr from-gray-800 to-gray-700 py-1 px-2 text-center align-middle font-sans text-[12px] font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]"
                                 type="button"

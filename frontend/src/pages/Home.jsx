@@ -76,6 +76,7 @@ const HomePage = () => {
                         <span class="text-blue-300 font-bold text-[20px] hover:text-[23px] cursor-pointer">
                             Quiz
                         </span>
+                        {' '}and many more...
                     </p>
                 </div>
                 {/* <YouTube videoId={{videoId}} /> */}

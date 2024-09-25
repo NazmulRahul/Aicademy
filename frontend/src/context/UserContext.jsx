@@ -9,6 +9,7 @@ export const UserContext = (props) => {
         totalQuestions: "5",
         level: "Easy",
     });
+    const [profile,setProfile]=useState(false)
     const [videoLink, setVideoLink] = useState("");
     const [pdfText, setPdfText] = useState([]);
     const [signedIn, setSignedIn] = useState(false);
@@ -96,7 +97,7 @@ export const UserContext = (props) => {
     const addTopics = async (data) => {
         try {
             const response = await axios.post(
-                `http://${url}/public/topic/new`,
+                `http://${url}/public/gemini/topic/new`,
                 data
             );
             if (response.status == 200) {               
@@ -135,6 +136,8 @@ export const UserContext = (props) => {
         setHistory,
         messages,
         setMessages,
+        profile,
+        setProfile
     };
     return (
         <userContextProvider.Provider value={contextValue}>

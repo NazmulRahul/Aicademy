@@ -88,12 +88,12 @@ export const Chatbot = (props) => {
             
         </div>
         <textarea name="chat" class="w-[270px] ml-4 mt-1 rounded-lg p-2" id=""></textarea> */}
-            <MainContainer style={{ color: "#ffff" }}>
+            <MainContainer >
                 <ChatContainer>
                     <MessageList
                         typingIndicator={
                             typing ? (
-                                <TypingIndicator content="ChatGPT Typing" />
+                                <TypingIndicator content="Typing" />
                             ) : null
                         }
                     >
