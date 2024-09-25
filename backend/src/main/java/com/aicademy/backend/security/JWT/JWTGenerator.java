@@ -2,7 +2,7 @@ package com.aicademy.backend.security.JWT;
 
 import java.util.Date;
 
-import com.aicademy.backend.security.SecurityConstants;
+import com.aicademy.backend.security.Config.SecurityConstants;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;

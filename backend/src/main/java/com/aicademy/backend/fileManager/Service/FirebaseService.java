@@ -70,7 +70,9 @@ public class FirebaseService {
         try {
             System.out.println(fileName + " upload method called");
 
-            String newFileName = UUID.randomUUID().toString().concat(this.getExtension(fileName));
+            if(file.getOriginalFilename()==null)
+                throw new Exception("Original file name not found when trying to upload the file. So extension can not be retrieved");
+            String newFileName = UUID.randomUUID().toString().concat(this.getExtension(file.getOriginalFilename()));
 
             return this.uploadFile(this.convertToFile(file, newFileName), newFileName);
         } catch (Exception e) {

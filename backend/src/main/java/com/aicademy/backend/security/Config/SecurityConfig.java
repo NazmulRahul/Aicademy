@@ -1,4 +1,4 @@
-package com.aicademy.backend.security;
+package com.aicademy.backend.security.Config;
 
 import com.aicademy.backend.security.JWT.JWTAuthenticationFilter;
 import com.aicademy.backend.security.JWT.JwtAuthEntryPoint;
