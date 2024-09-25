@@ -1,4 +1,4 @@
-package com.aicademy.backend.fileExtraction;
+package com.aicademy.backend.fileManager.DTO;
 
 import lombok.*;
 

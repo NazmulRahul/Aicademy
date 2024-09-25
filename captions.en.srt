@@ -1,2915 +1,2205 @@
 1
-00:00:00,120 --> 00:00:02,110
+00:00:00,080 --> 00:00:01,510
 
-react is a JavaScript library full of
+abstract classes can be a really
 
 2
-00:00:02,110 --> 00:00:02,120
-react is a JavaScript library full of
+00:00:01,510 --> 00:00:01,520
+abstract classes can be a really
  
 
 3
-00:00:02,120 --> 00:00:04,470
-react is a JavaScript library full of
-fancy terms like reconciliation
+00:00:01,520 --> 00:00:02,950
+abstract classes can be a really
+confusing concept when you're learning
 
 4
-00:00:04,470 --> 00:00:04,480
-fancy terms like reconciliation
+00:00:02,950 --> 00:00:02,960
+confusing concept when you're learning
  
 
 5
-00:00:04,480 --> 00:00:07,150
-fancy terms like reconciliation
-composition and error boundaries what do
+00:00:02,960 --> 00:00:04,070
+confusing concept when you're learning
+java when i was learning they were
 
 6
-00:00:07,150 --> 00:00:07,160
-composition and error boundaries what do
+00:00:04,070 --> 00:00:04,080
+java when i was learning they were
  
 
 7
-00:00:07,160 --> 00:00:09,230
-composition and error boundaries what do
-all these terms actually mean let's
+00:00:04,080 --> 00:00:05,349
+java when i was learning they were
+pretty confusing for me but in this
 
 8
-00:00:09,230 --> 00:00:09,240
-all these terms actually mean let's
+00:00:05,349 --> 00:00:05,359
+pretty confusing for me but in this
  
 
 9
-00:00:09,240 --> 00:00:11,430
-all these terms actually mean let's
-start from the beginning with components
+00:00:05,359 --> 00:00:06,950
+pretty confusing for me but in this
+video we're going to go over exactly
 
 10
-00:00:11,430 --> 00:00:11,440
-start from the beginning with components
+00:00:06,950 --> 00:00:06,960
+video we're going to go over exactly
  
 
 11
-00:00:11,440 --> 00:00:12,990
-start from the beginning with components
-components are the building blocks of
+00:00:06,960 --> 00:00:09,110
+video we're going to go over exactly
+what an abstract class is how you make
 
 12
-00:00:12,990 --> 00:00:13,000
-components are the building blocks of
+00:00:09,110 --> 00:00:09,120
+what an abstract class is how you make
  
 
 13
-00:00:13,000 --> 00:00:15,190
-components are the building blocks of
-every react app they allow us to make
+00:00:09,120 --> 00:00:10,629
+what an abstract class is how you make
+one and how you can use one with an
 
 14
-00:00:15,190 --> 00:00:15,200
-every react app they allow us to make
+00:00:10,629 --> 00:00:10,639
+one and how you can use one with an
  
 
 15
-00:00:15,200 --> 00:00:16,790
-every react app they allow us to make
-all the visible parts of our
+00:00:10,639 --> 00:00:12,070
+one and how you can use one with an
+example and why you would want to make
 
 16
-00:00:16,790 --> 00:00:16,800
-all the visible parts of our
+00:00:12,070 --> 00:00:12,080
+example and why you would want to make
  
 
 17
-00:00:16,800 --> 00:00:19,710
-all the visible parts of our
-applications like buttons inputs or even
+00:00:12,080 --> 00:00:13,430
+example and why you would want to make
+one in the first place we'll also talk
 
 18
-00:00:19,710 --> 00:00:19,720
-applications like buttons inputs or even
+00:00:13,430 --> 00:00:13,440
+one in the first place we'll also talk
  
 
 19
-00:00:19,720 --> 00:00:22,550
-applications like buttons inputs or even
-entire Pages just like Legos you can use
+00:00:13,440 --> 00:00:15,030
+one in the first place we'll also talk
+about the differences between abstract
 
 20
-00:00:22,550 --> 00:00:22,560
-entire Pages just like Legos you can use
+00:00:15,030 --> 00:00:15,040
+about the differences between abstract
  
 
 21
-00:00:22,560 --> 00:00:25,109
-entire Pages just like Legos you can use
-components as many times as you want
+00:00:15,040 --> 00:00:16,870
+about the differences between abstract
+classes and interfaces my name is john
 
 22
-00:00:25,109 --> 00:00:25,119
-components as many times as you want
+00:00:16,870 --> 00:00:16,880
+classes and interfaces my name is john
  
 
 23
-00:00:25,119 --> 00:00:27,070
-components as many times as you want
-every react component is a JavaScript
+00:00:16,880 --> 00:00:18,630
+classes and interfaces my name is john
+i'm a lead java software engineer and i
 
 24
-00:00:27,070 --> 00:00:27,080
-every react component is a JavaScript
+00:00:18,630 --> 00:00:18,640
+i'm a lead java software engineer and i
  
 
 25
-00:00:27,080 --> 00:00:29,509
-every react component is a JavaScript
-function that returns markup but since
+00:00:18,640 --> 00:00:19,910
+i'm a lead java software engineer and i
+love sharing what i've learned in a
 
 26
-00:00:29,509 --> 00:00:29,519
-function that returns markup but since
+00:00:19,910 --> 00:00:19,920
+love sharing what i've learned in a
  
 
 27
-00:00:29,519 --> 00:00:31,710
-function that returns markup but since
-react is is a JavaScript library react
+00:00:19,920 --> 00:00:21,109
+love sharing what i've learned in a
+clear understandable way so if you
 
 28
-00:00:31,710 --> 00:00:31,720
-react is is a JavaScript library react
+00:00:21,109 --> 00:00:21,119
+clear understandable way so if you
  
 
 29
-00:00:31,720 --> 00:00:34,549
-react is is a JavaScript library react
-components don't return HTML markup they
+00:00:21,119 --> 00:00:22,310
+clear understandable way so if you
+enjoyed this video please consider
 
 30
-00:00:34,549 --> 00:00:34,559
-components don't return HTML markup they
+00:00:22,310 --> 00:00:22,320
+enjoyed this video please consider
  
 
 31
-00:00:34,559 --> 00:00:36,990
-components don't return HTML markup they
-actually return something called jsx
+00:00:22,320 --> 00:00:23,750
+enjoyed this video please consider
+subscribing so you don't miss each new
 
 32
-00:00:36,990 --> 00:00:37,000
-actually return something called jsx
+00:00:23,750 --> 00:00:23,760
+subscribing so you don't miss each new
  
 
 33
-00:00:37,000 --> 00:00:40,110
-actually return something called jsx
-which is Javascript in Disguise jsx is
+00:00:23,760 --> 00:00:25,349
+subscribing so you don't miss each new
+java tutorial i also have a full java
 
 34
-00:00:40,110 --> 00:00:40,120
-which is Javascript in Disguise jsx is
+00:00:25,349 --> 00:00:25,359
+java tutorial i also have a full java
  
 
 35
-00:00:40,120 --> 00:00:42,470
-which is Javascript in Disguise jsx is
-optional but the alternative way to make
+00:00:25,359 --> 00:00:26,790
+java tutorial i also have a full java
+course available in a link down in the
 
 36
-00:00:42,470 --> 00:00:42,480
-optional but the alternative way to make
+00:00:26,790 --> 00:00:26,800
+course available in a link down in the
  
 
 37
-00:00:42,480 --> 00:00:44,590
-optional but the alternative way to make
-user interfaces is with the function
+00:00:26,800 --> 00:00:27,990
+course available in a link down in the
+description if you're interested so
 
 38
-00:00:44,590 --> 00:00:44,600
-user interfaces is with the function
+00:00:27,990 --> 00:00:28,000
+description if you're interested so
  
 
 39
-00:00:44,600 --> 00:00:46,709
-user interfaces is with the function
-create element which gets annoying to
+00:00:28,000 --> 00:00:30,550
+description if you're interested so
+first things first what is an abstract
 
 40
-00:00:46,709 --> 00:00:46,719
-create element which gets annoying to
+00:00:30,550 --> 00:00:30,560
+first things first what is an abstract
  
 
 41
-00:00:46,719 --> 00:00:49,670
-create element which gets annoying to
-write pretty fast so everyone just uses
+00:00:30,560 --> 00:00:32,870
+first things first what is an abstract
+class all an abstract class is is a
 
 42
-00:00:49,670 --> 00:00:49,680
-write pretty fast so everyone just uses
+00:00:32,870 --> 00:00:32,880
+class all an abstract class is is a
  
 
 43
-00:00:49,680 --> 00:00:52,750
-write pretty fast so everyone just uses
-jsx since jsx is Javascript you can't
+00:00:32,880 --> 00:00:35,190
+class all an abstract class is is a
+class that you can't instantiate you
 
 44
-00:00:52,750 --> 00:00:52,760
-jsx since jsx is Javascript you can't
+00:00:35,190 --> 00:00:35,200
+class that you can't instantiate you
  
 
 45
-00:00:52,760 --> 00:00:55,349
-jsx since jsx is Javascript you can't
-write attributes like you would in HTML
+00:00:35,200 --> 00:00:37,110
+class that you can't instantiate you
+can't create objects from abstract
 
 46
-00:00:55,349 --> 00:00:55,359
-write attributes like you would in HTML
+00:00:37,110 --> 00:00:37,120
+can't create objects from abstract
  
 
 47
-00:00:55,359 --> 00:00:57,270
-write attributes like you would in HTML
-you have to write them in the camel case
+00:00:37,120 --> 00:00:38,549
+can't create objects from abstract
+classes so what does that mean well you
 
 48
-00:00:57,270 --> 00:00:57,280
-you have to write them in the camel case
+00:00:38,549 --> 00:00:38,559
+classes so what does that mean well you
  
 
 49
-00:00:57,280 --> 00:01:00,069
-you have to write them in the camel case
-style that means HTML attributes like
+00:00:38,559 --> 00:00:40,069
+classes so what does that mean well you
+know if you have like a normal class
 
 50
-00:01:00,069 --> 00:01:00,079
-style that means HTML attributes like
+00:00:40,069 --> 00:00:40,079
+know if you have like a normal class
  
 
 51
-00:01:00,079 --> 00:01:04,189
-style that means HTML attributes like
-class become class name unlike HTML
+00:00:40,079 --> 00:00:42,389
+know if you have like a normal class
+like this cat class here if you want you
 
 52
-00:01:04,189 --> 00:01:04,199
-class become class name unlike HTML
+00:00:42,389 --> 00:00:42,399
+like this cat class here if you want you
  
 
 53
-00:01:04,199 --> 00:01:06,830
-class become class name unlike HTML
-which is static and unchanging the
+00:00:42,399 --> 00:00:44,310
+like this cat class here if you want you
+can create objects of that class so you
 
 54
-00:01:06,830 --> 00:01:06,840
-which is static and unchanging the
+00:00:44,310 --> 00:00:44,320
+can create objects of that class so you
  
 
 55
-00:01:06,840 --> 00:01:09,070
-which is static and unchanging the
-benefit of using react is that you can
+00:00:44,320 --> 00:00:47,830
+can create objects of that class so you
+could say cat my cat equals new cat but
 
 56
-00:01:09,070 --> 00:01:09,080
-benefit of using react is that you can
+00:00:47,830 --> 00:00:47,840
+could say cat my cat equals new cat but
  
 
 57
-00:01:09,080 --> 00:01:11,590
-benefit of using react is that you can
-use Dynamic JavaScript values in your
+00:00:47,840 --> 00:00:49,590
+could say cat my cat equals new cat but
+with abstract classes you can't do this
 
 58
-00:01:11,590 --> 00:01:11,600
-use Dynamic JavaScript values in your
+00:00:49,590 --> 00:00:49,600
+with abstract classes you can't do this
  
 
 59
-00:01:11,600 --> 00:01:14,310
-use Dynamic JavaScript values in your
-jsx if you have data you can display it
+00:00:49,600 --> 00:00:51,350
+with abstract classes you can't do this
+so if i go back into my cat class and
 
 60
-00:01:14,310 --> 00:01:14,320
-jsx if you have data you can display it
+00:00:51,350 --> 00:00:51,360
+so if i go back into my cat class and
  
 
 61
-00:01:14,320 --> 00:01:17,070
-jsx if you have data you can display it
-in your jsx using curly braces curly
+00:00:51,360 --> 00:00:54,549
+so if i go back into my cat class and
+make it a public abstract class if i go
 
 62
-00:01:17,070 --> 00:01:17,080
-in your jsx using curly braces curly
+00:00:54,549 --> 00:00:54,559
+make it a public abstract class if i go
  
 
 63
-00:01:17,080 --> 00:01:19,149
-in your jsx using curly braces curly
-braces accept values like strings and
+00:00:54,559 --> 00:00:56,229
+make it a public abstract class if i go
+back into my main method i can see that
 
 64
-00:01:19,149 --> 00:01:19,159
-braces accept values like strings and
+00:00:56,229 --> 00:00:56,239
+back into my main method i can see that
  
 
 65
-00:01:19,159 --> 00:01:21,710
-braces accept values like strings and
-numbers directly you can use them to
+00:00:56,239 --> 00:00:58,150
+back into my main method i can see that
+now i get an error here cannot
 
 66
-00:01:21,710 --> 00:01:21,720
-numbers directly you can use them to
+00:00:58,150 --> 00:00:58,160
+now i get an error here cannot
  
 
 67
-00:01:21,720 --> 00:01:24,310
-numbers directly you can use them to
-make your attributes Dynamic and you can
+00:00:58,160 --> 00:01:00,470
+now i get an error here cannot
+instantiate the type cat and by the way
 
 68
-00:01:24,310 --> 00:01:24,320
-make your attributes Dynamic and you can
+00:01:00,470 --> 00:01:00,480
+instantiate the type cat and by the way
  
 
 69
-00:01:24,320 --> 00:01:26,990
-make your attributes Dynamic and you can
-style react elements using a JavaScript
+00:01:00,480 --> 00:01:02,310
+instantiate the type cat and by the way
+this abstract keyword here in the class
 
 70
-00:01:26,990 --> 00:01:27,000
-style react elements using a JavaScript
+00:01:02,310 --> 00:01:02,320
+this abstract keyword here in the class
  
 
 71
-00:01:27,000 --> 00:01:29,910
-style react elements using a JavaScript
-object within the curly braces since
+00:01:02,320 --> 00:01:04,310
+this abstract keyword here in the class
+definition is the only thing you need to
 
 72
-00:01:29,910 --> 00:01:29,920
-object within the curly braces since
+00:01:04,310 --> 00:01:04,320
+definition is the only thing you need to
  
 
 73
-00:01:29,920 --> 00:01:31,870
-object within the curly braces since
-JavaScript functions can only return one
+00:01:04,320 --> 00:01:06,310
+definition is the only thing you need to
+make a class into an abstract class
 
 74
-00:01:31,870 --> 00:01:31,880
-JavaScript functions can only return one
+00:01:06,310 --> 00:01:06,320
+make a class into an abstract class
  
 
 75
-00:01:31,880 --> 00:01:34,389
-JavaScript functions can only return one
-thing in react you can only return one
+00:01:06,320 --> 00:01:07,429
+make a class into an abstract class
+probably the first question that comes
 
 76
-00:01:34,389 --> 00:01:34,399
-thing in react you can only return one
+00:01:07,429 --> 00:01:07,439
+probably the first question that comes
  
 
 77
-00:01:34,399 --> 00:01:36,590
-thing in react you can only return one
-parent element from a component so you
+00:01:07,439 --> 00:01:09,030
+probably the first question that comes
+to mind is why the heck would i want to
 
 78
-00:01:36,590 --> 00:01:36,600
-parent element from a component so you
+00:01:09,030 --> 00:01:09,040
+to mind is why the heck would i want to
  
 
 79
-00:01:36,600 --> 00:01:38,670
-parent element from a component so you
-can't do this without getting a big
+00:01:09,040 --> 00:01:10,710
+to mind is why the heck would i want to
+do that why would i want to make a class
 
 80
-00:01:38,670 --> 00:01:38,680
-can't do this without getting a big
+00:01:10,710 --> 00:01:10,720
+do that why would i want to make a class
  
 
 81
-00:01:38,680 --> 00:01:40,910
-can't do this without getting a big
-error we could fix this by wrapping
+00:01:10,720 --> 00:01:12,390
+do that why would i want to make a class
+that i can't create objects from so
 
 82
-00:01:40,910 --> 00:01:40,920
-error we could fix this by wrapping
+00:01:12,390 --> 00:01:12,400
+that i can't create objects from so
  
 
 83
-00:01:40,920 --> 00:01:43,069
-error we could fix this by wrapping
-these components in a div but maybe you
+00:01:12,400 --> 00:01:13,830
+that i can't create objects from so
+here's a situation where it makes sense
 
 84
-00:01:43,069 --> 00:01:43,079
-these components in a div but maybe you
+00:01:13,830 --> 00:01:13,840
+here's a situation where it makes sense
  
 
 85
-00:01:43,079 --> 00:01:44,830
-these components in a div but maybe you
-don't want to add another element to the
+00:01:13,840 --> 00:01:15,510
+here's a situation where it makes sense
+to use an abstract class let's change
 
 86
-00:01:44,830 --> 00:01:44,840
-don't want to add another element to the
+00:01:15,510 --> 00:01:15,520
+to use an abstract class let's change
  
 
 87
-00:01:44,840 --> 00:01:47,190
-don't want to add another element to the
-page instead you can use an empty
+00:01:15,520 --> 00:01:17,749
+to use an abstract class let's change
+this class back into a regular class
 
 88
-00:01:47,190 --> 00:01:47,200
-page instead you can use an empty
+00:01:17,749 --> 00:01:17,759
+this class back into a regular class
  
 
 89
-00:01:47,200 --> 00:01:50,230
-page instead you can use an empty
-component called a react fragment okay
+00:01:17,759 --> 00:01:19,270
+this class back into a regular class
+instead of just being a standalone class
 
 90
-00:01:50,230 --> 00:01:50,240
-component called a react fragment okay
+00:01:19,270 --> 00:01:19,280
+instead of just being a standalone class
  
 
 91
-00:01:50,240 --> 00:01:52,190
-component called a react fragment okay
-but what if I want to pass data into
+00:01:19,280 --> 00:01:21,590
+instead of just being a standalone class
+let's say it extended a class called
 
 92
-00:01:52,190 --> 00:01:52,200
-but what if I want to pass data into
+00:01:21,590 --> 00:01:21,600
+let's say it extended a class called
  
 
 93
-00:01:52,200 --> 00:01:54,350
-but what if I want to pass data into
-another component for that you use
+00:01:21,600 --> 00:01:23,109
+let's say it extended a class called
+animal and let's say the animal class
 
 94
-00:01:54,350 --> 00:01:54,360
-another component for that you use
+00:01:23,109 --> 00:01:23,119
+animal and let's say the animal class
  
 
 95
-00:01:54,360 --> 00:01:56,870
-another component for that you use
-something called props to make a prop
+00:01:23,119 --> 00:01:25,350
+animal and let's say the animal class
+had a couple of fields like int age
 
 96
-00:01:56,870 --> 00:01:56,880
-something called props to make a prop
+00:01:25,350 --> 00:01:25,360
+had a couple of fields like int age
  
 
 97
-00:01:56,880 --> 00:01:58,550
-something called props to make a prop
-create a name on the component you want
+00:01:25,360 --> 00:01:27,510
+had a couple of fields like int age
+string name it totally makes sense that
 
 98
-00:01:58,550 --> 00:01:58,560
-create a name on the component you want
+00:01:27,510 --> 00:01:27,520
+string name it totally makes sense that
  
 
 99
-00:01:58,560 --> 00:02:01,350
-create a name on the component you want
-to pass data to and set it equal to some
+00:01:27,520 --> 00:01:28,950
+string name it totally makes sense that
+you could have an animal class that
 
 100
-00:02:01,350 --> 00:02:01,360
-to pass data to and set it equal to some
+00:01:28,950 --> 00:01:28,960
+you could have an animal class that
  
 
 101
-00:02:01,360 --> 00:02:03,670
-to pass data to and set it equal to some
-value and that's it you can then use
+00:01:28,960 --> 00:01:31,190
+you could have an animal class that
+would have subclasses of actual animals
 
 102
-00:02:03,670 --> 00:02:03,680
-value and that's it you can then use
+00:01:31,190 --> 00:01:31,200
+would have subclasses of actual animals
  
 
 103
-00:02:03,680 --> 00:02:05,830
-value and that's it you can then use
-that prop in the component you passed it
+00:01:31,200 --> 00:01:33,590
+would have subclasses of actual animals
+like cat dog horse whatever and it makes
 
 104
-00:02:05,830 --> 00:02:05,840
-that prop in the component you passed it
+00:01:33,590 --> 00:01:33,600
+like cat dog horse whatever and it makes
  
 
 105
-00:02:05,840 --> 00:02:08,510
-that prop in the component you passed it
-to props refers to properties on an
+00:01:33,600 --> 00:01:35,350
+like cat dog horse whatever and it makes
+sense that you could create objects of
 
 106
-00:02:08,510 --> 00:02:08,520
-to props refers to properties on an
+00:01:35,350 --> 00:01:35,360
+sense that you could create objects of
  
 
 107
-00:02:08,520 --> 00:02:10,190
-to props refers to properties on an
-object which is what you get in the
+00:01:35,360 --> 00:01:37,429
+sense that you could create objects of
+those subclasses like you could create a
 
 108
-00:02:10,190 --> 00:02:10,200
-object which is what you get in the
+00:01:37,429 --> 00:01:37,439
+those subclasses like you could create a
  
 
 109
-00:02:10,200 --> 00:02:12,710
-object which is what you get in the
-parameters of each component to use the
+00:01:37,439 --> 00:01:39,270
+those subclasses like you could create a
+cat object but what doesn't make a whole
 
 110
-00:02:12,710 --> 00:02:12,720
-parameters of each component to use the
+00:01:39,270 --> 00:01:39,280
+cat object but what doesn't make a whole
  
 
 111
-00:02:12,720 --> 00:02:14,470
-parameters of each component to use the
-prop take it from the object like a
+00:01:39,280 --> 00:01:41,590
+cat object but what doesn't make a whole
+lot of sense is creating an animal
 
 112
-00:02:14,470 --> 00:02:14,480
-prop take it from the object like a
+00:01:41,590 --> 00:01:41,600
+lot of sense is creating an animal
  
 
 113
-00:02:14,480 --> 00:02:16,869
-prop take it from the object like a
-normal JavaScript property think of them
+00:01:41,600 --> 00:01:43,270
+lot of sense is creating an animal
+object you know it's just kind of weird
 
 114
-00:02:16,869 --> 00:02:16,879
-normal JavaScript property think of them
+00:01:43,270 --> 00:01:43,280
+object you know it's just kind of weird
  
 
 115
-00:02:16,879 --> 00:02:18,830
-normal JavaScript property think of them
-like custom attributes you can add to
+00:01:43,280 --> 00:01:44,789
+object you know it's just kind of weird
+what kind of animal is it so you might
 
 116
-00:02:18,830 --> 00:02:18,840
-like custom attributes you can add to
+00:01:44,789 --> 00:01:44,799
+what kind of animal is it so you might
  
 
 117
-00:02:18,840 --> 00:02:21,630
-like custom attributes you can add to
-any component so wait can you pass
+00:01:44,799 --> 00:01:46,630
+what kind of animal is it so you might
+want a parent class like animal so that
 
 118
-00:02:21,630 --> 00:02:21,640
-any component so wait can you pass
+00:01:46,630 --> 00:01:46,640
+want a parent class like animal so that
  
 
 119
-00:02:21,640 --> 00:02:24,430
-any component so wait can you pass
-anything as a prop yes you can you can
+00:01:46,640 --> 00:01:48,710
+want a parent class like animal so that
+your subclasses can share some fields
 
 120
-00:02:24,430 --> 00:02:24,440
-anything as a prop yes you can you can
+00:01:48,710 --> 00:01:48,720
+your subclasses can share some fields
  
 
 121
-00:02:24,440 --> 00:02:26,509
-anything as a prop yes you can you can
-even pass other components as props
+00:01:48,720 --> 00:01:50,630
+your subclasses can share some fields
+like age name and maybe some methods
 
 122
-00:02:26,509 --> 00:02:26,519
-even pass other components as props
+00:01:50,630 --> 00:01:50,640
+like age name and maybe some methods
  
 
 123
-00:02:26,519 --> 00:02:28,869
-even pass other components as props
-using the children prop if you make
+00:01:50,640 --> 00:01:52,230
+like age name and maybe some methods
+that you write but you might not want to
 
 124
-00:02:28,869 --> 00:02:28,879
-using the children prop if you make
+00:01:52,230 --> 00:01:52,240
+that you write but you might not want to
  
 
 125
-00:02:28,879 --> 00:02:31,150
-using the children prop if you make
-opening and closing tags for a component
+00:01:52,240 --> 00:01:54,469
+that you write but you might not want to
+be able to create objects of this animal
 
 126
-00:02:31,150 --> 00:02:31,160
-opening and closing tags for a component
+00:01:54,469 --> 00:01:54,479
+be able to create objects of this animal
  
 
 127
-00:02:31,160 --> 00:02:33,390
-opening and closing tags for a component
-you can pass other components in between
+00:01:54,479 --> 00:01:56,389
+be able to create objects of this animal
+class all you have to do is make this
 
 128
-00:02:33,390 --> 00:02:33,400
-you can pass other components in between
+00:01:56,389 --> 00:01:56,399
+class all you have to do is make this
  
 
 129
-00:02:33,400 --> 00:02:35,869
-you can pass other components in between
-them these pass components are called
+00:01:56,399 --> 00:01:58,630
+class all you have to do is make this
+class abstract so an abstract class is a
 
 130
-00:02:35,869 --> 00:02:35,879
-them these pass components are called
+00:01:58,630 --> 00:01:58,640
+class abstract so an abstract class is a
  
 
 131
-00:02:35,879 --> 00:02:38,350
-them these pass components are called
-children and you can access them on the
+00:01:58,640 --> 00:02:00,550
+class abstract so an abstract class is a
+class you can't instantiate but you can
 
 132
-00:02:38,350 --> 00:02:38,360
-children and you can access them on the
+00:02:00,550 --> 00:02:00,560
+class you can't instantiate but you can
  
 
 133
-00:02:38,360 --> 00:02:40,630
-children and you can access them on the
-children promp of the parent component
+00:02:00,560 --> 00:02:02,469
+class you can't instantiate but you can
+absolutely make subclasses of an
 
 134
-00:02:40,630 --> 00:02:40,640
-children promp of the parent component
+00:02:02,469 --> 00:02:02,479
+absolutely make subclasses of an
  
 
 135
-00:02:40,640 --> 00:02:41,990
-children promp of the parent component
-and it's great for something called
+00:02:02,479 --> 00:02:04,950
+absolutely make subclasses of an
+abstract class that can be instantiated
 
 136
-00:02:41,990 --> 00:02:42,000
-and it's great for something called
+00:02:04,950 --> 00:02:04,960
+abstract class that can be instantiated
  
 
 137
-00:02:42,000 --> 00:02:44,110
-and it's great for something called
-composition which is about organizing
+00:02:04,960 --> 00:02:07,190
+abstract class that can be instantiated
+now what about abstract methods in any
 
 138
-00:02:44,110 --> 00:02:44,120
-composition which is about organizing
+00:02:07,190 --> 00:02:07,200
+now what about abstract methods in any
  
 
 139
-00:02:44,120 --> 00:02:46,229
-composition which is about organizing
-our react components in the most optimal
+00:02:07,200 --> 00:02:09,510
+now what about abstract methods in any
+of your abstract classes you can choose
 
 140
-00:02:46,229 --> 00:02:46,239
-our react components in the most optimal
+00:02:09,510 --> 00:02:09,520
+of your abstract classes you can choose
  
 
 141
-00:02:46,239 --> 00:02:48,470
-our react components in the most optimal
-way the children prop is really useful
+00:02:09,520 --> 00:02:11,430
+of your abstract classes you can choose
+to have abstract methods let's say we
 
 142
-00:02:48,470 --> 00:02:48,480
-way the children prop is really useful
+00:02:11,430 --> 00:02:11,440
+to have abstract methods let's say we
  
 
 143
-00:02:48,480 --> 00:02:50,910
-way the children prop is really useful
-for creating layout components when you
+00:02:11,440 --> 00:02:14,390
+to have abstract methods let's say we
+had a method like public void make noise
 
 144
-00:02:50,910 --> 00:02:50,920
-for creating layout components when you
+00:02:14,390 --> 00:02:14,400
+had a method like public void make noise
  
 
 145
-00:02:50,920 --> 00:02:52,949
-for creating layout components when you
-want your children to have the same
+00:02:14,400 --> 00:02:15,750
+had a method like public void make noise
+of course it makes sense for an animal
 
 146
-00:02:52,949 --> 00:02:52,959
-want your children to have the same
+00:02:15,750 --> 00:02:15,760
+of course it makes sense for an animal
  
 
 147
-00:02:52,959 --> 00:02:55,910
-want your children to have the same
-common layout the key prop is another
+00:02:15,760 --> 00:02:17,589
+of course it makes sense for an animal
+to be able to make noise but each
 
 148
-00:02:55,910 --> 00:02:55,920
-common layout the key prop is another
+00:02:17,589 --> 00:02:17,599
+to be able to make noise but each
  
 
 149
-00:02:55,920 --> 00:02:58,710
-common layout the key prop is another
-built-in prop to react and no unlike the
+00:02:17,599 --> 00:02:19,110
+to be able to make noise but each
+individual animal is going to make noise
 
 150
-00:02:58,710 --> 00:02:58,720
-built-in prop to react and no unlike the
+00:02:19,110 --> 00:02:19,120
+individual animal is going to make noise
  
 
 151
-00:02:58,720 --> 00:03:00,830
-built-in prop to react and no unlike the
-name implies it doesn't unlock anything
+00:02:19,120 --> 00:02:20,869
+individual animal is going to make noise
+in its own way a cat's going to meow a
 
 152
-00:03:00,830 --> 00:03:00,840
-name implies it doesn't unlock anything
+00:02:20,869 --> 00:02:20,879
+in its own way a cat's going to meow a
  
 
 153
-00:03:00,840 --> 00:03:03,390
-name implies it doesn't unlock anything
-interesting the key prop is used so
+00:02:20,879 --> 00:02:22,550
+in its own way a cat's going to meow a
+dog is gonna bark so because of that it
 
 154
-00:03:03,390 --> 00:03:03,400
-interesting the key prop is used so
+00:02:22,550 --> 00:02:22,560
+dog is gonna bark so because of that it
  
 
 155
-00:03:03,400 --> 00:03:05,830
-interesting the key prop is used so
-react can tell one component apart from
+00:02:22,560 --> 00:02:24,150
+dog is gonna bark so because of that it
+might not make a whole lot of sense to
 
 156
-00:03:05,830 --> 00:03:05,840
-react can tell one component apart from
+00:02:24,150 --> 00:02:24,160
+might not make a whole lot of sense to
  
 
 157
-00:03:05,840 --> 00:03:08,030
-react can tell one component apart from
-another usually when you're creating a
+00:02:24,160 --> 00:02:26,070
+might not make a whole lot of sense to
+actually implement this method make
 
 158
-00:03:08,030 --> 00:03:08,040
-another usually when you're creating a
+00:02:26,070 --> 00:02:26,080
+actually implement this method make
  
 
 159
-00:03:08,040 --> 00:03:11,070
-another usually when you're creating a
-list with the map function a key is just
+00:02:26,080 --> 00:02:28,229
+actually implement this method make
+noise here in your abstract animal class
 
 160
-00:03:11,070 --> 00:03:11,080
-list with the map function a key is just
+00:02:28,229 --> 00:02:28,239
+noise here in your abstract animal class
  
 
 161
-00:03:11,080 --> 00:03:13,869
-list with the map function a key is just
-a unique string or number to identify a
+00:02:28,239 --> 00:02:30,309
+noise here in your abstract animal class
+what you can do is make this method an
 
 162
-00:03:13,869 --> 00:03:13,879
-a unique string or number to identify a
+00:02:30,309 --> 00:02:30,319
+what you can do is make this method an
  
 
 163
-00:03:13,879 --> 00:03:15,789
-a unique string or number to identify a
-component you'll usually know when you
+00:02:30,319 --> 00:02:32,390
+what you can do is make this method an
+abstract method when you make a method
 
 164
-00:03:15,789 --> 00:03:15,799
-component you'll usually know when you
+00:02:32,390 --> 00:02:32,400
+abstract method when you make a method
  
 
 165
-00:03:15,799 --> 00:03:17,869
-component you'll usually know when you
-need to add a key because react will
+00:02:32,400 --> 00:02:35,030
+abstract method when you make a method
+abstract you don't specify a body for
 
 166
-00:03:17,869 --> 00:03:17,879
-need to add a key because react will
+00:02:35,030 --> 00:02:35,040
+abstract you don't specify a body for
  
 
 167
-00:03:17,879 --> 00:03:20,589
-need to add a key because react will
-warn you in the console fortunately if
+00:02:35,040 --> 00:02:36,710
+abstract you don't specify a body for
+the method all you do is declare it and
 
 168
-00:03:20,589 --> 00:03:20,599
-warn you in the console fortunately if
+00:02:36,710 --> 00:02:36,720
+the method all you do is declare it and
  
 
 169
-00:03:20,599 --> 00:03:22,309
-warn you in the console fortunately if
-you don't have a unique value for each
+00:02:36,720 --> 00:02:38,790
+the method all you do is declare it and
+then end it with a semicolon but then in
 
 170
-00:03:22,309 --> 00:03:22,319
-you don't have a unique value for each
+00:02:38,790 --> 00:02:38,800
+then end it with a semicolon but then in
  
 
 171
-00:03:22,319 --> 00:03:24,710
-you don't have a unique value for each
-item you can always use the current
+00:02:38,800 --> 00:02:40,550
+then end it with a semicolon but then in
+all the child classes of your abstract
 
 172
-00:03:24,710 --> 00:03:24,720
-item you can always use the current
+00:02:40,550 --> 00:02:40,560
+all the child classes of your abstract
  
 
 173
-00:03:24,720 --> 00:03:27,550
-item you can always use the current
-index from the map function but how does
+00:02:40,560 --> 00:02:42,070
+all the child classes of your abstract
+class you have to actually create an
 
 174
-00:03:27,550 --> 00:03:27,560
-index from the map function but how does
+00:02:42,070 --> 00:02:42,080
+class you have to actually create an
  
 
 175
-00:03:27,560 --> 00:03:30,030
-index from the map function but how does
-react take all my amazing code and make
+00:02:42,080 --> 00:02:44,150
+class you have to actually create an
+implementation of this make noise method
 
 176
-00:03:30,030 --> 00:03:30,040
-react take all my amazing code and make
+00:02:44,150 --> 00:02:44,160
+implementation of this make noise method
  
 
 177
-00:03:30,040 --> 00:03:32,869
-react take all my amazing code and make
-it display something in the browser that
+00:02:44,160 --> 00:02:45,830
+implementation of this make noise method
+so if we go back over to our cat class
 
 178
-00:03:32,869 --> 00:03:32,879
-it display something in the browser that
+00:02:45,830 --> 00:02:45,840
+so if we go back over to our cat class
  
 
 179
-00:03:32,879 --> 00:03:35,470
-it display something in the browser that
-process is called rendering react does
+00:02:45,840 --> 00:02:47,670
+so if we go back over to our cat class
+now we can see that it's giving us an
 
 180
-00:03:35,470 --> 00:03:35,480
-process is called rendering react does
+00:02:47,670 --> 00:02:47,680
+now we can see that it's giving us an
  
 
 181
-00:03:35,480 --> 00:03:37,550
-process is called rendering react does
-this for us but it's important to know
+00:02:47,680 --> 00:02:50,070
+now we can see that it's giving us an
+error that the type cat must implement
 
 182
-00:03:37,550 --> 00:03:37,560
-this for us but it's important to know
+00:02:50,070 --> 00:02:50,080
+error that the type cat must implement
  
 
 183
-00:03:37,560 --> 00:03:40,030
-this for us but it's important to know
-how it works because sometimes we can do
+00:02:50,080 --> 00:02:52,550
+error that the type cat must implement
+the inherited abstract method make noise
 
 184
-00:03:40,030 --> 00:03:40,040
-how it works because sometimes we can do
+00:02:52,550 --> 00:02:52,560
+the inherited abstract method make noise
  
 
 185
-00:03:40,040 --> 00:03:42,429
-how it works because sometimes we can do
-a bad thing and cause it to infinitely
+00:02:52,560 --> 00:02:53,990
+the inherited abstract method make noise
+so of course we can write it all out but
 
 186
-00:03:42,429 --> 00:03:42,439
-a bad thing and cause it to infinitely
+00:02:53,990 --> 00:02:54,000
+so of course we can write it all out but
  
 
 187
-00:03:42,439 --> 00:03:45,789
-a bad thing and cause it to infinitely
-reender which crashes our app the way
+00:02:54,000 --> 00:02:56,309
+so of course we can write it all out but
+we can also just use eclipse's fix tool
 
 188
-00:03:45,789 --> 00:03:45,799
-reender which crashes our app the way
+00:02:56,309 --> 00:02:56,319
+we can also just use eclipse's fix tool
  
 
 189
-00:03:45,799 --> 00:03:48,229
-reender which crashes our app the way
-react knows how and when to render our
+00:02:56,319 --> 00:02:58,550
+we can also just use eclipse's fix tool
+here to add the unimplemented method but
 
 190
-00:03:48,229 --> 00:03:48,239
-react knows how and when to render our
+00:02:58,550 --> 00:02:58,560
+here to add the unimplemented method but
  
 
 191
-00:03:48,239 --> 00:03:50,190
-react knows how and when to render our
-application is using something called
+00:02:58,560 --> 00:02:59,990
+here to add the unimplemented method but
+now this cat class can implement this
 
 192
-00:03:50,190 --> 00:03:50,200
-application is using something called
+00:02:59,990 --> 00:03:00,000
+now this cat class can implement this
  
 
 193
-00:03:50,200 --> 00:03:54,309
-application is using something called
-the virtual Dom also known as the vdom
+00:03:00,000 --> 00:03:01,990
+now this cat class can implement this
+make noise method however we want print
 
 194
-00:03:54,309 --> 00:03:54,319
-the virtual Dom also known as the vdom
+00:03:01,990 --> 00:03:02,000
+make noise method however we want print
  
 
 195
-00:03:54,319 --> 00:03:56,949
-the virtual Dom also known as the vdom
-okay but what does Dom mean Dom stands
+00:03:02,000 --> 00:03:04,710
+make noise method however we want print
+out meow so because this animal class
 
 196
-00:03:56,949 --> 00:03:56,959
-okay but what does Dom mean Dom stands
+00:03:04,710 --> 00:03:04,720
+out meow so because this animal class
  
 
 197
-00:03:56,959 --> 00:03:59,789
-okay but what does Dom mean Dom stands
-for document object model which is what
+00:03:04,720 --> 00:03:07,270
+out meow so because this animal class
+declares an abstract method make noise
 
 198
-00:03:59,789 --> 00:03:59,799
-for document object model which is what
+00:03:07,270 --> 00:03:07,280
+declares an abstract method make noise
  
 
 199
-00:03:59,799 --> 00:04:02,710
-for document object model which is what
-every browser uses to model all the HTML
+00:03:07,280 --> 00:03:09,190
+declares an abstract method make noise
+any child class of this animal class has
 
 200
-00:04:02,710 --> 00:04:02,720
-every browser uses to model all the HTML
+00:03:09,190 --> 00:03:09,200
+any child class of this animal class has
  
 
 201
-00:04:02,720 --> 00:04:05,390
-every browser uses to model all the HTML
-elements on a web page and when you draw
+00:03:09,200 --> 00:03:11,270
+any child class of this animal class has
+to provide its own make noise
 
 202
-00:04:05,390 --> 00:04:05,400
-elements on a web page and when you draw
+00:03:11,270 --> 00:03:11,280
+to provide its own make noise
  
 
 203
-00:04:05,400 --> 00:04:07,869
-elements on a web page and when you draw
-it out it kind of looks like a tree
+00:03:11,280 --> 00:03:12,790
+to provide its own make noise
+implementation so now back in our main
 
 204
-00:04:07,869 --> 00:04:07,879
-it out it kind of looks like a tree
+00:03:12,790 --> 00:03:12,800
+implementation so now back in our main
  
 
 205
-00:04:07,879 --> 00:04:09,990
-it out it kind of looks like a tree
-here's the complete rendering process in
+00:03:12,800 --> 00:03:15,110
+implementation so now back in our main
+method we could take my cat and call
 
 206
-00:04:09,990 --> 00:04:10,000
-here's the complete rendering process in
+00:03:15,110 --> 00:03:15,120
+method we could take my cat and call
  
 
 207
-00:04:10,000 --> 00:04:12,149
-here's the complete rendering process in
-react if the state of our react app
+00:03:15,120 --> 00:03:16,630
+method we could take my cat and call
+meow and if we run our program we can
 
 208
-00:04:12,149 --> 00:04:12,159
-react if the state of our react app
+00:03:16,630 --> 00:03:16,640
+meow and if we run our program we can
  
 
 209
-00:04:12,159 --> 00:04:14,750
-react if the state of our react app
-changes then react updates the virtual
+00:03:16,640 --> 00:03:19,190
+meow and if we run our program we can
+see that it says meow now of course we
 
 210
-00:04:14,750 --> 00:04:14,760
-changes then react updates the virtual
+00:03:19,190 --> 00:03:19,200
+see that it says meow now of course we
  
 
 211
-00:04:14,760 --> 00:04:16,830
-changes then react updates the virtual
-Dom which is quicker to update than the
+00:03:19,200 --> 00:03:20,869
+see that it says meow now of course we
+could in our animal class you know get
 
 212
-00:04:16,830 --> 00:04:16,840
-Dom which is quicker to update than the
+00:03:20,869 --> 00:03:20,879
+could in our animal class you know get
  
 
 213
-00:04:16,840 --> 00:04:19,949
-Dom which is quicker to update than the
-real Dom then react uses a process
+00:03:20,879 --> 00:03:23,110
+could in our animal class you know get
+rid of this abstract method and in our
 
 214
-00:04:19,949 --> 00:04:19,959
-real Dom then react uses a process
+00:03:23,110 --> 00:03:23,120
+rid of this abstract method and in our
  
 
 215
-00:04:19,959 --> 00:04:22,230
-real Dom then react uses a process
-called diffing to compare the updated
+00:03:23,120 --> 00:03:25,270
+rid of this abstract method and in our
+cat class just declare a make noise
 
 216
-00:04:22,230 --> 00:04:22,240
-called diffing to compare the updated
+00:03:25,270 --> 00:03:25,280
+cat class just declare a make noise
  
 
 217
-00:04:22,240 --> 00:04:24,710
-called diffing to compare the updated
-virtual Dom to a previous version to see
+00:03:25,280 --> 00:03:27,190
+cat class just declare a make noise
+method that says meow and if we go back
 
 218
-00:04:24,710 --> 00:04:24,720
-virtual Dom to a previous version to see
+00:03:27,190 --> 00:03:27,200
+method that says meow and if we go back
  
 
 219
-00:04:24,720 --> 00:04:26,990
-virtual Dom to a previous version to see
-what's changed once it sees what's
+00:03:27,200 --> 00:03:28,789
+method that says meow and if we go back
+and run our program again it still says
 
 220
-00:04:26,990 --> 00:04:27,000
-what's changed once it sees what's
+00:03:28,789 --> 00:03:28,799
+and run our program again it still says
  
 
 221
-00:04:27,000 --> 00:04:29,110
-what's changed once it sees what's
-different react uses a process called
+00:03:28,799 --> 00:03:31,350
+and run our program again it still says
+meow so why do we need this abstract
 
 222
-00:04:29,110 --> 00:04:29,120
-different react uses a process called
+00:03:31,350 --> 00:03:31,360
+meow so why do we need this abstract
  
 
 223
-00:04:29,120 --> 00:04:32,150
-different react uses a process called
-reconcil iation to update the real Dom
+00:03:31,360 --> 00:03:32,949
+meow so why do we need this abstract
+method what do we want that for what the
 
 224
-00:04:32,150 --> 00:04:32,160
-reconcil iation to update the real Dom
+00:03:32,949 --> 00:03:32,959
+method what do we want that for what the
  
 
 225
-00:04:32,160 --> 00:04:34,950
-reconcil iation to update the real Dom
-with the changes that it found whenever
+00:03:32,959 --> 00:03:34,869
+method what do we want that for what the
+abstract class does as a whole is kind
 
 226
-00:04:34,950 --> 00:04:34,960
-with the changes that it found whenever
+00:03:34,869 --> 00:03:34,879
+abstract class does as a whole is kind
  
 
 227
-00:04:34,960 --> 00:04:37,670
-with the changes that it found whenever
-someone uses our app tons of events take
+00:03:34,879 --> 00:03:38,309
+abstract class does as a whole is kind
+of enforce and organize exactly what
 
 228
-00:04:37,670 --> 00:04:37,680
-someone uses our app tons of events take
+00:03:38,309 --> 00:03:38,319
+of enforce and organize exactly what
  
 
 229
-00:04:37,680 --> 00:04:39,950
-someone uses our app tons of events take
-place like clicks Mouse movements and
+00:03:38,319 --> 00:03:40,949
+of enforce and organize exactly what
+every subclass of animal has to have so
 
 230
-00:04:39,950 --> 00:04:39,960
-place like clicks Mouse movements and
+00:03:40,949 --> 00:03:40,959
+every subclass of animal has to have so
  
 
 231
-00:04:39,960 --> 00:04:41,990
-place like clicks Mouse movements and
-key presses many of which we need to
+00:03:40,959 --> 00:03:42,309
+every subclass of animal has to have so
+this animal class is saying hey if you
 
 232
-00:04:41,990 --> 00:04:42,000
-key presses many of which we need to
+00:03:42,309 --> 00:03:42,319
+this animal class is saying hey if you
  
 
 233
-00:04:42,000 --> 00:04:44,150
-key presses many of which we need to
-detect event handling is how we take
+00:03:42,319 --> 00:03:44,149
+this animal class is saying hey if you
+want to create a new type of animal it's
 
 234
-00:04:44,150 --> 00:04:44,160
-detect event handling is how we take
+00:03:44,149 --> 00:03:44,159
+want to create a new type of animal it's
  
 
 235
-00:04:44,160 --> 00:04:46,029
-detect event handling is how we take
-those user events and do something with
+00:03:44,159 --> 00:03:45,350
+want to create a new type of animal it's
+going to have an age it's going to have
 
 236
-00:04:46,029 --> 00:04:46,039
-those user events and do something with
+00:03:45,350 --> 00:03:45,360
+going to have an age it's going to have
  
 
 237
-00:04:46,039 --> 00:04:48,310
-those user events and do something with
-them react has a lot of built-in events
+00:03:45,360 --> 00:03:46,710
+going to have an age it's going to have
+a name and it has to be able to make
 
 238
-00:04:48,310 --> 00:04:48,320
-them react has a lot of built-in events
+00:03:46,710 --> 00:03:46,720
+a name and it has to be able to make
  
 
 239
-00:04:48,320 --> 00:04:51,670
-them react has a lot of built-in events
-such as onclick onchange and onsubmit
+00:03:46,720 --> 00:03:48,229
+a name and it has to be able to make
+noise every type of animal might make
 
 240
-00:04:51,670 --> 00:04:51,680
-such as onclick onchange and onsubmit
+00:03:48,229 --> 00:03:48,239
+noise every type of animal might make
  
 
 241
-00:04:51,680 --> 00:04:53,110
-such as onclick onchange and onsubmit
-these three events are ones you'll
+00:03:48,239 --> 00:03:49,830
+noise every type of animal might make
+noise in completely different ways but
 
 242
-00:04:53,110 --> 00:04:53,120
-these three events are ones you'll
+00:03:49,830 --> 00:03:49,840
+noise in completely different ways but
  
 
 243
-00:04:53,120 --> 00:04:55,710
-these three events are ones you'll
-probably use the most if we want to
+00:03:49,840 --> 00:03:51,830
+noise in completely different ways but
+this makes sure that every single animal
 
 244
-00:04:55,710 --> 00:04:55,720
-probably use the most if we want to
+00:03:51,830 --> 00:03:51,840
+this makes sure that every single animal
  
 
 245
-00:04:55,720 --> 00:04:58,390
-probably use the most if we want to
-alert users when a button is clicked we
+00:03:51,840 --> 00:03:53,990
+this makes sure that every single animal
+type is able to make noise as a side
 
 246
-00:04:58,390 --> 00:04:58,400
-alert users when a button is clicked we
+00:03:53,990 --> 00:03:54,000
+type is able to make noise as a side
  
 
 247
-00:04:58,400 --> 00:05:00,950
-alert users when a button is clicked we
-would add the onclick prop to the button
+00:03:54,000 --> 00:03:55,910
+type is able to make noise as a side
+note though in your abstract class all
 
 248
-00:05:00,950 --> 00:05:00,960
-would add the onclick prop to the button
+00:03:55,910 --> 00:03:55,920
+note though in your abstract class all
  
 
 249
-00:05:00,960 --> 00:05:03,110
-would add the onclick prop to the button
-and connect it to a function that would
+00:03:55,920 --> 00:03:57,350
+note though in your abstract class all
+of the methods don't necessarily have to
 
 250
-00:05:03,110 --> 00:05:03,120
-and connect it to a function that would
+00:03:57,350 --> 00:03:57,360
+of the methods don't necessarily have to
  
 
 251
-00:05:03,120 --> 00:05:04,310
-and connect it to a function that would
-show that
+00:03:57,360 --> 00:03:59,670
+of the methods don't necessarily have to
+be abstract you can create actual
 
 252
-00:05:04,310 --> 00:05:04,320
-show that
+00:03:59,670 --> 00:03:59,680
+be abstract you can create actual
  
 
 253
-00:05:04,320 --> 00:05:07,350
-show that
-alert to manage data in our react apps
+00:03:59,680 --> 00:04:01,509
+be abstract you can create actual
+concrete implemented methods in your
 
 254
-00:05:07,350 --> 00:05:07,360
-alert to manage data in our react apps
+00:04:01,509 --> 00:04:01,519
+concrete implemented methods in your
  
 
 255
-00:05:07,360 --> 00:05:09,909
-alert to manage data in our react apps
-we need to use State not that kind of
+00:04:01,519 --> 00:04:03,030
+concrete implemented methods in your
+abstract classes so you could have like
 
 256
-00:05:09,909 --> 00:05:09,919
-we need to use State not that kind of
+00:04:03,030 --> 00:04:03,040
+abstract classes so you could have like
  
 
 257
-00:05:09,919 --> 00:05:12,629
-we need to use State not that kind of
-state though state is like a snapshot
+00:04:03,040 --> 00:04:05,990
+abstract classes so you could have like
+public void print name just prints my
 
 258
-00:05:12,629 --> 00:05:12,639
-state though state is like a snapshot
+00:04:05,990 --> 00:04:06,000
+public void print name just prints my
  
 
 259
-00:05:12,639 --> 00:05:14,790
-state though state is like a snapshot
-from a camera it's a picture of our app
+00:04:06,000 --> 00:04:08,869
+public void print name just prints my
+name is name so now every subclass of
 
 260
-00:05:14,790 --> 00:05:14,800
-from a camera it's a picture of our app
+00:04:08,869 --> 00:04:08,879
+name is name so now every subclass of
  
 
 261
-00:05:14,800 --> 00:05:17,310
-from a camera it's a picture of our app
-at any given time to manage State we
+00:04:08,879 --> 00:04:10,229
+name is name so now every subclass of
+animal will also have this print name
 
 262
-00:05:17,310 --> 00:05:17,320
-at any given time to manage State we
+00:04:10,229 --> 00:04:10,239
+animal will also have this print name
  
 
 263
-00:05:17,320 --> 00:05:19,830
-at any given time to manage State we
-also can't use JavaScript variables they
+00:04:10,239 --> 00:04:11,670
+animal will also have this print name
+method available to it but since it's
 
 264
-00:05:19,830 --> 00:05:19,840
-also can't use JavaScript variables they
+00:04:11,670 --> 00:04:11,680
+method available to it but since it's
  
 
 265
-00:05:19,840 --> 00:05:22,469
-also can't use JavaScript variables they
-don't cause our app to render instead we
+00:04:11,680 --> 00:04:12,789
+method available to it but since it's
+not abstract they don't need to
 
 266
-00:05:22,469 --> 00:05:22,479
-don't cause our app to render instead we
+00:04:12,789 --> 00:04:12,799
+not abstract they don't need to
  
 
 267
-00:05:22,479 --> 00:05:24,710
-don't cause our app to render instead we
-use special functions like use State and
+00:04:12,799 --> 00:04:14,229
+not abstract they don't need to
+implement it themselves they can just
 
 268
-00:05:24,710 --> 00:05:24,720
-use special functions like use State and
+00:04:14,229 --> 00:04:14,239
+implement it themselves they can just
  
 
 269
-00:05:24,720 --> 00:05:28,150
-use special functions like use State and
-use reducer use State takes an argument
+00:04:14,239 --> 00:04:15,750
+implement it themselves they can just
+use the implementation that's here the
 
 270
-00:05:28,150 --> 00:05:28,160
-use reducer use State takes an argument
+00:04:15,750 --> 00:04:15,760
+use the implementation that's here the
  
 
 271
-00:05:28,160 --> 00:05:30,350
-use reducer use State takes an argument
-that serves as the starting value value
+00:04:15,760 --> 00:04:17,430
+use the implementation that's here the
+question a lot of people have and what's
 
 272
-00:05:30,350 --> 00:05:30,360
-that serves as the starting value value
+00:04:17,430 --> 00:04:17,440
+question a lot of people have and what's
  
 
 273
-00:05:30,360 --> 00:05:32,909
-that serves as the starting value value
-of the state variable which is likes in
+00:04:17,440 --> 00:04:19,430
+question a lot of people have and what's
+actually also a big interview question
 
 274
-00:05:32,909 --> 00:05:32,919
-of the state variable which is likes in
+00:04:19,430 --> 00:04:19,440
+actually also a big interview question
  
 
 275
-00:05:32,919 --> 00:05:36,029
-of the state variable which is likes in
-this example and returns an array
+00:04:19,440 --> 00:04:20,870
+actually also a big interview question
+is what's the difference between an
 
 276
-00:05:36,029 --> 00:05:36,039
-this example and returns an array
+00:04:20,870 --> 00:04:20,880
+is what's the difference between an
  
 
 277
-00:05:36,039 --> 00:05:38,550
-this example and returns an array
-containing the state variable and a
+00:04:20,880 --> 00:04:22,950
+is what's the difference between an
+abstract class and an interface let's
 
 278
-00:05:38,550 --> 00:05:38,560
-containing the state variable and a
+00:04:22,950 --> 00:04:22,960
+abstract class and an interface let's
  
 
 279
-00:05:38,560 --> 00:05:41,469
-containing the state variable and a
-function to update that state using our
+00:04:22,960 --> 00:04:25,749
+abstract class and an interface let's
+say we had an interface called like
 
 280
-00:05:41,469 --> 00:05:41,479
-function to update that state using our
+00:04:25,749 --> 00:04:25,759
+say we had an interface called like
  
 
 281
-00:05:41,479 --> 00:05:43,790
-function to update that state using our
-button example we could also update the
+00:04:25,759 --> 00:04:28,310
+say we had an interface called like
+animal stuff here in an interface we
 
 282
-00:05:43,790 --> 00:05:43,800
-button example we could also update the
+00:04:28,310 --> 00:04:28,320
+animal stuff here in an interface we
  
 
 283
-00:05:43,800 --> 00:05:45,469
-button example we could also update the
-number of times the button's been
+00:04:28,320 --> 00:04:31,510
+animal stuff here in an interface we
+could say how about public void poop
 
 284
-00:05:45,469 --> 00:05:45,479
-number of times the button's been
+00:04:31,510 --> 00:04:31,520
+could say how about public void poop
  
 
 285
-00:05:45,479 --> 00:05:47,950
-number of times the button's been
-clicked with the update function set
+00:04:31,520 --> 00:04:32,950
+could say how about public void poop
+just like every animal might make noise
 
 286
-00:05:47,950 --> 00:05:47,960
-clicked with the update function set
+00:04:32,950 --> 00:04:32,960
+just like every animal might make noise
  
 
 287
-00:05:47,960 --> 00:05:51,189
-clicked with the update function set
-clicks and display it in the button with
+00:04:32,960 --> 00:04:34,469
+just like every animal might make noise
+in different ways every animal is
 
 288
-00:05:51,189 --> 00:05:51,199
-clicks and display it in the button with
+00:04:34,469 --> 00:04:34,479
+in different ways every animal is
  
 
 289
-00:05:51,199 --> 00:05:53,070
-clicks and display it in the button with
-the state variable
+00:04:34,479 --> 00:04:35,749
+in different ways every animal is
+probably also going to poop in different
 
 290
-00:05:53,070 --> 00:05:53,080
-the state variable
+00:04:35,749 --> 00:04:35,759
+probably also going to poop in different
  
 
 291
-00:05:53,080 --> 00:05:55,909
-the state variable
-likes controlled components use State
+00:04:35,759 --> 00:04:37,670
+probably also going to poop in different
+ways in interfaces you don't need an
 
 292
-00:05:55,909 --> 00:05:55,919
-likes controlled components use State
+00:04:37,670 --> 00:04:37,680
+ways in interfaces you don't need an
  
 
 293
-00:05:55,919 --> 00:05:59,189
-likes controlled components use State
-values to have more predictable Behavior
+00:04:37,680 --> 00:04:39,350
+ways in interfaces you don't need an
+abstract keyword in your methods every
 
 294
-00:05:59,189 --> 00:05:59,199
-values to have more predictable Behavior
+00:04:39,350 --> 00:04:39,360
+abstract keyword in your methods every
  
 
 295
-00:05:59,199 --> 00:06:00,830
-values to have more predictable Behavior
-here's an example of a controlled
+00:04:39,360 --> 00:04:41,110
+abstract keyword in your methods every
+method in an interface is assumed to be
 
 296
-00:06:00,830 --> 00:06:00,840
-here's an example of a controlled
+00:04:41,110 --> 00:04:41,120
+method in an interface is assumed to be
  
 
 297
-00:06:00,840 --> 00:06:03,110
-here's an example of a controlled
-component where the value typed into the
+00:04:41,120 --> 00:04:42,950
+method in an interface is assumed to be
+abstract so you uh you don't need this
 
 298
-00:06:03,110 --> 00:06:03,120
-component where the value typed into the
+00:04:42,950 --> 00:04:42,960
+abstract so you uh you don't need this
  
 
 299
-00:06:03,120 --> 00:06:05,590
-component where the value typed into the
-input is being put into State and
+00:04:42,960 --> 00:04:44,550
+abstract so you uh you don't need this
+keyword as you probably know if you want
 
 300
-00:06:05,590 --> 00:06:05,600
-input is being put into State and
+00:04:44,550 --> 00:04:44,560
+keyword as you probably know if you want
  
 
 301
-00:06:05,600 --> 00:06:09,029
-input is being put into State and
-controlled by the state variable value
+00:04:44,560 --> 00:04:46,629
+keyword as you probably know if you want
+to implement an interface so all you
 
 302
-00:06:09,029 --> 00:06:09,039
-controlled by the state variable value
+00:04:46,629 --> 00:04:46,639
+to implement an interface so all you
  
 
 303
-00:06:09,039 --> 00:06:11,790
-controlled by the state variable value
-here's how it works the user types and
+00:04:46,639 --> 00:04:48,550
+to implement an interface so all you
+have to do is instead of extending
 
 304
-00:06:11,790 --> 00:06:11,800
-here's how it works the user types and
+00:04:48,550 --> 00:04:48,560
+have to do is instead of extending
  
 
 305
-00:06:11,800 --> 00:06:13,950
-here's how it works the user types and
-set value puts what the user typed into
+00:04:48,560 --> 00:04:50,469
+have to do is instead of extending
+another class you just say
 
 306
-00:06:13,950 --> 00:06:13,960
-set value puts what the user typed into
+00:04:50,469 --> 00:04:50,479
+another class you just say
  
 
 307
-00:06:13,960 --> 00:06:17,309
-set value puts what the user typed into
-State the state value is then updated
+00:04:50,479 --> 00:04:53,110
+another class you just say
+implements the interface which is animal
 
 308
-00:06:17,309 --> 00:06:17,319
-State the state value is then updated
+00:04:53,110 --> 00:04:53,120
+implements the interface which is animal
  
 
 309
-00:06:17,319 --> 00:06:20,350
-State the state value is then updated
-and finally the input uses that updated
+00:04:53,120 --> 00:04:54,710
+implements the interface which is animal
+stuff and now that we implement this
 
 310
-00:06:20,350 --> 00:06:20,360
-and finally the input uses that updated
+00:04:54,710 --> 00:04:54,720
+stuff and now that we implement this
  
 
 311
-00:06:20,360 --> 00:06:23,270
-and finally the input uses that updated
-State as its value controlled components
+00:04:54,720 --> 00:04:56,629
+stuff and now that we implement this
+animal stuff interface we have to
 
 312
-00:06:23,270 --> 00:06:23,280
-State as its value controlled components
+00:04:56,629 --> 00:04:56,639
+animal stuff interface we have to
  
 
 313
-00:06:23,280 --> 00:06:25,430
-State as its value controlled components
-are a great pattern to use because if we
+00:04:56,639 --> 00:04:58,550
+animal stuff interface we have to
+implement this poop method you see right
 
 314
-00:06:25,430 --> 00:06:25,440
-are a great pattern to use because if we
+00:04:58,550 --> 00:04:58,560
+implement this poop method you see right
  
 
 315
-00:06:25,440 --> 00:06:27,710
-are a great pattern to use because if we
-want to change the component's behavior
+00:04:58,560 --> 00:05:00,230
+implement this poop method you see right
+now we get an error that says type cat
 
 316
-00:06:27,710 --> 00:06:27,720
-want to change the component's behavior
+00:05:00,230 --> 00:05:00,240
+now we get an error that says type cat
  
 
 317
-00:06:27,720 --> 00:06:29,710
-want to change the component's behavior
-we just need to change the state that
+00:05:00,240 --> 00:05:02,390
+now we get an error that says type cat
+must implement the inherited abstract
 
 318
-00:06:29,710 --> 00:06:29,720
-we just need to change the state that
+00:05:02,390 --> 00:05:02,400
+must implement the inherited abstract
  
 
 319
-00:06:29,720 --> 00:06:32,830
-we just need to change the state that
-controls it UST state is an example of a
+00:05:02,400 --> 00:05:03,990
+must implement the inherited abstract
+method poop we can just click the
 
 320
-00:06:32,830 --> 00:06:32,840
-controls it UST state is an example of a
+00:05:03,990 --> 00:05:04,000
+method poop we can just click the
  
 
 321
-00:06:32,840 --> 00:06:35,270
-controls it UST state is an example of a
-react hook which allow us to hook into
+00:05:04,000 --> 00:05:05,670
+method poop we can just click the
+suggestion here to add the unimplemented
 
 322
-00:06:35,270 --> 00:06:35,280
-react hook which allow us to hook into
+00:05:05,670 --> 00:05:05,680
+suggestion here to add the unimplemented
  
 
 323
-00:06:35,280 --> 00:06:37,830
-react hook which allow us to hook into
-features such as state within function
+00:05:05,680 --> 00:05:07,510
+suggestion here to add the unimplemented
+method print out
 
 324
-00:06:37,830 --> 00:06:37,840
-features such as state within function
+00:05:07,510 --> 00:05:07,520
+method print out
  
 
 325
-00:06:37,840 --> 00:06:40,070
-features such as state within function
-components there are five main types of
+00:05:07,520 --> 00:05:09,590
+method print out
+like
 
 326
-00:06:40,070 --> 00:06:40,080
-components there are five main types of
+00:05:09,590 --> 00:05:09,600
+like
  
 
 327
-00:06:40,080 --> 00:06:42,550
-components there are five main types of
-hooks State hooks like use State and use
+00:05:09,600 --> 00:05:11,350
+like
+sounds pretty poopy so just like this
 
 328
-00:06:42,550 --> 00:06:42,560
-hooks State hooks like use State and use
+00:05:11,350 --> 00:05:11,360
+sounds pretty poopy so just like this
  
 
 329
-00:06:42,560 --> 00:06:44,670
-hooks State hooks like use State and use
-reducer help you manage state within
+00:05:11,360 --> 00:05:13,350
+sounds pretty poopy so just like this
+abstract make noise method made any
 
 330
-00:06:44,670 --> 00:06:44,680
-reducer help you manage state within
+00:05:13,350 --> 00:05:13,360
+abstract make noise method made any
  
 
 331
-00:06:44,680 --> 00:06:47,589
-reducer help you manage state within
-react components context hooks such as
+00:05:13,360 --> 00:05:14,870
+abstract make noise method made any
+subclass implement this make noise
 
 332
-00:06:47,589 --> 00:06:47,599
-react components context hooks such as
+00:05:14,870 --> 00:05:14,880
+subclass implement this make noise
  
 
 333
-00:06:47,599 --> 00:06:50,670
-react components context hooks such as
-use context let you Ed data pass through
+00:05:14,880 --> 00:05:17,430
+subclass implement this make noise
+method this interface also makes any
 
 334
-00:06:50,670 --> 00:06:50,680
-use context let you Ed data pass through
+00:05:17,430 --> 00:05:17,440
+method this interface also makes any
  
 
 335
-00:06:50,680 --> 00:06:54,350
-use context let you Ed data pass through
-react context ref hooks such as use ref
+00:05:17,440 --> 00:05:19,189
+method this interface also makes any
+classes that implement the interface
 
 336
-00:06:54,350 --> 00:06:54,360
-react context ref hooks such as use ref
+00:05:19,189 --> 00:05:19,199
+classes that implement the interface
  
 
 337
-00:06:54,360 --> 00:06:56,830
-react context ref hooks such as use ref
-let you reference things like HTML
+00:05:19,199 --> 00:05:20,550
+classes that implement the interface
+implement this method they seem like
 
 338
-00:06:56,830 --> 00:06:56,840
-let you reference things like HTML
+00:05:20,550 --> 00:05:20,560
+implement this method they seem like
  
 
 339
-00:06:56,840 --> 00:06:59,830
-let you reference things like HTML
-elements effect hooks like use effect
+00:05:20,560 --> 00:05:21,670
+implement this method they seem like
+they're doing the same thing right
 
 340
-00:06:59,830 --> 00:06:59,840
-elements effect hooks like use effect
+00:05:21,670 --> 00:05:21,680
+they're doing the same thing right
  
 
 341
-00:06:59,840 --> 00:07:01,670
-elements effect hooks like use effect
-let you connect with external systems
+00:05:21,680 --> 00:05:23,029
+they're doing the same thing right
+what's the difference the first key
 
 342
-00:07:01,670 --> 00:07:01,680
-let you connect with external systems
+00:05:23,029 --> 00:05:23,039
+what's the difference the first key
  
 
 343
-00:07:01,680 --> 00:07:04,629
-let you connect with external systems
-like browser apis and performance hooks
+00:05:23,039 --> 00:05:25,110
+what's the difference the first key
+difference is that you can implement as
 
 344
-00:07:04,629 --> 00:07:04,639
-like browser apis and performance hooks
+00:05:25,110 --> 00:05:25,120
+difference is that you can implement as
  
 
 345
-00:07:04,639 --> 00:07:07,110
-like browser apis and performance hooks
-like use memo and use callback which can
+00:05:25,120 --> 00:05:27,110
+difference is that you can implement as
+many interfaces as you want in java
 
 346
-00:07:07,110 --> 00:07:07,120
-like use memo and use callback which can
+00:05:27,110 --> 00:05:27,120
+many interfaces as you want in java
  
 
 347
-00:07:07,120 --> 00:07:08,830
-like use memo and use callback which can
-improve performance by preventing
+00:05:27,120 --> 00:05:29,270
+many interfaces as you want in java
+there's no limit but you can only extend
 
 348
-00:07:08,830 --> 00:07:08,840
-improve performance by preventing
+00:05:29,270 --> 00:05:29,280
+there's no limit but you can only extend
  
 
 349
-00:07:08,840 --> 00:07:11,550
-improve performance by preventing
-unnecessary work you'll use all of these
+00:05:29,280 --> 00:05:31,189
+there's no limit but you can only extend
+one class and you can totally do both if
 
 350
-00:07:11,550 --> 00:07:11,560
-unnecessary work you'll use all of these
+00:05:31,189 --> 00:05:31,199
+one class and you can totally do both if
  
 
 351
-00:07:11,560 --> 00:07:13,670
-unnecessary work you'll use all of these
-hooks at some point but the majority of
+00:05:31,199 --> 00:05:32,950
+one class and you can totally do both if
+you want to you can extend the animal
 
 352
-00:07:13,670 --> 00:07:13,680
-hooks at some point but the majority of
+00:05:32,950 --> 00:05:32,960
+you want to you can extend the animal
  
 
 353
-00:07:13,680 --> 00:07:15,589
-hooks at some point but the majority of
-the time you'll likely use just three
+00:05:32,960 --> 00:05:35,029
+you want to you can extend the animal
+class and implement the animal stuff
 
 354
-00:07:15,589 --> 00:07:15,599
-the time you'll likely use just three
+00:05:35,029 --> 00:05:35,039
+class and implement the animal stuff
  
 
 355
-00:07:15,599 --> 00:07:18,390
-the time you'll likely use just three
-hooks in your react components use State
+00:05:35,039 --> 00:05:36,870
+class and implement the animal stuff
+interface another difference is that in
 
 356
-00:07:18,390 --> 00:07:18,400
-hooks in your react components use State
+00:05:36,870 --> 00:05:36,880
+interface another difference is that in
  
 
 357
-00:07:18,400 --> 00:07:21,749
-hooks in your react components use State
-use effect and use ref when you think of
+00:05:36,880 --> 00:05:39,110
+interface another difference is that in
+interfaces if you declare any fields
 
 358
-00:07:21,749 --> 00:07:21,759
-use effect and use ref when you think of
+00:05:39,110 --> 00:05:39,120
+interfaces if you declare any fields
  
 
 359
-00:07:21,759 --> 00:07:23,550
-use effect and use ref when you think of
-the word purity you might think of
+00:05:39,120 --> 00:05:42,310
+interfaces if you declare any fields
+like if you had end age and string name
 
 360
-00:07:23,550 --> 00:07:23,560
-the word purity you might think of
+00:05:42,310 --> 00:05:42,320
+like if you had end age and string name
  
 
 361
-00:07:23,560 --> 00:07:26,270
-the word purity you might think of
-something like purified water Purity is
+00:05:42,320 --> 00:05:43,830
+like if you had end age and string name
+every field that's declared inside an
 
 362
-00:07:26,270 --> 00:07:26,280
-something like purified water Purity is
+00:05:43,830 --> 00:05:43,840
+every field that's declared inside an
  
 
 363
-00:07:26,280 --> 00:07:28,270
-something like purified water Purity is
-a term used to describe how react
+00:05:43,840 --> 00:05:46,070
+every field that's declared inside an
+interface is going to be static and
 
 364
-00:07:28,270 --> 00:07:28,280
-a term used to describe how react
+00:05:46,070 --> 00:05:46,080
+interface is going to be static and
  
 
 365
-00:07:28,280 --> 00:07:30,510
-a term used to describe how react
-components should work work but this
+00:05:46,080 --> 00:05:47,510
+interface is going to be static and
+final that's why i'm getting an error
 
 366
-00:07:30,510 --> 00:07:30,520
-components should work work but this
+00:05:47,510 --> 00:05:47,520
+final that's why i'm getting an error
  
 
 367
-00:07:30,520 --> 00:07:32,189
-components should work work but this
-type of Purity is more like how
+00:05:47,520 --> 00:05:49,189
+final that's why i'm getting an error
+here because it's final i have to
 
 368
-00:07:32,189 --> 00:07:32,199
-type of Purity is more like how
+00:05:49,189 --> 00:05:49,199
+here because it's final i have to
  
 
 369
-00:07:32,199 --> 00:07:34,830
-type of Purity is more like how
-mathematical formulas are pure pure
+00:05:49,199 --> 00:05:51,110
+here because it's final i have to
+instantiate it with some kind of a value
 
 370
-00:07:34,830 --> 00:07:34,840
-mathematical formulas are pure pure
+00:05:51,110 --> 00:05:51,120
+instantiate it with some kind of a value
  
 
 371
-00:07:34,840 --> 00:07:36,710
-mathematical formulas are pure pure
-react components mean that the same
+00:05:51,120 --> 00:05:53,029
+instantiate it with some kind of a value
+larry because every field in an
 
 372
-00:07:36,710 --> 00:07:36,720
-react components mean that the same
+00:05:53,029 --> 00:05:53,039
+larry because every field in an
  
 
 373
-00:07:36,720 --> 00:07:38,589
-react components mean that the same
-input should always return the same
+00:05:53,039 --> 00:05:54,950
+larry because every field in an
+interface is automatically static that
 
 374
-00:07:38,589 --> 00:07:38,599
-input should always return the same
+00:05:54,950 --> 00:05:54,960
+interface is automatically static that
  
 
 375
-00:07:38,599 --> 00:07:41,749
-input should always return the same
-output to keep a react component pure
+00:05:54,960 --> 00:05:57,189
+interface is automatically static that
+means the same values apply to every
 
 376
-00:07:41,749 --> 00:07:41,759
-output to keep a react component pure
+00:05:57,189 --> 00:05:57,199
+means the same values apply to every
  
 
 377
-00:07:41,759 --> 00:07:45,110
-output to keep a react component pure
-they should only return their jsx and
+00:05:57,199 --> 00:05:59,990
+means the same values apply to every
+object in that class if i say age equals
 
 378
-00:07:45,110 --> 00:07:45,120
-they should only return their jsx and
+00:05:59,990 --> 00:06:00,000
+object in that class if i say age equals
  
 
 379
-00:07:45,120 --> 00:07:47,790
-they should only return their jsx and
-not change any objects or variables that
+00:06:00,000 --> 00:06:01,909
+object in that class if i say age equals
+one that would have to apply to every
 
 380
-00:07:47,790 --> 00:07:47,800
-not change any objects or variables that
+00:06:01,909 --> 00:06:01,919
+one that would have to apply to every
  
 
 381
-00:07:47,800 --> 00:07:49,869
-not change any objects or variables that
-existed before rendering the cup
+00:06:01,919 --> 00:06:03,830
+one that would have to apply to every
+class that implements this interface so
 
 382
-00:07:49,869 --> 00:07:49,879
-existed before rendering the cup
+00:06:03,830 --> 00:06:03,840
+class that implements this interface so
  
 
 383
-00:07:49,879 --> 00:07:52,270
-existed before rendering the cup
-component in this example is impure
+00:06:03,840 --> 00:06:04,950
+class that implements this interface so
+it really doesn't make a whole lot of
 
 384
-00:07:52,270 --> 00:07:52,280
-component in this example is impure
+00:06:04,950 --> 00:06:04,960
+it really doesn't make a whole lot of
  
 
 385
-00:07:52,280 --> 00:07:54,309
-component in this example is impure
-because it changes the variable count
+00:06:04,960 --> 00:06:07,270
+it really doesn't make a whole lot of
+sense to have fields like this inside
 
 386
-00:07:54,309 --> 00:07:54,319
-because it changes the variable count
+00:06:07,270 --> 00:06:07,280
+sense to have fields like this inside
  
 
 387
-00:07:54,319 --> 00:07:56,990
-because it changes the variable count
-during render which exists outside the
+00:06:07,280 --> 00:06:10,230
+sense to have fields like this inside
+interfaces that's why we have abstract
 
 388
-00:07:56,990 --> 00:07:57,000
-during render which exists outside the
+00:06:10,230 --> 00:06:10,240
+interfaces that's why we have abstract
  
 
 389
-00:07:57,000 --> 00:07:59,469
-during render which exists outside the
-component this leads to the jsx have
+00:06:10,240 --> 00:06:11,909
+interfaces that's why we have abstract
+classes like this so you can say hey
 
 390
-00:07:59,469 --> 00:07:59,479
-component this leads to the jsx have
+00:06:11,909 --> 00:06:11,919
+classes like this so you can say hey
  
 
 391
-00:07:59,479 --> 00:08:01,950
-component this leads to the jsx have
-having the wrong output when it is used
+00:06:11,919 --> 00:06:14,390
+classes like this so you can say hey
+every animal has to have an age and a
 
 392
-00:08:01,950 --> 00:08:01,960
-having the wrong output when it is used
+00:06:14,390 --> 00:06:14,400
+every animal has to have an age and a
  
 
 393
-00:08:01,960 --> 00:08:04,469
-having the wrong output when it is used
-more than once to help make sure we
+00:06:14,400 --> 00:06:15,830
+every animal has to have an age and a
+name but i'm not going to tell you what
 
 394
-00:08:04,469 --> 00:08:04,479
-more than once to help make sure we
+00:06:15,830 --> 00:06:15,840
+name but i'm not going to tell you what
  
 
 395
-00:08:04,479 --> 00:08:06,430
-more than once to help make sure we
-don't run into errors like this we can
+00:06:15,840 --> 00:06:16,790
+name but i'm not going to tell you what
+it is right now because that doesn't
 
 396
-00:08:06,430 --> 00:08:06,440
-don't run into errors like this we can
+00:06:16,790 --> 00:06:16,800
+it is right now because that doesn't
  
 
 397
-00:08:06,440 --> 00:08:08,710
-don't run into errors like this we can
-use something called strict mode strict
+00:06:16,800 --> 00:06:19,350
+it is right now because that doesn't
+make sense each individual cat object
 
 398
-00:08:08,710 --> 00:08:08,720
-use something called strict mode strict
+00:06:19,350 --> 00:06:19,360
+make sense each individual cat object
  
 
 399
-00:08:08,720 --> 00:08:10,550
-use something called strict mode strict
-mode is a special component which tells
+00:06:19,360 --> 00:06:21,430
+make sense each individual cat object
+dog object and horse object can all have
 
 400
-00:08:10,550 --> 00:08:10,560
-mode is a special component which tells
+00:06:21,430 --> 00:06:21,440
+dog object and horse object can all have
  
 
 401
-00:08:10,560 --> 00:08:12,830
-mode is a special component which tells
-us about mistakes as we develop our
+00:06:21,440 --> 00:06:23,830
+dog object and horse object can all have
+their own age and name values so you can
 
 402
-00:08:12,830 --> 00:08:12,840
-us about mistakes as we develop our
+00:06:23,830 --> 00:06:23,840
+their own age and name values so you can
  
 
 403
-00:08:12,840 --> 00:08:14,830
-us about mistakes as we develop our
-react apps it's really convenient
+00:06:23,840 --> 00:06:26,070
+their own age and name values so you can
+do that with an abstract class but not
 
 404
-00:08:14,830 --> 00:08:14,840
-react apps it's really convenient
+00:06:26,070 --> 00:06:26,080
+do that with an abstract class but not
  
 
 405
-00:08:14,840 --> 00:08:16,830
-react apps it's really convenient
-because it's just a component we usually
+00:06:26,080 --> 00:06:27,590
+do that with an abstract class but not
+with an interface so you might want to
 
 406
-00:08:16,830 --> 00:08:16,840
-because it's just a component we usually
+00:06:27,590 --> 00:06:27,600
+with an interface so you might want to
  
 
 407
-00:08:16,840 --> 00:08:19,309
-because it's just a component we usually
-wrap around our app component and it'll
+00:06:27,600 --> 00:06:29,510
+with an interface so you might want to
+create an abstract class if you have a
 
 408
-00:08:19,309 --> 00:08:19,319
-wrap around our app component and it'll
+00:06:29,510 --> 00:06:29,520
+create an abstract class if you have a
  
 
 409
-00:08:19,319 --> 00:08:21,469
-wrap around our app component and it'll
-tell us when we really shouldn't do
+00:06:29,520 --> 00:06:31,590
+create an abstract class if you have a
+lot of closely related classes that you
 
 410
-00:08:21,469 --> 00:08:21,479
-tell us when we really shouldn't do
+00:06:31,590 --> 00:06:31,600
+lot of closely related classes that you
  
 
 411
-00:08:21,479 --> 00:08:23,710
-tell us when we really shouldn't do
-something but what if we need to do
+00:06:31,600 --> 00:06:33,350
+lot of closely related classes that you
+want to have the same functionality and
 
 412
-00:08:23,710 --> 00:08:23,720
-something but what if we need to do
+00:06:33,350 --> 00:06:33,360
+want to have the same functionality and
  
 
 413
-00:08:23,720 --> 00:08:26,230
-something but what if we need to do
-something outside our react app your app
+00:06:33,360 --> 00:06:35,270
+want to have the same functionality and
+the same types of fields available but
 
 414
-00:08:26,230 --> 00:08:26,240
-something outside our react app your app
+00:06:35,270 --> 00:06:35,280
+the same types of fields available but
  
 
 415
-00:08:26,240 --> 00:08:28,589
-something outside our react app your app
-might need to talk with the browser API
+00:06:35,280 --> 00:06:36,710
+the same types of fields available but
+you might want to make an interface
 
 416
-00:08:28,589 --> 00:08:28,599
-might need to talk with the browser API
+00:06:36,710 --> 00:06:36,720
+you might want to make an interface
  
 
 417
-00:08:28,599 --> 00:08:31,350
-might need to talk with the browser API
-or make a request to a server if you do
+00:06:36,720 --> 00:06:39,029
+you might want to make an interface
+instead if you have a lot of unrelated
 
 418
-00:08:31,350 --> 00:08:31,360
-or make a request to a server if you do
+00:06:39,029 --> 00:06:39,039
+instead if you have a lot of unrelated
  
 
 419
-00:08:31,360 --> 00:08:33,149
-or make a request to a server if you do
-have an external system you're going to
+00:06:39,039 --> 00:06:41,110
+instead if you have a lot of unrelated
+classes that you all want to be able to
 
 420
-00:08:33,149 --> 00:08:33,159
-have an external system you're going to
+00:06:41,110 --> 00:06:41,120
+classes that you all want to be able to
  
 
 421
-00:08:33,159 --> 00:08:36,190
-have an external system you're going to
-need a way to step outside of react
+00:06:41,120 --> 00:06:43,110
+classes that you all want to be able to
+do a certain thing that makes it so you
 
 422
-00:08:36,190 --> 00:08:36,200
-need a way to step outside of react
+00:06:43,110 --> 00:06:43,120
+do a certain thing that makes it so you
  
 
 423
-00:08:36,200 --> 00:08:38,310
-need a way to step outside of react
-effects are code that reach outside of
+00:06:43,120 --> 00:06:44,469
+do a certain thing that makes it so you
+can guarantee that other types of
 
 424
-00:08:38,310 --> 00:08:38,320
-effects are code that reach outside of
+00:06:44,469 --> 00:06:44,479
+can guarantee that other types of
  
 
 425
-00:08:38,320 --> 00:08:41,149
-effects are code that reach outside of
-our react application usually effects
+00:06:44,479 --> 00:06:46,550
+can guarantee that other types of
+classes will be able to poop even if
 
 426
-00:08:41,149 --> 00:08:41,159
-our react application usually effects
+00:06:46,550 --> 00:06:46,560
+classes will be able to poop even if
  
 
 427
-00:08:41,159 --> 00:08:43,230
-our react application usually effects
-also known as side effects can be done
+00:06:46,560 --> 00:06:48,390
+classes will be able to poop even if
+they aren't animals that might be the
 
 428
-00:08:43,230 --> 00:08:43,240
-also known as side effects can be done
+00:06:48,390 --> 00:06:48,400
+they aren't animals that might be the
  
 
 429
-00:08:43,240 --> 00:08:45,949
-also known as side effects can be done
-within event handlers for example to
+00:06:48,400 --> 00:06:50,469
+they aren't animals that might be the
+weirdest sentence ever said in a java
 
 430
-00:08:45,949 --> 00:08:45,959
-within event handlers for example to
+00:06:50,469 --> 00:06:50,479
+weirdest sentence ever said in a java
  
 
 431
-00:08:45,959 --> 00:08:48,630
-within event handlers for example to
-make an HTTP request when you submit a
+00:06:50,479 --> 00:06:52,230
+weirdest sentence ever said in a java
+tutorial if you have any questions or
 
 432
-00:08:48,630 --> 00:08:48,640
-make an HTTP request when you submit a
+00:06:52,230 --> 00:06:52,240
+tutorial if you have any questions or
  
 
 433
-00:08:48,640 --> 00:08:51,430
-make an HTTP request when you submit a
-form or click on a button if you can't
+00:06:52,240 --> 00:06:53,670
+tutorial if you have any questions or
+clarifications let me know in the
 
 434
-00:08:51,430 --> 00:08:51,440
-form or click on a button if you can't
+00:06:53,670 --> 00:06:53,680
+clarifications let me know in the
  
 
 435
-00:08:51,440 --> 00:08:53,870
-form or click on a button if you can't
-run your effects within an event handler
+00:06:53,680 --> 00:06:55,270
+clarifications let me know in the
+comments or if i got something wrong
 
 436
-00:08:53,870 --> 00:08:53,880
-run your effects within an event handler
+00:06:55,270 --> 00:06:55,280
+comments or if i got something wrong
  
 
 437
-00:08:53,880 --> 00:08:55,590
-run your effects within an event handler
-then you can run them using the use
+00:06:55,280 --> 00:06:56,790
+comments or if i got something wrong
+feel free to shout and rant at me
 
 438
-00:08:55,590 --> 00:08:55,600
-then you can run them using the use
+00:06:56,790 --> 00:06:56,800
+feel free to shout and rant at me
  
 
 439
-00:08:55,600 --> 00:08:58,550
-then you can run them using the use
-effect hook for example a common pattern
+00:06:56,800 --> 00:06:58,230
+feel free to shout and rant at me
+angrily thanks so much for watching and
 
 440
-00:08:58,550 --> 00:08:58,560
-effect hook for example a common pattern
+00:06:58,230 --> 00:06:58,240
+angrily thanks so much for watching and
  
 
 441
-00:08:58,560 --> 00:09:00,750
-effect hook for example a common pattern
-is to fetch dat data when components
-
-442
-00:09:00,750 --> 00:09:00,760
-is to fetch dat data when components
- 
-
-443
-00:09:00,760 --> 00:09:03,990
-is to fetch dat data when components
-first load with the use effect hook like
-
-444
-00:09:03,990 --> 00:09:04,000
-first load with the use effect hook like
- 
-
-445
-00:09:04,000 --> 00:09:05,910
-first load with the use effect hook like
-effects sometimes you want to step
-
-446
-00:09:05,910 --> 00:09:05,920
-effects sometimes you want to step
- 
-
-447
-00:09:05,920 --> 00:09:08,470
-effects sometimes you want to step
-outside react and work directly with the
-
-448
-00:09:08,470 --> 00:09:08,480
-outside react and work directly with the
- 
-
-449
-00:09:08,480 --> 00:09:11,509
-outside react and work directly with the
-Dom to reference an actual Dom element
-
-450
-00:09:11,509 --> 00:09:11,519
-Dom to reference an actual Dom element
- 
-
-451
-00:09:11,519 --> 00:09:13,949
-Dom to reference an actual Dom element
-you can use what's called a ref you can
-
-452
-00:09:13,949 --> 00:09:13,959
-you can use what's called a ref you can
- 
-
-453
-00:09:13,959 --> 00:09:16,509
-you can use what's called a ref you can
-create a ref with the Ed ref hook and to
-
-454
-00:09:16,509 --> 00:09:16,519
-create a ref with the Ed ref hook and to
- 
-
-455
-00:09:16,519 --> 00:09:19,110
-create a ref with the Ed ref hook and to
-get access to a Dom element use the ref
-
-456
-00:09:19,110 --> 00:09:19,120
-get access to a Dom element use the ref
- 
-
-457
-00:09:19,120 --> 00:09:22,190
-get access to a Dom element use the ref
-prop on any react element for some tasks
-
-458
-00:09:22,190 --> 00:09:22,200
-prop on any react element for some tasks
- 
-
-459
-00:09:22,200 --> 00:09:24,230
-prop on any react element for some tasks
-such as focusing an input it's much
-
-460
-00:09:24,230 --> 00:09:24,240
-such as focusing an input it's much
- 
-
-461
-00:09:24,240 --> 00:09:26,190
-such as focusing an input it's much
-easier to reference the actual Dom
-
-462
-00:09:26,190 --> 00:09:26,200
-easier to reference the actual Dom
- 
-
-463
-00:09:26,200 --> 00:09:28,430
-easier to reference the actual Dom
-element instead of attempting to do it
-
-464
-00:09:28,430 --> 00:09:28,440
-element instead of attempting to do it
- 
-
-465
-00:09:28,440 --> 00:09:30,030
-element instead of attempting to do it
-the react way
-
-466
-00:09:30,030 --> 00:09:30,040
-the react way
- 
-
-467
-00:09:30,040 --> 00:09:32,710
-the react way
-context is a powerful way to pass prop
-
-468
-00:09:32,710 --> 00:09:32,720
-context is a powerful way to pass prop
- 
-
-469
-00:09:32,720 --> 00:09:35,190
-context is a powerful way to pass prop
-data through your apps components most
-
-470
-00:09:35,190 --> 00:09:35,200
-data through your apps components most
- 
-
-471
-00:09:35,200 --> 00:09:37,269
-data through your apps components most
-react apps have tons of nested
-
-472
-00:09:37,269 --> 00:09:37,279
-react apps have tons of nested
- 
-
-473
-00:09:37,279 --> 00:09:39,710
-react apps have tons of nested
-components to get data down multiple
-
-474
-00:09:39,710 --> 00:09:39,720
-components to get data down multiple
- 
-
-475
-00:09:39,720 --> 00:09:42,430
-components to get data down multiple
-levels involves passing the same props
-
-476
-00:09:42,430 --> 00:09:42,440
-levels involves passing the same props
- 
-
-477
-00:09:42,440 --> 00:09:44,430
-levels involves passing the same props
-through components that don't actually
-
-478
-00:09:44,430 --> 00:09:44,440
-through components that don't actually
- 
-
-479
-00:09:44,440 --> 00:09:47,150
-through components that don't actually
-need it context lets us jump through the
-
-480
-00:09:47,150 --> 00:09:47,160
-need it context lets us jump through the
- 
-
-481
-00:09:47,160 --> 00:09:49,910
-need it context lets us jump through the
-component tree and use data at any level
-
-482
-00:09:49,910 --> 00:09:49,920
-component tree and use data at any level
- 
-
-483
-00:09:49,920 --> 00:09:52,710
-component tree and use data at any level
-without making props to use context you
-
-484
-00:09:52,710 --> 00:09:52,720
-without making props to use context you
- 
-
-485
-00:09:52,720 --> 00:09:55,030
-without making props to use context you
-first create context in a parent
-
-486
-00:09:55,030 --> 00:09:55,040
-first create context in a parent
- 
-
-487
-00:09:55,040 --> 00:09:57,110
-first create context in a parent
-component then wrap your parent
-
-488
-00:09:57,110 --> 00:09:57,120
-component then wrap your parent
- 
-
-489
-00:09:57,120 --> 00:09:59,550
-component then wrap your parent
-component in a special context component
-
-490
-00:09:59,550 --> 00:09:59,560
-component in a special context component
- 
-
-491
-00:09:59,560 --> 00:10:02,350
-component in a special context component
-called a context provider put the data
-
-492
-00:10:02,350 --> 00:10:02,360
-called a context provider put the data
- 
-
-493
-00:10:02,360 --> 00:10:05,150
-called a context provider put the data
-you want to pass down on the provider
-
-494
-00:10:05,150 --> 00:10:05,160
-you want to pass down on the provider
- 
-
-495
-00:10:05,160 --> 00:10:07,389
-you want to pass down on the provider
-and finally access that data in any
-
-496
-00:10:07,389 --> 00:10:07,399
-and finally access that data in any
- 
-
-497
-00:10:07,399 --> 00:10:10,190
-and finally access that data in any
-child component with the used context
-
-498
-00:10:10,190 --> 00:10:10,200
-child component with the used context
- 
-
-499
-00:10:10,200 --> 00:10:12,990
-child component with the used context
-hook portals on the other hand are kind
-
-500
-00:10:12,990 --> 00:10:13,000
-hook portals on the other hand are kind
- 
-
-501
-00:10:13,000 --> 00:10:15,710
-hook portals on the other hand are kind
-of like context but for components
-
-502
-00:10:15,710 --> 00:10:15,720
-of like context but for components
- 
-
-503
-00:10:15,720 --> 00:10:17,670
-of like context but for components
-portals let you move react components
-
-504
-00:10:17,670 --> 00:10:17,680
-portals let you move react components
- 
-
-505
-00:10:17,680 --> 00:10:20,990
-portals let you move react components
-into any HTML element you select portals
-
-506
-00:10:20,990 --> 00:10:21,000
-into any HTML element you select portals
- 
-
-507
-00:10:21,000 --> 00:10:22,590
-into any HTML element you select portals
-are great for components that can't be
-
-508
-00:10:22,590 --> 00:10:22,600
-are great for components that can't be
- 
-
-509
-00:10:22,600 --> 00:10:24,230
-are great for components that can't be
-displayed properly because of their
-
-510
-00:10:24,230 --> 00:10:24,240
-displayed properly because of their
- 
-
-511
-00:10:24,240 --> 00:10:26,630
-displayed properly because of their
-parents component styles for example for
-
-512
-00:10:26,630 --> 00:10:26,640
-parents component styles for example for
- 
-
-513
-00:10:26,640 --> 00:10:29,389
-parents component styles for example for
-displaying modals drop-down menus and
-
-514
-00:10:29,389 --> 00:10:29,399
-displaying modals drop-down menus and
- 
-
-515
-00:10:29,399 --> 00:10:32,430
-displaying modals drop-down menus and
-tool tips to create a portal just use
-
-516
-00:10:32,430 --> 00:10:32,440
-tool tips to create a portal just use
- 
-
-517
-00:10:32,440 --> 00:10:34,790
-tool tips to create a portal just use
-the create portal function pass your
-
-518
-00:10:34,790 --> 00:10:34,800
-the create portal function pass your
- 
-
-519
-00:10:34,800 --> 00:10:37,470
-the create portal function pass your
-component to it and choose the HTML
-
-520
-00:10:37,470 --> 00:10:37,480
-component to it and choose the HTML
- 
-
-521
-00:10:37,480 --> 00:10:39,030
-component to it and choose the HTML
-element where you'd like your react
-
-522
-00:10:39,030 --> 00:10:39,040
-element where you'd like your react
- 
-
-523
-00:10:39,040 --> 00:10:41,910
-element where you'd like your react
-component to appear suspense is a
-
-524
-00:10:41,910 --> 00:10:41,920
-component to appear suspense is a
- 
-
-525
-00:10:41,920 --> 00:10:43,550
-component to appear suspense is a
-special component that helps you handle
-
-526
-00:10:43,550 --> 00:10:43,560
-special component that helps you handle
- 
-
-527
-00:10:43,560 --> 00:10:46,829
-special component that helps you handle
-loading a component or its data suspense
-
-528
-00:10:46,829 --> 00:10:46,839
-loading a component or its data suspense
- 
-
-529
-00:10:46,839 --> 00:10:48,870
-loading a component or its data suspense
-is helpful for components that take some
-
-530
-00:10:48,870 --> 00:10:48,880
-is helpful for components that take some
- 
-
-531
-00:10:48,880 --> 00:10:51,509
-is helpful for components that take some
-time to fetch data it provides a better
-
-532
-00:10:51,509 --> 00:10:51,519
-time to fetch data it provides a better
- 
-
-533
-00:10:51,519 --> 00:10:53,710
-time to fetch data it provides a better
-user experience to show a fallback
-
-534
-00:10:53,710 --> 00:10:53,720
-user experience to show a fallback
- 
-
-535
-00:10:53,720 --> 00:10:55,910
-user experience to show a fallback
-component like a loading spinner until
-
-536
-00:10:55,910 --> 00:10:55,920
-component like a loading spinner until
- 
-
-537
-00:10:55,920 --> 00:10:58,550
-component like a loading spinner until
-the data is available instead of nothing
-
-538
-00:10:58,550 --> 00:10:58,560
-the data is available instead of nothing
- 
-
-539
-00:10:58,560 --> 00:11:00,710
-the data is available instead of nothing
-suspense is also useful if you're lazily
-
-540
-00:11:00,710 --> 00:11:00,720
-suspense is also useful if you're lazily
- 
-
-541
-00:11:00,720 --> 00:11:03,190
-suspense is also useful if you're lazily
-loading a component which lets us load a
-
-542
-00:11:03,190 --> 00:11:03,200
-loading a component which lets us load a
- 
-
-543
-00:11:03,200 --> 00:11:06,310
-loading a component which lets us load a
-component only when it's needed since
-
-544
-00:11:06,310 --> 00:11:06,320
-component only when it's needed since
- 
-
-545
-00:11:06,320 --> 00:11:08,629
-component only when it's needed since
-react apps are all JavaScript errors
-
-546
-00:11:08,629 --> 00:11:08,639
-react apps are all JavaScript errors
- 
-
-547
-00:11:08,639 --> 00:11:10,550
-react apps are all JavaScript errors
-that happen during rendering can totally
-
-548
-00:11:10,550 --> 00:11:10,560
-that happen during rendering can totally
- 
-
-549
-00:11:10,560 --> 00:11:12,750
-that happen during rendering can totally
-break your app airor boundaries are
-
-550
-00:11:12,750 --> 00:11:12,760
-break your app airor boundaries are
- 
-
-551
-00:11:12,760 --> 00:11:14,430
-break your app airor boundaries are
-components that let you catch app
-
-552
-00:11:14,430 --> 00:11:14,440
-components that let you catch app
- 
-
-553
-00:11:14,440 --> 00:11:16,269
-components that let you catch app
-breaking errors and show a fallback
-
-554
-00:11:16,269 --> 00:11:16,279
-breaking errors and show a fallback
- 
-
-555
-00:11:16,279 --> 00:11:18,269
-breaking errors and show a fallback
-component to tell the user about what
-
-556
-00:11:18,269 --> 00:11:18,279
-component to tell the user about what
- 
-
-557
-00:11:18,279 --> 00:11:21,150
-component to tell the user about what
-happened for example our app will crash
-
-558
-00:11:21,150 --> 00:11:21,160
-happened for example our app will crash
- 
-
-559
-00:11:21,160 --> 00:11:23,470
-happened for example our app will crash
-if we run this code because it throws an
-
-560
-00:11:23,470 --> 00:11:23,480
-if we run this code because it throws an
- 
-
-561
-00:11:23,480 --> 00:11:25,949
-if we run this code because it throws an
-error when there's no user to prevent
-
-562
-00:11:25,949 --> 00:11:25,959
-error when there's no user to prevent
- 
-
-563
-00:11:25,959 --> 00:11:28,190
-error when there's no user to prevent
-our app from crashing we'll first add an
-
-564
-00:11:28,190 --> 00:11:28,200
-our app from crashing we'll first add an
- 
-
-565
-00:11:28,200 --> 00:11:30,310
-our app from crashing we'll first add an
-error boundary to display a fallback
-
-566
-00:11:30,310 --> 00:11:30,320
-error boundary to display a fallback
- 
-
-567
-00:11:30,320 --> 00:11:32,430
-error boundary to display a fallback
-component with a more helpful error
-
-568
-00:11:32,430 --> 00:11:32,440
-component with a more helpful error
- 
-
-569
-00:11:32,440 --> 00:11:35,670
-component with a more helpful error
-message to be displayed to the user now
-
-570
-00:11:35,670 --> 00:11:35,680
-message to be displayed to the user now
- 
-
-571
-00:11:35,680 --> 00:11:37,670
-message to be displayed to the user now
-if you really want to dive deep into
-
-572
-00:11:37,670 --> 00:11:37,680
-if you really want to dive deep into
- 
-
-573
-00:11:37,680 --> 00:11:39,990
-if you really want to dive deep into
-react I've put together a complete boot
-
-574
-00:11:39,990 --> 00:11:40,000
-react I've put together a complete boot
- 
-
-575
-00:11:40,000 --> 00:11:41,949
-react I've put together a complete boot
-camp to help you master every one of
-
-576
-00:11:41,949 --> 00:11:41,959
-camp to help you master every one of
- 
-
-577
-00:11:41,959 --> 00:11:44,190
-camp to help you master every one of
-these Concepts from front to back you
-
-578
-00:11:44,190 --> 00:11:44,200
-these Concepts from front to back you
- 
-
-579
-00:11:44,200 --> 00:11:47,629
-these Concepts from front to back you
-can get started now at react boot camp.
-
-580
-00:11:47,629 --> 00:11:47,639
-can get started now at react boot camp.
- 
-
-581
-00:11:47,639 --> 00:11:49,430
-can get started now at react boot camp.
-I hope you learned a lot in this video
-
-582
-00:11:49,430 --> 00:11:49,440
-I hope you learned a lot in this video
- 
-
-583
-00:11:49,440 --> 00:11:54,240
-I hope you learned a lot in this video
-and I'll see you in the next one
+00:06:58,240 --> 00:07:01,199
+angrily thanks so much for watching and
+i'll see you next time
 

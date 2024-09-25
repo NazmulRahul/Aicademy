@@ -66,15 +66,15 @@ public class FirebaseService {
     }
 
 
-    public String upload(FirebaseUploadDTO firebaseUploadDTO) {
+    public String upload(String fileName,MultipartFile file) {
         try {
-            String fileName = firebaseUploadDTO.getFile().getOriginalFilename();
-            System.out.println(fileName);
-            fileName = UUID.randomUUID().toString().concat(this.getExtension(fileName));
-            File file = this.convertToFile(firebaseUploadDTO.getFile(), fileName);
-            String URL = this.uploadFile(file, fileName);
-            file.delete();
-            return URL;
+            System.out.println(fileName + " upload method called");
+
+            if(file.getOriginalFilename()==null)
+                throw new Exception("Original file name not found when trying to upload the file. So extension can not be retrieved");
+            String newFileName = UUID.randomUUID().toString().concat(this.getExtension(file.getOriginalFilename()));
+
+            return this.uploadFile(this.convertToFile(file, newFileName), newFileName);
         } catch (Exception e) {
             e.printStackTrace();
             return "Image couldn't upload, Something went wrong";
@@ -111,6 +111,7 @@ public class FirebaseService {
     }
     public String deleteFileFromFirebase(String fileName){
         try {
+            System.out.println("Delete from firebase called");
 
             InputStream inputStream = FirebaseService.class.getClassLoader().getResourceAsStream("firebaseCredentials.json");
             if (inputStream == null) throw new RuntimeException("input Stream is null. JSON file not found");
@@ -123,8 +124,8 @@ public class FirebaseService {
 
             // Delete the file
             boolean deleted = storage.delete(blobId);
-
             if (deleted) {
+                System.out.println("Delete from firebase called");
                 return "File deleted successfully.";
             } else {
                 throw new Exception("File not found or deletion failed.");
