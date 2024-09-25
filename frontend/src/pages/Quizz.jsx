@@ -22,7 +22,7 @@ const Quizz = () => {
         console.log(quizData);
         try {
             const response = await axios.post(
-                `http://${url}/public/gemini/quiz`,
+                `http://${url}/public/bot/quiz`,
                 quizData
             );
             console.log(response.data);
