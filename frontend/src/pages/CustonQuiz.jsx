@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import bulb from "../assets/lightbulb-2-48.png";
@@ -36,18 +36,8 @@ const CustomQuiz = () => {
         const formData = new FormData();
         formData.append("pdfFile", event.target.files[0]);
         console.log(pdfFile);
-        // http://localhost:3000/test/api/text/upload
         try {
-            console.log(formData);
-            //   const response = await axios.post('http://192.168.0.109:8080/public/extractor', formData, {
-            //     headers: {
-            //       'Content-Type': 'multipart/form-data'
-            //     }
-            //   });
-            //   console.log(response)
-            //   setText(response.data.text)
-            // setPdfData(response.data.pdfData);
-            // setNumPages(response.data.numPages);
+            console.log(formData)
             const response = await axios.post(
                 `http://${url}/public/extractor`,
                 formData
@@ -68,8 +58,13 @@ const CustomQuiz = () => {
     const makeQuiz = () => {
         navigate("/quiz");
     };
+    useEffect(()=>{
+        if(localStorage.getItem('token')==null){
+            navigate('/signin')
+        }
+    })
     return (
-        <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
+        <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-black/15 h-screen w-full  font-sans z-10">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
                 <div className="w-full bg-white rounded-lg border shadow mt-[30px] ">
                     <div className="flex justify-end">

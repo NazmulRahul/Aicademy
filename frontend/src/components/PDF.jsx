@@ -14,18 +14,17 @@ const PDF = () => {
         getData,
         curData,
         curTopic,
-        showPdf
-
+        showPdf,
     } = useContext(userContextProvider);
     const [pdfs, setPdfs] = useState(curTopic.file);
     useEffect(() => {
-         console.log('pdf')
+        console.log("pdf");
         console.log(showPdf);
-        console.log(curTopic)
+        console.log(curTopic);
     }, []);
     const [warn, setWarn] = useState(false);
     const [index, setIndex] = useState(0);
-    const [dltFile,setDltFile]=useState("")
+    const [dltFile, setDltFile] = useState("");
     const dltButton = (name) => {
         setWarn(true);
         setDltFile(name);
@@ -35,20 +34,20 @@ const PDF = () => {
         // let prev=showPdf
         // console.log(prev)
 
-        // prev=prev.file.filter((data,i)=>{  
-                  
+        // prev=prev.file.filter((data,i)=>{
+
         //     if(data.fileName!==dltFile){
         //         return data
         //     }
         // })
-        setWarn(false)
-        setIndex(0)
-        console.log(curTopic.file)
+        setWarn(false);
+        setIndex(0);
+        console.log(curTopic.file);
     };
-    const cancelButton=()=>{
-        setWarn(false)
-        setIndex(0)
-    }
+    const cancelButton = () => {
+        setWarn(false);
+        setIndex(0);
+    };
     return (
         <div className="">
             {warn && (
@@ -64,22 +63,28 @@ const PDF = () => {
                         Are you sure yout want to delete this Pdf?
                     </p>
                     <div class="mt-2">
-                        <button onClick={cancelButton} class="border border-gray-200 bg-slate-400 hover:bg-slate-300 rounded-md m-2 p-1 px-6 ">
+                        <button
+                            onClick={cancelButton}
+                            class="border border-gray-200 bg-slate-400 hover:bg-slate-300 rounded-md m-2 p-1 px-6 "
+                        >
                             No, cancel
                         </button>
-                        <button onClick={confirmButton} class="border border-black bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md m-2 p-1 px-6">
+                        <button
+                            onClick={confirmButton}
+                            class="border border-black bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md m-2 p-1 px-6"
+                        >
                             Yes, I'm sure
                         </button>
                     </div>
                 </div>
             )}
-            {curTopic.file && curTopic.file.length>0 ? (
-                <div className="h-[90vh] pb-10 border border-gray-200 rounded-md shadow-md overflow-scroll w-[500px]">
+            {curTopic.file && curTopic.file.length > 0 ? (
+                <div className="h-[90vh] pb-10 border border-gray-200 rounded-md shadow-md overflow-scroll w-[600px]">
                     <ul>
                         {curTopic.file.map((file, index) => (
                             <li
                                 key={index}
-                                className="border border-gray-300 m-4 rounded-md flex flex-row justify-between bg-gray-200 pr-4"
+                                className="border border-gray-300 m-4 rounded-md flex flex-row justify-between bg-gray-300 pr-4"
                             >
                                 <a
                                     href={file.filePath}
@@ -98,7 +103,10 @@ const PDF = () => {
                                         </div>
                                     </div>
                                 </a>
-                                <button onClick={()=>dltButton(file.fileName)} class="">
+                                <button
+                                    onClick={() => dltButton(file.fileName)}
+                                    class=""
+                                >
                                     <img
                                         src={dlt}
                                         className="size-4 hover:size-5"
@@ -110,7 +118,9 @@ const PDF = () => {
                     </ul>
                 </div>
             ) : (
-                <h1 class="text-4xl w-full">No Notes Available</h1>
+                <div className="h-[90vh] pb-10 border border-gray-200 rounded-md shadow-md overflow-scroll w-[600px]">
+                    <h1 class="text-4xl w-full p-4 text-gray-400">No Notes Available</h1>
+                </div>
             )}
         </div>
     );

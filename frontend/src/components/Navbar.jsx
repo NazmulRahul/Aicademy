@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
 import Logo from "../assets/Mamun.png";
 import LogoSvg from "../assets/AICademy.svg";
+import plus from "../assets/plus-solid.svg";
 const Navbar = (props) => {
     const {
         signedIn,
@@ -17,7 +18,7 @@ const Navbar = (props) => {
         handleLogout,
         url,
     } = useContext(userContextProvider);
-    
+
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
     const handleSearch = () => {};
@@ -40,26 +41,37 @@ const Navbar = (props) => {
     const quiz = () => {
         navigate("/customquiz");
     };
-    const logout=()=>{
-        handleLogout()
-        navigate('/')
-    }
-    // useEffect(() => {
-    //     const token = localStorage.getItem("token");
-    //     if (token != null) {
-    //         getData(token);
-    //         curUser({email:localStorage.getItem("email")});
-    //         navigate('/main')
-            
-    //     }
-    // }, []);
+    const summary = () => {
+        navigate("/summary");
+    };
+    const logout = () => {
+        handleLogout();
+        navigate("/");
+    };
+    const handleLogo = () => {
+        if (signedIn) {
+            navigate("/main");
+        } else {
+            navigate("/");
+        }
+    };
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token != null) {
+            curUser({ email: localStorage.getItem("email") });
+            getData(token);           
+            navigate("/main");
+        }
+    }, []);
     return (
-        <header className="py-[15px] px-[20px] backdrop-blur-[7px] fixed w-full bg-black text-gray-200 bg-transparent ">
+        <header className="py-[15px] px-[20px] backdrop-blur-[7px] fixed w-full bg-black text-gray-200 bg-transparent z-10">
             <section className="flex flex-row justify-between">
-                <Link to="/main">
-                    <img src={Logo} class="h-10"/>
-                
-                </Link>               
+                <img
+                    src={Logo}
+                    class="h-10 cursor-pointer"
+                    onClick={handleLogo}
+                />
+                  <img src={plus} className="size-7 mt-1 ml-4 " />
                 <form className="">
                     <div className="relative">
                         <div className="absolute top-[9px] flex items-center ps-3">
@@ -92,10 +104,14 @@ const Navbar = (props) => {
                         />
                     </div>
                 </form>
-                <div className="flex text-xl">
-                    <p onClick={quiz} class="cursor-pointer">
-                        Quiz
-                    </p>
+                <div className="flex flex-row  text-xl">
+                    <button onClick={quiz} class="text-sm border-2 px-2 rounded-lg hover:border-2 border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_2px_#08f,0_0_3px_#08f,0_0_3px_#08f]">
+                        CustomQuiz
+                    </button>
+                    <button onClick={summary} class="text-sm hover:border-2 mx-3 border-2 px-2 rounded-lg border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_2px_#08f,0_0_3px_#08f,0_0_3px_#08f]">
+                        VidSummary
+                    </button>
+                    
                 </div>
                 <div className="flex justify-between">
                     <button
@@ -136,9 +152,6 @@ const Navbar = (props) => {
                     </button>
                     {signedIn ? (
                         <div class="flex">
-                            <div class="p-2 cursor-pointer" onClick={navProfile}>
-                                profile
-                            </div>
                             <button
                                 class="select-none   rounded-lg bg-gradient-to-tr from-gray-800 to-gray-700 py-1 px-2 text-center align-middle font-sans text-[12px] font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]"
                                 type="button"
@@ -157,7 +170,7 @@ const Navbar = (props) => {
                                 Sign in
                             </button>
                             <button
-                                class="select-none ml-2  rounded-lg bg-transparent py-1 px-2 text-center align-middle font-sans text-md border border-gray-500 font-bold uppercase text-gray-900 shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]"
+                                class="select-none ml-2  rounded-lg bg-transparent py-1 px-2 text-center align-middle font-sans text-md border border-gray-500 font-bold uppercase text-gray-300 shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]"
                                 type="button"
                                 onClick={handleRegister}
                             >

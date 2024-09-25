@@ -38,8 +38,12 @@ const Auth = () => {
                 getData(response.data.accessToken) 
                 navigate('/main')    
             }
+            else{
+                alert('network error!')
+            }
         } catch (error) {
             console.log(error);
+            alert('network error')
         }
     };
     const register = () => {
@@ -48,7 +52,7 @@ const Auth = () => {
 
     const forgotPassword = () => {};
     return (
-        <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-slate-800/20 h-screen w-full  font-sans z-10">
+        <section className="fixed top-0 left-0 backdrop-blur-[7px] h-screen w-full  font-sans z-10">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                     <div className="flex justify-end">
@@ -98,34 +102,7 @@ const Auth = () => {
                                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
                                     required={true}
                                 />
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-start">
-                                    <div className="flex items-center h-5">
-                                        <input
-                                            id="remember"
-                                            aria-describedby="remember"
-                                            type="checkbox"
-                                            className="w-4 h-4 border border-gray-300 rounded bg-gray-50"
-                                            required=""
-                                        />
-                                    </div>
-                                    <div className="ml-3 text-sm">
-                                        <label
-                                            for="remember"
-                                            className="text-gray-500"
-                                        >
-                                            Remember me
-                                        </label>
-                                    </div>
-                                </div>
-                                <p
-                                    onClick={forgotPassword}
-                                    className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-                                >
-                                    Forgot password?
-                                </p>
-                            </div>
+                            </div>                           
                             <button
                                 onClick={signin}
                                 className="w-full text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
@@ -136,7 +113,7 @@ const Auth = () => {
                                 Don’t have an account yet?{" "}
                                 <p
                                     onClick={register}
-                                    className="font-medium hover:underline"
+                                    className="font-medium hover:underline cursor-pointer"
                                 >
                                     Sign up
                                 </p>

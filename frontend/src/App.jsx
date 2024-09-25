@@ -19,7 +19,7 @@ import Summary from "./pages/Summary";
 const App = () => {
    
     return (
-        <div>
+        <div className="bg-black w-full h-screen">
             <UserContext>
                 <Router>
                     <Navbar />

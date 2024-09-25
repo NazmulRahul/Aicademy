@@ -113,7 +113,7 @@ const Sidebar = () => {
                     >
                         SUBJECT
                         <span>
-                            <img src={plus} className="size-7" />
+                            <img src={plus} className="size-7 mt-1 ml-4 " />
                         </span>
                     </button>
                     <div className="mt-4">

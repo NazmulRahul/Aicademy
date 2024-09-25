@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import preview from "../assets/preview.png";
 import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
@@ -8,13 +8,13 @@ import axios from "axios";
 const CreatImage = () => {
     const navigate = useNavigate();
     const click = () => {
-        navigate("/");
+        navigate("/main");
     };
     const [prompt, setPrompt] = useState("");
     const [generating, setGenerating] = useState(false);
     const [generated, setGenerated] = useState(false);
     const [link, setLink] = useState("");
-    const { setPdfText, curTopic, url, user, curData } =
+    const { setPdfText, curTopic, url, user, curData,getData } =
         useContext(userContextProvider);
     const handleInput = (e) => {
         e.preventDefault();
@@ -36,6 +36,7 @@ const CreatImage = () => {
             if (response.status == 200) {
                 setGenerated(true);
                 setLink(response.data.link);
+                getData(localStorage.getItem('token'))
                 console.log(response.data);
             } else {
                 alert("Network error");
@@ -46,6 +47,11 @@ const CreatImage = () => {
             setGenerating(false);
         }
     };
+    useEffect(()=>{
+        if(localStorage.getItem('token')==null){
+            navigate('/signin')
+        }
+    },[])
     return (
         <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[100vh] font-sans z-1020">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">

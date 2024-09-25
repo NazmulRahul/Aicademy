@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { userContextProvider } from "../context/UserContext";
 import YouTube from "react-youtube";
 import ReactPlayer from "react-player";
+import Homepage from "../assets/HomeFinal.png";
+import { Button } from "@chatscope/chat-ui-kit-react";
 const HomePage = () => {
     const navigate = useNavigate();
     const {
@@ -26,9 +28,8 @@ const HomePage = () => {
         setVideoLink(e.target.value);
         console.log(videoLink);
     };
-    const click = () => {      
-           navigate('/summary')
-
+    const click = () => {
+        navigate("/summary");
     };
     return (
         <div class=" w-full h-[100vh] bg-black font-sans text-gray-200 overflow-scroll">
@@ -39,7 +40,7 @@ const HomePage = () => {
                 <div class=" mt-10 flex flex-col font-semibold items-center ">
                     <div className="relative">
                         <div
-                            className="absolute top-[9px] flex items-center ps-3"
+                            className="absolute top-[9px] flex items-center ps-3 z-0"
                             onClick={click}
                         >
                             <svg
@@ -78,16 +79,12 @@ const HomePage = () => {
                     </p>
                 </div>
                 {/* <YouTube videoId={{videoId}} /> */}
-                <ReactPlayer
-                    class="rounded-lg"
-                    controls
-                    url="https://www.youtube.com/watch?v=z_UfPY8NXkM&ab_channel=DavidGarrettVEVO"
-                />
-                <ReactPlayer
-                    class="rounded-lg"
-                    controls
-                    url="https://www.youtube.com/watch?v=z_UfPY8NXkM&ab_channel=DavidGarrettVEVO"
-                />
+                <button  onClick={()=>navigate('/signin')}              
+                    class="z-10 hover:bg-gray-900 text-[40px] pt-4 pb-4 px-6 font-semibold  mt-10 border-2  rounded-[40px] border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_2px_#08f,0_0_8px_#15f,0_0_30px_#08f]"
+                >
+                    GetStarted
+                </button>
+                <img src={Homepage} class="mt-4" alt="HomePage" />
             </div>
         </div>
     );

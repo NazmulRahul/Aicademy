@@ -15,7 +15,7 @@ const Content = () => {
         url
     } = useContext(userContextProvider);
     return (
-        <div className="h-[80vh] pb-5 mb-10 ml-1  border-gray-200  rounded-md shadow-md overflow-scroll w-3/5">
+        <div className="h-[80vh] pb-5 mb-10 ml-1  border-gray-200  rounded-md shadow-md overflow-scroll w-3/5 ">
             {curTopic.content ? (
                 <div
                     dangerouslySetInnerHTML={{

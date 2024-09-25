@@ -3,7 +3,6 @@ import React, { createContext, useState } from "react";
 export const userContextProvider = createContext(null);
 import axios from "axios";
 export const UserContext = (props) => {
-  
     const [url, setUrl] = useState("192.168.0.104:8080");
     const [quizData, setQuizData] = useState({
         text: "",
@@ -18,6 +17,13 @@ export const UserContext = (props) => {
     const [topics, setTopics] = useState([]);
     const [curTopic, setCurTopic] = useState({});
     const [showPdf, setShowPdf] = useState([]);
+    const [history, setHistory] = useState([]);
+    const [messages, setMessages] = useState([
+        {
+            message: "Hello, How can I assist You?",
+            direction: "incoming",
+        },
+    ]);
     const curUser = (data) => {
         setUser(data);
         setSignedIn(true);
@@ -25,9 +31,8 @@ export const UserContext = (props) => {
     const handleLogout = () => {
         setUser({});
         setSignedIn(false);
-      
+
         localStorage.clear();
-        
     };
     const getData = async (token) => {
         try {
@@ -35,7 +40,7 @@ export const UserContext = (props) => {
                 Authorization: token, // Replace with your actual token
             };
             const response = await axios.post(
-                `http://${url}/public/topic`,
+                `http://${url}/public/all/topic`,
                 {},
                 {
                     headers: myHeaders,
@@ -78,8 +83,7 @@ export const UserContext = (props) => {
                 data
             );
             if (response.status == 200) {
-                curData({ subject: response.data.subject });
-                getData(localStorage.getItem('token'));
+                getData(localStorage.getItem("token"));
                 console.log(response.data);
             } else {
                 alert("Something Went Wrong");
@@ -95,9 +99,8 @@ export const UserContext = (props) => {
                 `http://${url}/public/topic/new`,
                 data
             );
-            if (response.status == 200) {
-                curData({ subject: response.data.subject });
-                getData(localStorage.getItem('token'));
+            if (response.status == 200) {               
+                getData(localStorage.getItem("token"));
                 console.log(response.data);
             } else {
                 alert("Something Went Wrong");
@@ -128,6 +131,10 @@ export const UserContext = (props) => {
         setShowPdf,
         videoLink,
         setVideoLink,
+        history,
+        setHistory,
+        messages,
+        setMessages,
     };
     return (
         <userContextProvider.Provider value={contextValue}>

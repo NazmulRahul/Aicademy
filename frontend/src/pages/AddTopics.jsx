@@ -21,10 +21,8 @@ const AddTopics = (props) => {
         email: user.email,
         subject: curTopic.subject,
         topic: "",
-        level:"School"
-        // instruction: "",
-        // image: 0,
-        // notes: "",
+        level:"School",
+        instruction: "",
     });
     const handleChange = (e) => {
         e.preventDefault();

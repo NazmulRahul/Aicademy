@@ -23,16 +23,12 @@ export const Chatbot = (props) => {
         curData,
         curTopic,
         url,
+        messages,
+        setMessages,
+        history,
+        setHistory,
     } = useContext(userContextProvider);
     const [typing, setTyping] = useState(false);
-    const [history, setHistory] = useState([]);
-    const [messages, setMessages] = useState([
-        {
-            message: "Hello, I am ChatGPT!",
-            sender: "ChatGPT",
-            direction: "incoming",
-        },
-    ]);
     const handleSend = async (message) => {
         const newMessage = {
             message: message,
@@ -58,7 +54,7 @@ export const Chatbot = (props) => {
             //     }
             // );
             // const data = await response.json();
-            
+
             const response = await axios.post(
                 `http://${url}/public/bot/chat`,
                 data
@@ -80,10 +76,10 @@ export const Chatbot = (props) => {
         console.log(messages);
     };
     return (
-        <div className="bg-gray-300 fixed h-[550px] w-[700px] border top-[100px] right-[30px] z-10 rounded-lg shadow-md">
+        <div className="bg-gray-800 fixed h-[550px] w-[700px] border top-[100px] right-[30px] z-10 rounded-lg shadow-md">
             <p
                 onClick={props.handle}
-                class="cursor-pointer px-4 py-2  flex justify-end"
+                class="cursor-pointer px-4 py-2  flex justify-end text-gray-300"
             >
                 X
             </p>
@@ -92,7 +88,7 @@ export const Chatbot = (props) => {
             
         </div>
         <textarea name="chat" class="w-[270px] ml-4 mt-1 rounded-lg p-2" id=""></textarea> */}
-            <MainContainer>
+            <MainContainer style={{ color: "#ffff" }}>
                 <ChatContainer>
                     <MessageList
                         typingIndicator={

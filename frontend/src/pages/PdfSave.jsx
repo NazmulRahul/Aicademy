@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
     pdf,
@@ -36,7 +36,7 @@ const PdfSave = () => {
     const styles = StyleSheet.create({
         page: {
             flexDirection: "row",
-            backgroundColor: "#7ec8e3",
+            backgroundColor: "#F5F5F5",
         },
         section: {
             margin: 10,
@@ -76,7 +76,7 @@ const PdfSave = () => {
         console.log(formData);
         try {
             const response = await axios.post(
-                `http://${url}/public/save/upload`,
+                `http://${url}/public/firebase/upload`,
                 formData,
                 {
                     headers: {
@@ -85,7 +85,7 @@ const PdfSave = () => {
                 }
             );
             console.log(response.data);
-            getData(user.email)
+            getData(localStorage.getItem('token'))
             setPdfLink(
                 "https://firebasestorage.googleapis.com/v0/b/aicademy-48d6c.appspot.com/o/0dfa5e9a-d647-44c9-abc4-46fa020d1cfd.pdf?alt=media"
             );
@@ -97,17 +97,22 @@ const PdfSave = () => {
         }
     };
     const click = () => {
-        navigate("/");
+        navigate("/main");
     };
     const handleNameChange = (e) => {
         setFileName(e.target.value);
     };
+    useEffect(()=>{
+        if(localStorage.getItem('token')==null){
+            navigate('/signin')
+        }
+    },[])
     return (
         <div>
             {signedIn ? (
-                <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
+                <section className="fixed top-0 left-0 backdrop-blur-[6px] bg-black/15 h-screen w-full  font-sans z-10">
                     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+                        <div className="w-full bg-[#faf6f6] rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                             <div className="flex justify-end">
                                 <p
                                     className="px-4  text-gray-600 text-[20px] cursor-pointer hover:text-gray-900 transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-100"

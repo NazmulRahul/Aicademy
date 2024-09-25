@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +11,8 @@ const Register = () => {
         password: "",
         rePassword:""
     });
+    const [reg,setReg]=useState(true)
+    const [otp,setOtp]=useState("")
     const handleChange = (e) => {
         e.preventDefault();
         setTempUser((user) => ({ ...user, [e.target.name]: e.target.value }));
@@ -23,18 +26,12 @@ const Register = () => {
         }
         else{
             try {
-                const response = await fetch("http://localhost:3000/test/signin", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(tempUser),
-                });
+                const response = await axios.post(
+                    `http://${url}/api/auth/register`,
+                    tempUser
+                );
                 if (response.status === 200) {
-                    const data = await response.json();
-                    curUser(data);
-                    getData(tempUser.email);
-                    navigate("/");
+                    setReg(false)
                 }
             } catch (error) {
                 console.log(error);
@@ -45,7 +42,23 @@ const Register = () => {
     const login = () => {
         navigate("/signin");
     };
-
+    const handleOtp=(e)=>{
+        setOtp(e.target.value)
+    }
+    const verifyOtp=async()=>{
+        
+        try {
+            const response = await axios.post(
+                `http://${url}/api/auth/verify`,
+                tempUser
+            );
+            if (response.status === 200) {
+                navigate('/signin')
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <section className="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto ">
@@ -56,8 +69,10 @@ const Register = () => {
                     >
                         <p className="px-4 hover:cursor-pointer">x</p>
                     </div>
-
-                    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    
+                    {
+                        reg?(
+                            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                             Create an account
                         </h1>
@@ -147,6 +162,29 @@ const Register = () => {
                             </p>
                         </div>
                     </div>
+                        ):(
+                            <div className="p-4 m-2">
+                                <label
+                                    for="otp"
+                                    className="block mb-2 text-sm font-medium text-gray-900"
+                                >
+                                    Confirm Email
+                                </label>
+                                <input
+                                    
+                                    id="email"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                                    placeholder="check mail for otp"
+                                    required={true}
+                                    onChange={handleOtp}
+                                />
+                                <button  className="mt-2 w-1/2 text-white font-semibold bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center ">
+                                    Confirm
+                                </button>
+                            </div>
+                        )
+                    }
+                    
                 </div>
             </div>
         </section>

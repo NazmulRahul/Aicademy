@@ -35,11 +35,21 @@ const Main = () => {
         setChat((chat) => !chat);
     };
     const handleQuiz = () => {
-        console.log("CurTopic " + curTopic);
-        navigate("/quiz");
+        if(curTopic.topic){
+            navigate("/customquiz");
+        }
+        else{
+            alert('Please first select a topic...')
+        }
+        
     };
     const click = () => {
-        setShowNotes((prev) => !prev);
+        if(curTopic.topic){
+            setShowNotes((prev) => !prev);
+        }
+        else{
+            alert('Please first select a topic...')
+        }        
     };
     const [activeTab, setActiveTab] = useState("Content");
 

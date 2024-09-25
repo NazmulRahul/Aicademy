@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { userContextProvider } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -31,10 +31,15 @@ const NewSubject = () => {
         addSubject(newSubject)
         navigate("/main");
     };
+    useEffect(()=>{
+        if(localStorage.getItem('token')==null){
+            navigate('/signin')
+        }
+    },[])
     return (
-        <div class="fixed top-0 left-0 backdrop-blur-[7px] bg-blue-800/20 h-screen w-full  font-sans z-10">
+        <div class="fixed top-0 left-0 backdrop-blur-[6px] bg-blue-800/15 h-screen w-full  font-sans z-10">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+                <div class="w-full bg-white rounded-lg shadow sah  md:mt-0 sm:max-w-md xl:p-0">
                     <div className="p-2 flex justify-end">
                         <p
                             className="px-4 hover:cursor-pointer text-gray-600 text-[20px] hover:text-gray-900 hover:bg-gray-100 rounded-full"

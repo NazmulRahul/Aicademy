@@ -28,11 +28,7 @@ const Summary = () => {
         setVideoLink(e.target.value);
         console.log(videoLink);
     };
-    useEffect(()=>{
-        if(localStorage.getItem("token")==null){
-            navigate('/signin')
-        }
-    },[])
+   
     const click = () => {
         var p =
             /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
@@ -45,7 +41,7 @@ const Summary = () => {
             /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
         if (!videoLink.match(p)) {
             alert("Please Enter a Valid Link!");
-        }else{
+        } else {
             const data = {
                 url: videoLink,
             };
@@ -69,15 +65,14 @@ const Summary = () => {
                 setGenerating(false);
             }
         }
-        
     };
     return (
         <div class=" w-full h-[100vh] bg-black font-sans text-gray-200 overflow-scroll">
             <div class="flex flex-col justify-center items-center  mt-[70px] mb-10">
                 <div class="mt-10 flex flex-col font-semibold items-center ">
-                <h1 class="text-[32px] font-semibold text-gray-200 mb-5">
-                    Learn With AiCademy
-                </h1>                    
+                    <h1 class="text-[32px] font-semibold text-gray-200 mb-5">
+                        Learn With AiCademy
+                    </h1>
                     <div className="relative">
                         <div
                             className="absolute top-[9px] flex items-center ps-3"
@@ -108,6 +103,7 @@ const Summary = () => {
                             value={videoLink}
                         />
                     </div>
+                    
                 </div>
                 <div class="mt-6">
                     {summary.length > 0 ? (
