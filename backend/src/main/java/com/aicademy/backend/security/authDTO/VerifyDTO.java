@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class VerifyDTO {
-    private String token;
+    private String otp;
 }

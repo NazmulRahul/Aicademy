@@ -105,6 +105,6 @@ public class AuthController {
     }
     @PostMapping("/verify")
     public ResponseEntity<?> verifyEmail(@RequestBody VerifyDTO verifyDTO){
-        return ResponseEntity.ok().body(userService.confirmEmail(verifyDTO.getToken()));
+        return ResponseEntity.ok().body(userService.confirmEmail(verifyDTO.getOtp()));
     }
 }

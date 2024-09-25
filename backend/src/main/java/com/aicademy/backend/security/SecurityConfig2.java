@@ -12,6 +12,7 @@
 //import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 //import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 //import org.springframework.security.config.http.SessionCreationPolicy;
+//import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.web.SecurityFilterChain;
@@ -19,16 +20,19 @@
 //
 //@Configuration
 //@EnableWebSecurity
-//public class SecurityConfig2 {
+//public class SecurityConfig {
 //
 //    @Autowired
 //    private JWTAuthenticationFilter jwtAuthenticationFilter;
-//
 //    @Autowired
 //    private JwtAuthEntryPoint authEntryPoint;
-//
 //    @Autowired
-//    private CustomUserDetailsService customUserDetailsService;
+//    private CustomUserDetailsService userDetailsService;
+//
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        return new CustomUserDetailsService();
+//    }
 //
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -57,13 +61,13 @@
 //    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
 //        var builder = http.getSharedObject(AuthenticationManagerBuilder.class);
 //        builder
-//                .userDetailsService(customUserDetailsService)
+//                .userDetailsService(userDetailsService)
 //                .passwordEncoder(passwordEncoder());
 //        return builder.build();
 //    }
 //
 //    @Bean
-//    public PasswordEncoder passwordEncoder() {
+//    PasswordEncoder passwordEncoder() {
 //        return new BCryptPasswordEncoder();
 //    }
 //
