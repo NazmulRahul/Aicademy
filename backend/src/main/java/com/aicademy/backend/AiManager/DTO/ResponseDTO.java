@@ -1,4 +1,6 @@
-package com.aicademy.backend.fileExtraction;
+package com.aicademy.backend.AiManager.DTO;
+
+
 
 import lombok.*;
 
@@ -6,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ContentResponseDto {
+public class ResponseDTO {
     private String content;
 
 }

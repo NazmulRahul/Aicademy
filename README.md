@@ -4,15 +4,31 @@
 
 # Aicademy
 
-Aicademy is an platform that helps learners to Organise, Optimise and Test their learning. It generates Contents dynamically according to their need. You can test your knowledge using the Dynamic Test Generator based on your learnings. Add your handwritten notes that changes to digital with Magic Note Manager.
+Aicademy is your personal AI-powered learning assistant designed to make education more engaging, customized, and accessible. Whether you're a student, educator, or lifelong learner, Aicademy offers innovative tools to enhance your learning experience.
 
 
-## Features
+## Key Features:
 
-- Generate Custom Lessons made only for you
-- Take a Custom Quiz as per your lesson,notes or book
-- Turn your handwritten notes into Digital one
-- Watch Videos related to your lesson
+   ### Custom AI-Generated Lessons
+   - Simply input the subject, topic name, and difficulty level, and Aicademy will create tailored lessons just for you. Our AI adapts to your needs, ensuring lessons are clear, accurate, and aligned with your learning goals.
+
+   ### Dynamic MCQ Quizzes
+   - Test your knowledge with AI-generated multiple-choice quizzes. You can base these on the lessons Aicademy creates or even upload your own PDFs. Whether you’re revising or exploring new content, Aicademy’s quizzes will keep you on track.
+
+   ### Handwritten Notes to PDF Conversion
+   - Snap a picture of your handwritten notes, and Aicademy will instantly convert them into neatly formatted PDF files, securely stored for easy access anytime, anywhere.
+
+   ### AI-Generated Images
+   - Visual aids are essential for effective learning. Aicademy can generate custom images related to your lessons, providing you with detailed visuals to deepen your understanding of the subject matter.
+
+   ### Curated YouTube Video Links
+   - Explore educational videos handpicked by Aicademy’s AI. It searches for relevant YouTube content, giving you quick access to expert explanations, tutorials, and demonstrations that complement your lessons.
+
+   ### YouTube Video Summaries
+   - Save time with Aicademy’s AI-driven video summaries. Simply provide a YouTube link, and get a concise overview of the video’s content, helping you quickly grasp key points.
+
+   ### AI-Powered Chatbot
+   - Engage in a personalized learning experience by chatting with Aicademy’s AI chatbot. Whether you need clarification on a lesson, help with a quiz, or general study advice, the AI chatbot is here to support you 24/7.
 
 ## Project Demonstration
 

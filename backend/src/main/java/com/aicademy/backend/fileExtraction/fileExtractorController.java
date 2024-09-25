@@ -11,6 +11,7 @@ import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/public/extractor")
+@CrossOrigin
 @RequiredArgsConstructor
 @Validated
 public class fileExtractorController {
@@ -19,8 +20,10 @@ public class fileExtractorController {
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(OK)
-    public ResponseEntity<ContentResponseDto> classify(@RequestParam("file") final MultipartFile pdfFile) {
-        return ResponseEntity.ok().body(ContentResponseDto.builder().content(this.contentExtractorControl.extractContent(pdfFile)).build());
+    public ResponseEntity<ContentResponseDto> classify(@RequestParam("pdfFile") MultipartFile pdfFile) {
+        return ResponseEntity.ok()
+                .body(ContentResponseDto.builder().content(this.contentExtractorControl.extractContent(pdfFile)).build());
+
     }
 
 
