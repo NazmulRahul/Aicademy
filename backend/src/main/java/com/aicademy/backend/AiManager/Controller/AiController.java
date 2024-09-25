@@ -35,13 +35,13 @@ public class AiController {
                         geminiService.generate(prompt)).build());
     }
 
-//    @PostMapping("/quiz")
-//    public ResponseEntity<ResponseDTO> quiz(@RequestBody QuizDataDTO data){
-//        System.out.println("Quiz generation API Called");
-//        return ResponseEntity.ok().body(ResponseDTO.builder()
-//                        .content(aiService.generateQuiz(data.getText(),data.getTotalQuestions(),data.getLevel()))
-//                        .build()) ;
-//    }
+    @PostMapping("/quiz")
+    public ResponseEntity<ResponseDTO> quiz(@RequestBody QuizDataDTO data){
+        System.out.println("Quiz generation API Called");
+        return ResponseEntity.ok().body(ResponseDTO.builder()
+                        .content(aiService.generateQuiz(data.getText(),data.getTotalQuestions(),data.getLevel()))
+                        .build()) ;
+    }
 
     @PostMapping("/image/generate")
     public ResponseEntity<?> generateImageUsingOpenAI(@RequestBody ImageGenerateDTO imageGenerateDTO) throws Exception {

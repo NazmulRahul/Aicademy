@@ -70,9 +70,11 @@ public class AuthController {
 
     @Autowired
     UserTopicMapRepository userTopicMapRepository;
-    @PostMapping("register")
-    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterDto registerDto) {
+
         System.out.println(registerDto.getPassword());
+
         if (userRepository.existsByEmail(registerDto.getEmail())) {
             return new ResponseEntity<>("Email is already in use!", HttpStatus.BAD_REQUEST);
         }
@@ -84,14 +86,15 @@ public class AuthController {
 
         Role roles = roleRepository.findByName("USER").get();
         user.setRoles(Collections.singletonList(roles));
+        System.out.println("roles set for registration");
 
-        // Create an empty UserTopicMap and save it
         UserTopicMap userTopicMap = new UserTopicMap();
-        userTopicMap.setSubToTopicsMap(new HashMap<>()); // Initialize an empty map
+        userTopicMap.setSubToTopicsMap(new HashMap<>());
         UserTopicMap savedUserTopicMap = userTopicMapRepository.save(userTopicMap);
 
-        // Link the newly created UserTopicMap to the UserEntity
+
         user.setTopics(savedUserTopicMap);
+        System.out.println("topics set for registration");
 
         userRepository.save(user);
 
@@ -104,7 +107,8 @@ public class AuthController {
         return new ResponseEntity<>("User registered success!", HttpStatus.OK);
     }
     @PostMapping("/verify")
-    public ResponseEntity<?> verifyEmail(@RequestBody VerifyDTO verifyDTO){
+    public ResponseEntity<?> verifyEmail(@RequestBody VerifyDTO verifyDTO) throws Exception {
+
         return ResponseEntity.ok().body(userService.confirmEmail(verifyDTO.getOtp()));
     }
 }

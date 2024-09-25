@@ -52,22 +52,22 @@ public class GeminiController {
         return ResponseEntity.ok().body("Successfully generated new topic");
     }
 
-    @PostMapping("/gemini/quiz")
-    public ResponseEntity<?> generateQuiz(@RequestBody QuizDataDTO data) {
-        System.out.println("generate quiz called");
-
-        String prompt="You are a quiz master. Generate "+ data.getTotalQuestions() +
-                " random questions with 4 multiple choice answers. From this text " + data.getText() +
-                " . The questions should be " + data.getLevel() + " level. Also provide the answers separately. " +
-                "The answer should be in the following json  format and provide clean JSON string without escape " +
-                "characters and new lines:{\"questions\":[{\"id\":0,\"question\":\"\",\"options\":[],\"answer\":\"\"},..]} " +
-                "options must be indexed 'A','B','C','D' and so on.and answer should only contain 'A','B','C' and so on." +
-                " Do not include any extra word like `/```/jsx at beginning or at end of the response";
-
-        return ResponseEntity.ok().body(ResponseDTO.builder()
-                .content(geminiService.generate(prompt))
-                .build());
-    }
+//    @PostMapping("/gemini/quiz")
+//    public ResponseEntity<?> generateQuiz(@RequestBody QuizDataDTO data) {
+//        System.out.println("generate quiz called");
+//
+//        String prompt="You are a quiz master. Generate "+ data.getTotalQuestions() +
+//                " random questions with 4 multiple choice answers. From this text " + data.getText() +
+//                " . The questions should be " + data.getLevel() + " level. Also provide the answers separately. " +
+//                "The answer should be in the following json  format and provide clean JSON string without escape " +
+//                "characters and new lines:{\"questions\":[{\"id\":0,\"question\":\"\",\"options\":[],\"answer\":\"\"},..]} " +
+//                "options must be indexed 'A','B','C','D' and so on.and answer should only contain 'A','B','C' and so on." +
+//                " Do not include any extra word like `/```/jsx at beginning or at end of the response";
+//
+//        return ResponseEntity.ok().body(ResponseDTO.builder()
+//                .content(geminiService.generate(prompt))
+//                .build());
+//    }
 
     @PostMapping("/gemini/text/summary")
     public ResponseEntity<?> generateQuiz(@RequestBody ResponseDTO data) {

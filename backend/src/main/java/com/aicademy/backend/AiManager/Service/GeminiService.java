@@ -14,7 +14,7 @@ import java.net.http.HttpResponse;
 @Service
 public class GeminiService {
 
-    String apiKey = "AIzaSyDv3BqZf_gYvPznOKREa68GlwCsOX5vGUs";
+    String apiKey = "Your-gemini-api-key";
     String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey;
 
 
