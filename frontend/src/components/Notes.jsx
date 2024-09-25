@@ -68,9 +68,19 @@ const Notes = (props) => {
             navigate("/pdfSave");
         }
     };
-    const reGenerate=()=>{
-
-    }
+    const reGenerate = async () => {
+        try {
+            const response = await axios.post(
+                `http://${url}/public/regenerate`,
+                text
+            );
+            if (response.status == 200) {
+                setText(response.data.content);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <section className=" fixed w-full backdrop-blur-[6px] bg-black/15 h-[100vh] font-sans z-20">
             <div className="flex w-[800px] flex-col items-center justify-center px-6 py-8 mx-auto ">
@@ -155,8 +165,8 @@ const Notes = (props) => {
                                         Cancel
                                     </button>
                                 </div>
-                                {loading && <Loader/>}
-                            </div>                            
+                                {loading && <Loader />}
+                            </div>
                         )}
                     </div>
                     <div class=" p-2 mx-14 border border-gray-300 text-gray-700 font-semibold items-center w-[600px] h-auto min-h-[200px] mb-4 rounded-md overflow-scroll">
