@@ -4,7 +4,7 @@
 
 # Aicademy
 
-Aicademy is your personal AI-powered learning assistant designed to make education more engaging, customized, and accessible. Whether you're a student, educator, or lifelong learner, Aicademy offers innovative tools to enhance your learning experience.
+Aicademy is your personal AI-powered learning application designed to make education more engaging, customized, and accessible. Whether you're a student, educator, or lifelong learner, Aicademy offers innovative tools to enhance your learning experience.
 
 ## AI MODELS:
 ### Content Generation
