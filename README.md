@@ -6,6 +6,17 @@
 
 Aicademy is your personal AI-powered learning application designed to make education more engaging, customized, and accessible. Whether you're a student, educator, or lifelong learner, Aicademy offers innovative tools to enhance your learning experience.
 
+
+## Technologies and Dependecies  
+| Feature                    | Framework / Tool                                         |
+| -------------------------- | ------------------------------------------------------- |
+| Frontend                   | [Reactjs](https://react.dev/)                              |
+| Backend                    | [Java Spring Boot](https://spring.io/projects/spring-boot/), [Spring Security](https://spring.io/projects/spring-security) |
+| Database & Storage         | [MongoDB](https://www.mongodb.com/docs/), [Firebase Storage](https://firebase.google.com/) (fpr Pdfs and images) |
+| CSS Framework & Design Tools | Framework: [Tailwind CSS](https://tailwindcss.com/); Design tool: [Canva](https://www.canva.com/) |
+| AI Models                  | Content: [Gemin-1.5-flash](https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/gemini-1.5-flash-001?hl=it)  Image Generation: [DALL-E 3](https://platform.openai.com/docs/guides/images/introduction)  Image to Text: [Google Document AI](https://cloud.google.com/document-ai?hl=en) Quiz and Summary: Gpt-4o |
+| Others                     | PDF Creation: [react-pdf](https://react-pdf.org/)    
+
 ## AI MODELS:
 ### Content Generation
 
@@ -52,30 +63,7 @@ Aicademy is your personal AI-powered learning application designed to make educa
 
    ### AI-Powered Chatbot
    - Engage in a personalized learning experience by chatting with Aicademy’s AI chatbot. Whether you need clarification on a lesson, help with a quiz, or general study advice, the AI chatbot is here to support you 24/7.
-
-## Project Demonstration
-
-## API Reference
-
-#### Get all items
-
-```http
-  GET /api/items
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
-
-#### Get item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
+            
 
 
 ## Authors
