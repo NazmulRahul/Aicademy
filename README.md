@@ -6,6 +6,29 @@
 
 Aicademy is your personal AI-powered learning assistant designed to make education more engaging, customized, and accessible. Whether you're a student, educator, or lifelong learner, Aicademy offers innovative tools to enhance your learning experience.
 
+## AI MODELS:
+### Content Generation
+
+**Tool:** Gemini 1.5-flash
+
+**Description:** Used for generating personalized content.
+### Image Notes to Text
+
+**Tool:** Google Document AI
+
+**Description:** Used for extracting text from images.
+### Image Generation
+
+**Tool:** Dall-e 3
+
+**Description:** Used for creating images from textual descriptions.
+
+### Quiz, Summary, Regenerate
+
+**Tool:** gpt-4o
+
+**Description:** Used for generating quizzes, summarizing text, and regenerating content.
+
 
 ## Key Features:
 
