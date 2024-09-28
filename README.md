@@ -12,7 +12,7 @@ Aicademy is your personal AI-powered learning application designed to make educa
 | -------------------------- | ------------------------------------------------------- |
 | Frontend                   | [Reactjs](https://react.dev/)                              |
 | Backend                    | [Java Spring Boot](https://spring.io/projects/spring-boot/), [Spring Security](https://spring.io/projects/spring-security) |
-| Database & Storage         | [MongoDB](https://www.mongodb.com/docs/), [Firebase Storage](https://firebase.google.com/) (fpr Pdfs and images) |
+| Database & Storage         | [MongoDB](https://www.mongodb.com/docs/), [Firebase Storage](https://firebase.google.com/) (for Pdfs and images) |
 | CSS Framework & Design Tools | Framework: [Tailwind CSS](https://tailwindcss.com/); Design tool: [Canva](https://www.canva.com/) |
 | AI Models                  | Content: [Gemin-1.5-flash](https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/gemini-1.5-flash-001?hl=it)  Image Generation: [DALL-E 3](https://platform.openai.com/docs/guides/images/introduction)  Image to Text: [Google Document AI](https://cloud.google.com/document-ai?hl=en) Quiz and Summary: Gpt-4o |
 | Others                     | PDF Creation: [react-pdf](https://react-pdf.org/)    
