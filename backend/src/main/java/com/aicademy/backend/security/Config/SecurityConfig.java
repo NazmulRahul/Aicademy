@@ -1,4 +1,4 @@
-package com.aicademy.backend.security;
+package com.aicademy.backend.security.Config;
 
 import com.aicademy.backend.security.JWT.JWTAuthenticationFilter;
 import com.aicademy.backend.security.JWT.JwtAuthEntryPoint;
@@ -28,11 +28,6 @@ public class SecurityConfig {
     private JwtAuthEntryPoint authEntryPoint;
     @Autowired
     private CustomUserDetailsService userDetailsService;
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new CustomUserDetailsService();
-    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

@@ -181,7 +181,8 @@ public class FileService {
         if (userTopicMap == null) { userTopicMap = new UserTopicMap(); }
 
         userTopicMap.getSubToTopicsMap().remove(subject);
-        ;
+
+        System.out.println("subject Deleted Success");
         user.setTopics( userTopicMapRepository.save(userTopicMap));
         userRepository.save(user);
 

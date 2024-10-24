@@ -37,7 +37,7 @@ public class AiService {
                 " . The questions should be " + level + " level. Also provide the answers separately. " +
                 "The answer should be in the following json  format and provide clean JSON string without escape " +
                 "characters and new lines:{\"questions\":[{\"id\":0,\"question\":\"\",\"options\":[],\"answer\":\"\"},..]} " +
-                "options must be indexed 'A','B','C','D' and so on.and answer should only contain 'A','B','C' and so on";
+                "options must be indexed 'A','B','C','D' and so on.and answer should only contain 'A','B','C' and so on. Only send the question data nothing else";
 
         return sendSinglePrompt(prompt," Quiz");
     }

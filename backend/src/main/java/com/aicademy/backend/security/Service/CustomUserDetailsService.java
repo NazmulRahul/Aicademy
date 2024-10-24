@@ -48,16 +48,18 @@ public class CustomUserDetailsService  implements UserDetailsService {
     private Collection<GrantedAuthority> mapRolesToAuthorities(List<Role> roles) {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
-    public String confirmEmail(String confirmationToken) {
+    public String confirmEmail(String confirmationToken) throws Exception {
         Optional<ConfirmationToken> token = Optional.ofNullable(
                 confirmationTokenRepository.findByConfirmationToken(confirmationToken));
 
         if(token.isPresent())
         {
+            System.out.println("Token Found successfully");
             confirmationTokenRepository.deleteById(token.get().getId());
             return "Email verified successfully!";
         }
-        return "Error: Couldn't verify email";
+        System.out.println("token not found");
+        throw new Exception("Wrong Otp given for user registration");
     }
 
     public void sendConfirmationToken(String email)throws MessagingException {

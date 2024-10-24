@@ -21,11 +21,13 @@ public class topicEntity {
     private String content;
     private List<String> imagePath;
     private List<FileEntity> filePath;
+    private List<String> videoPath;
     public topicEntity(String topicName,String content){
         this.topicName=topicName;
         this.content=content;
         this.imagePath=new ArrayList<>();
         this.filePath=new ArrayList<>();
+        this.videoPath=new ArrayList<>();
     }
 }
 

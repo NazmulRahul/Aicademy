@@ -1,4 +1,4 @@
-package com.aicademy.backend.security;
+package com.aicademy.backend.security.models;
 
 import com.aicademy.backend.security.models.Role;
 import com.aicademy.backend.security.models.userEntity;

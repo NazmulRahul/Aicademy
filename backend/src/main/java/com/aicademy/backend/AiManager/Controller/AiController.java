@@ -2,6 +2,7 @@ package com.aicademy.backend.AiManager.Controller;
 
 import com.aicademy.backend.AiManager.DTO.*;
 import com.aicademy.backend.AiManager.Service.AiService;
+import com.aicademy.backend.AiManager.Service.GeminiService;
 import com.aicademy.backend.fileManager.Service.FirebaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,21 +20,23 @@ public class AiController {
     private AiService aiService;
     @Autowired
     FirebaseService firebaseService;
+    @Autowired
+    GeminiService geminiService;
 
     @PostMapping("/chat")
     public ResponseEntity<ResponseDTO> chat(@RequestBody ChatRequestDTO chatRequestDTO){
 
         System.out.println(chatRequestDTO.getPrompt());
-        String prompt="This is our chat history "+chatRequestDTO.getHistory()+
-                ". Now response to this prompt: "+chatRequestDTO.getPrompt();
+        String prompt="This is our chat history "+ chatRequestDTO.getHistory() +
+                ". Now response to this prompt: "+ chatRequestDTO.getPrompt();
 
         return ResponseEntity.ok()
                 .body(ResponseDTO.builder().content(
-                        aiService.sendSinglePrompt(prompt," ChatBot")).build());
+                        geminiService.generate(prompt)).build());
     }
 
     @PostMapping("/quiz")
-    public ResponseEntity<ResponseDTO> quiz(@RequestBody quizDataDTO data){
+    public ResponseEntity<ResponseDTO> quiz(@RequestBody QuizDataDTO data){
         System.out.println("Quiz generation API Called");
         return ResponseEntity.ok().body(ResponseDTO.builder()
                         .content(aiService.generateQuiz(data.getText(),data.getTotalQuestions(),data.getLevel()))

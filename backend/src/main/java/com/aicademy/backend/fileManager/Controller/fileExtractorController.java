@@ -1,5 +1,7 @@
-package com.aicademy.backend.fileExtraction;
+package com.aicademy.backend.fileManager.Controller;
 
+import com.aicademy.backend.fileManager.Service.ContentExtractorService;
+import com.aicademy.backend.fileManager.DTO.ContentResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

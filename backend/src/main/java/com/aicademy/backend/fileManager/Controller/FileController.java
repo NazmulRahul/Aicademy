@@ -3,7 +3,7 @@ package com.aicademy.backend.fileManager.Controller;
 import com.aicademy.backend.AiManager.Service.AiService;
 import com.aicademy.backend.fileManager.DTO.DeleteReqDTO;
 import com.aicademy.backend.fileManager.DTO.NewSubjectDTO;
-import com.aicademy.backend.fileManager.DTO.topicGenerateDTO;
+import com.aicademy.backend.fileManager.DTO.TopicGenerateDTO;
 import com.aicademy.backend.fileManager.Service.FirebaseService;
 import com.aicademy.backend.fileManager.Service.FileService;
 import com.aicademy.backend.fileManager.models.UserTopicMap;
@@ -26,7 +26,7 @@ public class FileController {
     FirebaseService firebaseService;
 
     @PostMapping("/topic/new")
-    public ResponseEntity<?> createTopic(@RequestBody topicGenerateDTO topicDTO){
+    public ResponseEntity<?> createTopic(@RequestBody TopicGenerateDTO topicDTO){
         System.out.println(topicDTO);
 
         String prompt="Create a "+topicDTO.getLevel()+" detailed lesson on "+topicDTO.getTopic()+" in "+ topicDTO.getSubject() +
