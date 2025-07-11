@@ -8,7 +8,9 @@ import com.aicademy.backend.security.repository.UserRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -26,15 +28,19 @@ import java.util.stream.Collectors;
 
 @Service
 public class CustomUserDetailsService  implements UserDetailsService {
-
-
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    ConfirmationTokenRepository confirmationTokenRepository;
-    @Autowired
-    EmailService emailService;
-
+    
+    private final JavaMailSender javaMailSender;
+    private final UserRepository userRepository;
+    private final ConfirmationTokenRepository confirmationTokenRepository;
+    
+    CustomUserDetailsService(JavaMailSender javaMailSender,
+            UserRepository userRepository,
+            ConfirmationTokenRepository confirmationTokenRepository
+            ){
+        this.javaMailSender = javaMailSender;
+        this.userRepository = userRepository;
+        this.confirmationTokenRepository = confirmationTokenRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -71,7 +77,7 @@ public class CustomUserDetailsService  implements UserDetailsService {
 
         confirmationTokenRepository.save(confirmationToken);
 
-        MimeMessage mimeMessage = emailService.createMimeMessage();
+        MimeMessage mimeMessage = createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 
         helper.setTo(email);
@@ -90,9 +96,17 @@ public class CustomUserDetailsService  implements UserDetailsService {
 
         helper.setText(htmlContent, true); // The 'true' flag enables HTML content
 
-        emailService.sendEmail(mimeMessage);
+        sendEmail(mimeMessage);
 
         System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
+    }
+
+    @Async
+    public void sendEmail(MimeMessage email) {
+        javaMailSender.send(email);
+    }
+    public MimeMessage createMimeMessage() {
+        return javaMailSender.createMimeMessage();
     }
 
 }

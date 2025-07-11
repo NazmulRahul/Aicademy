@@ -5,6 +5,8 @@ import com.aicademy.backend.AiManager.DTO.ChatGptResponse;
 import com.aicademy.backend.AiManager.DTO.GenerationResponse;
 import com.aicademy.backend.AiManager.DTO.ImageGenerationRequest;
 import com.aicademy.backend.fileManager.Service.FirebaseService;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
@@ -27,8 +33,6 @@ public class AiService {
     private String apiURL;
     @Autowired
     private RestTemplate template;
-    @Autowired
-    FirebaseService firebaseService;
 
     public String generateQuiz(String text,String totalQuestions,String level){
         System.out.println(totalQuestions);
@@ -47,6 +51,8 @@ public class AiService {
 
         ImageGenerationRequest requestBody = new ImageGenerationRequest("dall-e-2", prompt, n, size);
         System.out.println("Generation request send");
+        
+        //TODO: Update this RestTemplate with modern way of Consuming REST Endpoints
         GenerationResponse response = template.postForObject(url, requestBody, GenerationResponse.class);
         if(response==null) throw new Exception("Dall e returned null");
         return response.getData().get(0).getUrl();
@@ -75,6 +81,50 @@ public class AiService {
         return chatGptResponse != null
                 ? chatGptResponse.getChoices().get(0).getMessage().getContent()
                 : "Ai returned null while generating "+ErrorMessage;
+    }
+
+
+    String apiKey = "Your-gemini-api-key";
+    String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey;
+
+
+    public String generate(String prompt){
+        try {
+            JsonObject textPart = new JsonObject();
+            textPart.addProperty("text", prompt);
+
+            JsonObject partsObject = new JsonObject();
+            partsObject.add("parts", textPart);
+
+            JsonObject contentsObject = new JsonObject();
+            contentsObject.add("contents", partsObject);
+
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(apiUrl))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(contentsObject.toString()))
+                    .build();
+
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+
+            JsonObject responseObject = JsonParser.parseString(response.body()).getAsJsonObject();
+            String story=responseObject.getAsJsonArray("candidates")
+                    .get(0).getAsJsonObject()
+                    .get("content").getAsJsonObject()
+                    .getAsJsonArray("parts")
+                    .get(0).getAsJsonObject()
+                    .get("text").getAsString();
+            System.out.println(story);
+
+            return story;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Error("Unable to generate story");
+        }
     }
 
 }
