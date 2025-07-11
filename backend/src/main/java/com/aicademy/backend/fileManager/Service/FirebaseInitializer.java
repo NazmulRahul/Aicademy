@@ -5,12 +5,14 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class FirebaseInitializer {
     public void initialize() {
         try {
             FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(getClass().getClassLoader().getResourceAsStream("firebaseCredentials.json")))
+                    .setCredentials(GoogleCredentials.fromStream(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("firebaseCredentials.json"))))
                     .build();
             FirebaseApp.initializeApp(options);
         } catch (Exception e) {

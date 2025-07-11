@@ -1,6 +1,5 @@
 package com.aicademy.backend.security.Controller;
 
-
 import com.aicademy.backend.security.JWT.JWTGenerator;
 import com.aicademy.backend.security.Service.CustomUserDetailsService;
 
@@ -13,9 +12,15 @@ import com.aicademy.backend.security.authDTO.VerifyDTO;
 import com.aicademy.backend.security.repository.RoleRepository;
 import com.aicademy.backend.security.repository.UserRepository;
 
-
 import com.aicademy.backend.fileManager.models.UserTopicMap;
 import com.aicademy.backend.fileManager.Repository.UserTopicMapRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,6 +38,7 @@ import java.util.HashMap;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/auth")
+@Tag(name = "Authentication", description = "User authentication and registration endpoints")
 public class AuthController {
 
     private AuthenticationManager authenticationManager;
@@ -45,8 +51,8 @@ public class AuthController {
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
-                          RoleRepository roleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator,
-                          CustomUserDetailsService userService) {
+            RoleRepository roleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator,
+            CustomUserDetailsService userService) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -55,13 +61,19 @@ public class AuthController {
         this.userService = userService;
     }
 
+    @Operation(summary = "User login")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful login", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponseDTO.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid email or password", content = @Content)
+    })
     @PostMapping("login")
-    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto){
+    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto) {
         System.out.println(loginDto.getEmail());
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                loginDto.getEmail(),
-                loginDto.getPassword()));
+                        loginDto.getEmail(),
+                        loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
 
@@ -70,6 +82,12 @@ public class AuthController {
 
     @Autowired
     UserTopicMapRepository userTopicMapRepository;
+
+    @Operation(summary = "User registration")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful registration", content = @Content),
+            @ApiResponse(responseCode = "400", description = "Email is already in use", content = @Content)
+    })
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterDto registerDto) {
 
@@ -92,7 +110,6 @@ public class AuthController {
         userTopicMap.setSubToTopicsMap(new HashMap<>());
         UserTopicMap savedUserTopicMap = userTopicMapRepository.save(userTopicMap);
 
-
         user.setTopics(savedUserTopicMap);
         System.out.println("topics set for registration");
 
@@ -106,6 +123,12 @@ public class AuthController {
 
         return new ResponseEntity<>("User registered success!", HttpStatus.OK);
     }
+
+    @Operation(summary = "Verify email")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Email verified successfully", content = @Content),
+            @ApiResponse(responseCode = "400", description = "Invalid OTP", content = @Content)
+    })
     @PostMapping("/verify")
     public ResponseEntity<?> verifyEmail(@RequestBody VerifyDTO verifyDTO) throws Exception {
 

@@ -7,15 +7,20 @@ import com.aicademy.backend.fileManager.Repository.UserTopicMapRepository;
 import com.aicademy.backend.fileManager.models.FileEntity;
 import com.aicademy.backend.fileManager.models.UserTopicMap;
 import com.aicademy.backend.fileManager.models.topicEntity;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class FileService {
 
 
@@ -186,6 +191,19 @@ public class FileService {
         user.setTopics( userTopicMapRepository.save(userTopicMap));
         userRepository.save(user);
 
+    }
+    public String extractContent(final MultipartFile multipartFile) {
+        String text;
+
+        try (final PDDocument document = PDDocument.load(multipartFile.getInputStream())) {
+            final PDFTextStripper pdfStripper = new PDFTextStripper();
+            text = pdfStripper.getText(document);
+        } catch (final Exception ex) {
+            log.error("Error parsing PDF", ex);
+            text = "Error parsing PDF";
+        }
+
+        return text;
     }
 
 }

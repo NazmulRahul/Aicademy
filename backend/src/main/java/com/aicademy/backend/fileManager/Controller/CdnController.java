@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @CrossOrigin
 @RequestMapping("/public/firebase")
-public class FirebaseController {
+public class CdnController {
     @Value(("${firebase.bucket.name}"))
     private String bucketName;
     @Autowired
